@@ -12,7 +12,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
 		<link rel="stylesheet" href="reveal-3.2.0/css/reveal.css">
-		<link rel="stylesheet" href="reveal-3.2.0/css/theme/black.css" id="theme">
+		<link rel="stylesheet" href="reveal-3.2.0/css/theme/sky.css" id="theme">
 		<link rel="stylesheet" href="reveal-3.2.0/lib/css/zenburn.css">
 
 		<!-- Printing and PDF exports -->
@@ -44,32 +44,65 @@
 				<section>
 					<h2>Plan</h2>
 					<ul>
-						<li class="fragment">L'histoire</li>
-						<li class="fragment">Installation</li>
-						<li class="fragment">Paramétrer git</li>
-						<li class="fragment">Les commandes de bases</li>
-						<li class="fragment">Les commandes avancés</li>
-						<li class="fragment">Les commandes "experts"</li>
-						<li class="fragment">Le Git Flow</li>
-						<li class="fragment">Ligne de commande ou IDE ?</li>
+						<li>L'histoire</li>
+						<li>Installation</li>
+						<li>Paramétrer git</li>
+						<li>Les commandes de bases</li>
+						<li>Les commandes avancés</li>
+						<li>Les commandes "experts"</li>
+						<li>Le Git Flow</li>
+						<li>Ligne de commande ou IDE ?</li>
 					</ul>
 				</section>
 				
 				<section>
 					<section>
 						<h2>L'histoire de GIT</h2>
-						
-						<p>TODO</p>
+						<ul>
+							<li class="fragment"><b>2002</b> : Linus Torvalds utilise BitKeeper pour Linux, logiciel propriétaire.</li>
+							<li class="fragment"><b>Début 2005</b> : BitKeeper arrête sa version gratuite.</li>
+							<li class="fragment"><b>Avril 2005</b> : Linus Torvald crée GIT, répondant à ses besoins.
+								<ul>
+									<li>Système de fichier évolué</li>
+									<li>Décentralisé</li>
+									<li>Libre</li>
+								</ul>
+							</li>
+						</ul>
+					</section>
+					
+					<section>
+						<h2>Décentralisé ?</h2>
+						<p>TODO : Image centralisé VS Décentralisé>
+						<ul>
+							<li>Tout l'historique est présent lors d'un clone, pas de besoin de remote.</li>
+							<li>Respecte l'éthique du libre : on peut cloner et proposer des pull request.</li>
+						</ul>
 					</section>
 				</section>
 				
 				<section>
 					<section>
 						<h2>Installation de GIT</h2>
+						<p>GIT = Linux</p>
 					</section>
 					
 					<section>
-						https://git-scm.com/
+						<ul>
+							<li>https://git-scm.com/</li>
+							<li></li>
+						</ul>
+					</section>
+				</section>
+				
+				<section>
+					<section>
+						<h2>Paramétrer GIT</h2>
+					</section>
+					
+					<section>
+						git config --global user.name t.membot
+						git config --global user.email tmembot@gmail.com
 					</section>
 				</section>
 				
@@ -93,11 +126,9 @@
 				<section>
 					<section>
 						<h2>Initialiser un nouveau repository</h2>
-						<pre>
-							<code class="hljs" data-trim>
-								git init
-							</code>
-						</pre>
+						<pre><code data-trim>
+							git init
+						</code></pre>
 						<p>Commande permettant d'initialiser un repository vierge.</p>
 						<p>Crée un dossier ".git" initialisé sur une branche master par défaut.</p>
 						<p><a href="https://git-scm.com/docs/git-init"><img src="img/logoGit.png" />https://git-scm.com/docs/git-init</a></p>
@@ -208,17 +239,6 @@
 						<li>gitk</li>
 						<li>cherry-pick</li>
 					</ul>
-				</section>
-				
-				<section>
-					<section>
-						<h2>Paramétrer GIT</h2>
-					</section>
-					
-					<section>
-						git config user.name t.membot
-						git config user.email tmembot@gmail.com
-					</section>
 				</section>
 				
 				<section>
