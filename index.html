@@ -51,6 +51,7 @@
 						<li>Les commandes avancés</li>
 						<li>Les commandes "experts"</li>
 						<li>Le Git Flow</li>
+						<li>Les pull/merge request</li>
 						<li>Ligne de commande ou IDE ?</li>
 					</ul>
 				</section>
@@ -82,27 +83,48 @@
 				</section>
 				
 				<section>
-					<section>
-						<h2>Installation de GIT</h2>
-						<p>GIT = Linux</p>
-					</section>
-					
-					<section>
-						<ul>
-							<li>https://git-scm.com/</li>
-							<li></li>
-						</ul>
-					</section>
+					<h2>Installation de GIT</h2>
+					<p>GIT = Linux</p>
+					<p>Installation possible sous windows avec une émulation linux</p>
+					<li>https://git-scm.com/</li>
 				</section>
 				
 				<section>
 					<section>
 						<h2>Paramétrer GIT</h2>
+						<ol>
+							<li>Locale (repository)<br>
+								<pre><code data-trim>
+									git config --local
+								</code></pre>
+							</li>
+							<li>Global (user)<br>
+								<pre><code data-trim>
+									git config --global
+								</code></pre>
+							</li>
+							<li>Système (tous users)<br>
+								<pre><code data-trim>
+									git config --system
+								</code></pre>
+							</li>
+						</ol>
 					</section>
 					
 					<section>
-						git config --global user.name t.membot
-						git config --global user.email tmembot@gmail.com
+						<h2>Configuration global user</h2>
+						<ul>
+							<li>S'applique à tous les repository de l'utilisateur.</li>
+						</ul>
+						<pre><code data-trim>
+							git config --global user.name t.membot
+							git config --global user.email tmembot@gmail.com
+						</code></pre>
+						<pre><code data-trim>
+							git config --global alias.logall "log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white) - %an%C(reset) %C(bold yellow)%d%C(reset)' --all"
+							git config --global alias.wdiff "diff --word-diff"
+						</code></pre>
+						<p>[color]   ui = auto</p>
 					</section>
 				</section>
 				
@@ -129,9 +151,20 @@
 						<pre><code data-trim>
 							git init
 						</code></pre>
-						<p>Commande permettant d'initialiser un repository vierge.</p>
-						<p>Crée un dossier ".git" initialisé sur une branche master par défaut.</p>
-						<p><a href="https://git-scm.com/docs/git-init"><img src="img/logoGit.png" />https://git-scm.com/docs/git-init</a></p>
+						<ul>
+							<li>Commande permettant d'initialiser un repository vierge.</li>
+							<li>Crée un dossier ".git" initialisé sur une branche master par défaut.</li>
+							<li><a href="https://git-scm.com/docs/git-init"><img src="img/logoGit.png" />https://git-scm.com/docs/git-init</a></li>
+						</ul>
+					</section>
+					
+					<section>
+						<h2>GIT ignore</h2>
+						<ul>
+							<li>Git ignore</li>
+							<li>Git ignore global (dans le fichier, partie core : excludesfile = ~/.gitignore_global)</li>
+							<li>www.gitignore.io</li>
+						</ul>
 					</section>
 					
 					<section>
