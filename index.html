@@ -3,10 +3,10 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>Présentation Git</title>
+		<title>Maîtriser Git</title>
 
-		<meta name="description" content="Présentation de l'outil de gestion de version GIT">
-		<meta name="author" content="Tony Membot">
+		<meta name="description" content="Formation à l'utilisation de l'outil de gestion de version GIT">
+		<meta name="author" content="Tony MEMBOT">
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -30,23 +30,25 @@
 	</head>
 	<body>
 		<div class="reveal">
-			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
-			
+
+                <!-- *************************************************************** -->
+                <!-- 0. Titre & plan -->
+                <!-- *************************************************************** -->
+
 				<section>
-					<h1>GIT</h1>
-					<h3>Présentation de l'outil de gestion de version</h3>
+					<h1>Maîtriser GIT</h1>
+					<h3>Formation à l'outil de gestion de version</h3>
 					<p>
 						<small>Créé par Tony MEMBOT via l'API de présentation <a href="https://github.com/hakimel/reveal.js">Reveal.js</a></small>
 					</p>
 				</section>
 
 				<section>
-					<h2>Plan</h2>
+					<h2>Maîtriser GIT</h2>
 					<ul>
-						<li>L'histoire</li>
-						<li>Installation</li>
-						<li>Paramétrer git</li>
+						<li>Pourquoi choisir GIT ?</li>
+						<li>Mise en place</li>
 						<li>Les commandes de bases</li>
 						<li>Les commandes avancés</li>
 						<li>Les commandes "experts"</li>
@@ -55,10 +57,19 @@
 						<li>Ligne de commande ou IDE ?</li>
 					</ul>
 				</section>
-				
+
+                <!-- *************************************************************** -->
+                <!-- 1. Pourquoi choisir GIT ? -->
+                <!-- *************************************************************** -->
+
 				<section>
+
+                    <section>
+                        <h2>Pourquoi choisir GIT ?</h2>
+                    </section>
+
 					<section>
-						<h2>L'histoire de GIT</h2>
+						<h3>Il était une fois l'histoire de GIT</h3>
 						<ul>
 							<li class="fragment"><b>2002</b> : Linus Torvalds utilise BitKeeper pour Linux, logiciel propriétaire.</li>
 							<li class="fragment"><b>Début 2005</b> : BitKeeper arrête sa version gratuite.</li>
@@ -71,27 +82,105 @@
 							</li>
 						</ul>
 					</section>
-					
+
 					<section>
-						<h2>Décentralisé ?</h2>
-						<p>TODO : Image centralisé VS Décentralisé>
-						<ul>
-							<li>Tout l'historique est présent lors d'un clone, pas de besoin de remote.</li>
-							<li>Respecte l'éthique du libre : on peut cloner et proposer des pull request.</li>
-						</ul>
+						<h3>Centralisé VS décentralisé</h3>
+
+						<!-- TODO : Image centralisé VS Décentralisé -->
+
+                        <aside class="notes">
+                            <ul>
+                                <li>Tout l'historique est présent lors d'un clone, pas de besoin de remote.</li>
+                                <li>Respecte l'éthique du libre : on peut cloner et proposer des pull request.</li>
+                            </ul>
+                        </aside>
 					</section>
+
+                    <section>
+                        <h3>Les ingrédients de GIT</h3>
+                        <ul>
+                            <li>Tout est SHA1 : Identifiant unique de chaque objet :
+                                <ul>
+                                    <li><b>Blob</b> : contenu des fichiers</li>
+                                    <li><b>Tree</b> : répertoire de blob et/ou autre tree</li>
+                                    <li><b>Commit</b> :
+                                        <ul>
+                                            <li>Un arbre</li>
+                                            <li>0 ou N commits parents</li>
+                                            <li>Un message de description</li>
+                                        </ul>
+                                    </li>
+                                    <li><b>Tag</b></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </section>
+
+                    <section>
+
+                        <!-- TODO : Schéma représentant des commits et tags + SHA 1 -->
+
+                    </section>
+
+                    <section>
+                        <h3>Particularités</h3>
+                        <ul>
+                            <li>Tout est ajout (même les suppressions de fichiers / dossiers)</li>
+                            <li>Les liens / commit déférencés sont automatiquement supprimés</li>
+                        </ul>
+                    </section>
+
+                    <section>
+
+                        <!-- TODO : Schmé représentant la différence SVN / GIT sur la sauvegardes des fichiers (path vs full) -->
+
+                    </section>
+
+                    <section>
+                        <h3>Git est optimiser pour ...</h3>
+                        <ul>
+                            <li>être rapide</li>
+                            <li>être robute</li>
+                            <li>gérer un grand nombre de fichier</li>
+                            <li>réaliser des développements distribués</li>
+                            <li>rendre trivial la gestion des branches et des merge</li>
+                            <li>sa compatibilité : SVN / CVS / HTTP / SSH / ...</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3>... mais l'est moins pour</h3>
+                        <ul>
+                            <li>gérer les gros fichiers binaires</li>
+                            <li>son côté non "user friendly" aux premiers abords</li>
+                        </ul>
+                    </section>
 				</section>
-				
+
+                <!-- *************************************************************** -->
+                <!-- 2. Mise en place de GIT -->
+                <!-- *************************************************************** -->
+
 				<section>
-					<h2>Installation de GIT</h2>
-					<p>GIT = Linux</p>
-					<p>Installation possible sous windows avec une émulation linux</p>
-					<li>https://git-scm.com/</li>
-				</section>
-				
-				<section>
+
+                    <section>
+                        <h2>Mise en place de GIT</h2>
+                    </section>
+
+                    <section>
+                        <h3>Installation</h3>
+                        <ul>
+                            <li>Linux<br/>
+                                <pre><code>sudo apt-get install git</code></pre>
+                            </li>
+                            <li>Windows (émulation)<br />
+                                <pre><code>https://git-scm.com/</code></pre>
+                            </li>
+                        </ul>
+                    </section>
+
 					<section>
-						<h2>Paramétrer GIT</h2>
+						<h3>Paramétrer GIT</h3>
 						<ol>
 							<li>Locale (repository)<br>
 								<pre><code data-trim>
@@ -103,7 +192,7 @@
 									git config --global
 								</code></pre>
 							</li>
-							<li>Système (tous users)<br>
+							<li>Système (tout users)<br>
 								<pre><code data-trim>
 									git config --system
 								</code></pre>
@@ -112,107 +201,238 @@
 					</section>
 					
 					<section>
-						<h2>Configuration global user</h2>
-						<ul>
-							<li>S'applique à tous les repository de l'utilisateur.</li>
-						</ul>
-						<pre><code data-trim>
-							git config --global user.name t.membot
-							git config --global user.email tmembot@gmail.com
-						</code></pre>
-						<pre><code data-trim>
-							git config --global alias.logall "log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white) - %an%C(reset) %C(bold yellow)%d%C(reset)' --all"
-							git config --global alias.wdiff "diff --word-diff"
-						</code></pre>
-						<p>[color]   ui = auto</p>
+						<h3>Identifiez vous !</h3>
+                        <pre><code data-trim>
+git config --global user.name t.membot
+
+git config --global user.email tmembot@gmail.com
+                        </code></pre>
 					</section>
+
+                    <section>
+                        <h3>Get Started</h3>
+                        <pre><code data-trim>
+git init
+touch readme.txt
+git status
+git add readme.txt
+git status
+git commit -m "My first commit !"
+git status
+git log
+                        </code></pre>
+                    </section>
+
+
+                    <section>
+                        <h3>La zone de staging</h3>
+
+                        <!-- TODO : insérer schéma de l'utilisation du staging. -->
+
+                    </section>
+
 				</section>
-				
+
+                <!-- *************************************************************** -->
+                <!-- 3. Maîtriser les bases -->
+                <!-- *************************************************************** -->
+
 				<section>
-					<h2>Les commandes de bases</h2>
-					<ul>
-						<li>init</li>
-						<li>clone</li>
-						<li>add</li>
-						<li>pull</li>
-						<li>commit</li>
-						<li>push</li>
-						<li>fetch</li>
-						<li>diff</li>
-						<li>reset</li>
-						<li>revert</li>
-						<li>clean</li>
-					</ul>
+                    <section>
+                        <h2>Maîtriser les bases</h2>
+                    </section>
 				</section>
-				
+
 				<section>
 					<section>
-						<h2>Initialiser un nouveau repository</h2>
+						<h3>(init) Initialiser un nouveau repo</h3>
 						<pre><code data-trim>
 							git init
 						</code></pre>
 						<ul>
-							<li>Commande permettant d'initialiser un repository vierge.</li>
-							<li>Crée un dossier ".git" initialisé sur une branche master par défaut.</li>
-							<li><a href="https://git-scm.com/docs/git-init"><img src="img/logoGit.png" />https://git-scm.com/docs/git-init</a></li>
+							<li>Permet d'initialiser un repository vierge.</li>
+							<li>Crée un dossier ".git"</li>
+                            <li>Initialise une branche nommée "master"</li>
+                            <li>Peut être créé dans un dossier contenant déjà des dossiers/fichiers</li>
 						</ul>
 					</section>
-					
+
+                    <section>
+                        <h3>Dossier .git</h3>
+                        <ul>
+                            <li>Seulement présent à la racine du projet</li>
+                            <li>Contient :
+                                <ul>
+                                    <li><b>config</b> : Fichiers de configuration (style .ini)</li>
+                                    <li><b>objects/*</b> : Repository des objets</li>
+                                    <li><b>refs/heads/*</b> : Branches</li>
+                                    <li><b>refs/tags/*</b> : Tags</li>
+                                    <li><b>logs/*</b> : Logs</li>
+                                    <li><b>refs/remotes/*</b> : Tracking des remotes</li>
+                                    <li><b>index</b> : le "cache index" (staging)</li>
+                                    <li><b>HEAD</b> : pointeur sur un commit de la branche courante (parent du prochain commit)</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </section>
+
 					<section>
-						<h2>GIT ignore</h2>
+						<h3>Les options intéressantes</h3>
 						<ul>
-							<li>Git ignore</li>
-							<li>Git ignore global (dans le fichier, partie core : excludesfile = ~/.gitignore_global)</li>
-							<li>www.gitignore.io</li>
-						</ul>
-					</section>
-					
-					<section>
-						<h2>Initialiser un nouveau repository</h2>
-						<ul>
-							<li>1 seul dossier à la racine du projet.</li>
-							<li>Peut se réaliser dans un projet existant.</li>
 							<li>Options :</li>
 							<ul>
-								<li>--shared : Partager son repository</li>
-								<li>--bare : Création d'un repo sans arbre de travail</li>
+                                <li><b>--bare</b> : Création d'un repository sans arbre de travail.</li>
+								<li><b>--shared</b> : Partager son repository.</li>
 							</ul>
 						</ul>
+                        <p>
+                            <b>Note</b> : Pour obtenir de l'aide sur une commande<br />
+                            <pre><code data-trim>git [command] --help</code></pre>
+                        </p>
 					</section>
+				</section>
+
+				<section>
+					<section>
+						<h3>Git add</h3>
+					</section>
+
+                    <section>
+                        <h3>Les options intéressantes</h3>
+                        <ul>
+                            <li>Options :</li>
+                            <ul>
+                                <li></li>
+                                <li></li>
+                            </ul>
+                        </ul>
+                    </section>
 				</section>
 				
 				<section>
 					<section>
-						<h2>Git clone</h2>
-						<p>Commande permettant de dupliquer un repository distant.</p>
-						<p>C'est la branche par défaut (généralement nommée master) qui est récupéré</p>
-						<p><small><a href="https://git-scm.com/docs/git-clone"><img src="img/logoGit.png" />https://git-scm.com/docs/git-clone</a></small></p>
+						<h3>Git pull</h3>
 					</section>
-					
-					<section>
-						<h2>SSH ou HTTPS ?</h2>
-						<p></p>
-					</section>
+
+                    <section>
+                        <h3>Les options intéressantes</h3>
+                        <ul>
+                            <li>Options :</li>
+                            <ul>
+                                <li></li>
+                                <li></li>
+                            </ul>
+                        </ul>
+                    </section>
 				</section>
 				
 				<section>
 					<section>
-						<h2>Git add</h2>
+						<h3>Git commit</h3>
 					</section>
+
+                    <section>
+                        <h3>Les options intéressantes</h3>
+                        <ul>
+                            <li>Options :</li>
+                            <ul>
+                                <li></li>
+                                <li></li>
+                            </ul>
+                        </ul>
+                    </section>
 				</section>
-				
-				<section>
-					<section>
-						<h2>Git pull</h2>
-					</section>
-				</section>
-				
-				<section>
-					<section>
-						<h2>Git commit</h2>
-					</section>
-				</section>
-				
+
+                <section>
+                    <section>
+                        <h2>Git diff</h2>
+                    </section>
+
+                    <section>
+                        <h3>Les options intéressantes</h3>
+                        <ul>
+                            <li>Options :</li>
+                            <ul>
+                                <li></li>
+                                <li></li>
+                            </ul>
+                        </ul>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Git reset</h2>
+                    </section>
+
+                    <section>
+                        <h3>Les options intéressantes</h3>
+                        <ul>
+                            <li>Options :</li>
+                            <ul>
+                                <li></li>
+                                <li></li>
+                            </ul>
+                        </ul>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Git revert</h2>
+                    </section>
+
+                    <section>
+                        <h3>Les options intéressantes</h3>
+                        <ul>
+                            <li>Options :</li>
+                            <ul>
+                                <li></li>
+                                <li></li>
+                            </ul>
+                        </ul>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Git clean</h2>
+                    </section>
+
+                    <section>
+                        <h3>Les options intéressantes</h3>
+                        <ul>
+                            <li>Options :</li>
+                            <ul>
+                                <li></li>
+                                <li></li>
+                            </ul>
+                        </ul>
+                    </section>
+                </section>
+
+                <!-- *************************************************************** -->
+                <!-- 4. Explorons les repos distant -->
+                <!-- *************************************************************** -->
+
+                <section>
+                    <h2>Explorons les repos distants</h2>
+                </section>
+
+                <section>
+                    <section>
+                        <h3>Git clone</h3>
+                        <p>Commande permettant de dupliquer un repository distant.</p>
+                        <p>C'est la branche par défaut (généralement nommée master) qui est récupéré</p>
+                        <p><small><a href="https://git-scm.com/docs/git-clone"><img src="img/logoGit.png" />https://git-scm.com/docs/git-clone</a></small></p>
+                    </section>
+
+                    <section>
+                        <h3>SSH ou HTTPS ?</h3>
+                        <p></p>
+                    </section>
+                </section>
+
 				<section>
 					<section>
 						<h2>Git push</h2>
@@ -224,31 +444,16 @@
 						<h2>Git fetch</h2>
 					</section>
 				</section>
-				
-				<section>
-					<section>
-						<h2>Git diff</h2>
-					</section>
-				</section>
-				
-				<section>
-					<section>
-						<h2>Git reset</h2>
-					</section>
-				</section>
-				
-				<section>
-					<section>
-						<h2>Git revert</h2>
-					</section>
-				</section>
-				
-				<section>
-					<section>
-						<h2>Git clean</h2>
-					</section>
-				</section>
-				
+
+                <section>
+                    <h3>GIT ignore</h3>
+                    <ul>
+                        <li>Git ignore</li>
+                        <li>Git ignore global (dans le fichier, partie core : excludesfile = ~/.gitignore_global)</li>
+                        <li>www.gitignore.io</li>
+                    </ul>
+                </section>
+
 				<section>
 					<h2>Les commandes avancées</h2>
 					<ul>
@@ -287,6 +492,15 @@
 				<section>
 					<h2>Ligne de commande ou IDE ?</h2>
 				</section>
+
+                <section>
+                    <h2>Allons plus loin</h2>
+                    <pre><code data-trim>
+                        git config --global alias.logall "log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white) - %an%C(reset) %C(bold yellow)%d%C(reset)' --all"
+                        git config --global alias.wdiff "diff --word-diff"
+                    </code></pre>
+                    <p>[color]   ui = auto</p>
+                </section>
 				
 			</div> <!-- End div slide -->
 
