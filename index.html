@@ -222,16 +222,7 @@ git status
 git log
                         </code></pre>
                     </section>
-
-
-                    <section>
-                        <h3>La zone de staging</h3>
-
-                        <!-- TODO : insérer schéma de l'utilisation du staging. -->
-
-                    </section>
-
-				</section>
+                </section>
 
                 <!-- *************************************************************** -->
                 <!-- 3. Maîtriser les bases -->
@@ -280,10 +271,12 @@ git log
 						<h3>Les options intéressantes</h3>
 						<ul>
 							<li>Options :</li>
-							<ul>
-                                <li><b>--bare</b> : Création d'un repository sans arbre de travail.</li>
-								<li><b>--shared</b> : Partager son repository.</li>
-							</ul>
+                            <li>
+                                <ul>
+                                    <li><b>--bare</b> : Création d'un repository sans arbre de travail.</li>
+                                    <li><b>--shared</b> : Partager son repository.</li>
+                                </ul>
+                            </li>
 						</ul>
                         <p>
                             <b>Note</b> : Pour obtenir de l'aide sur une commande<br />
@@ -292,43 +285,73 @@ git log
 					</section>
 				</section>
 
-				<section>
-					<section>
-						<h3>Git add</h3>
-					</section>
+                <section>
+                    <section>
+                        <h3>La zone de staging</h3>
+                    </section>
+
+                    <section>
+                        <!-- TODO : insérer schéma de l'utilisation du staging. -->
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h3>Git status</h3>
+                        <pre><code data-trim>
+							git status
+						</code></pre>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h3>Git add</h3>
+                        <!-- TODO : insérer schéma de l'utilisation du staging (avec ajout du add). -->
+                    </section>
+
+                    <section>
+                        <pre><code data-trim>
+							git add [filename]
+						</code></pre>
+
+                        <ul>
+                            <li>Permet d'ajouter des fichiers dans la zone d'index (staging)</li>
+                            <li>Permet d'ajouter des <b>portions de code</b> dans la zone d'index</li>
+                            <li>Ignore les fichiers / dossiers du .gitignore</li>
+                        </ul>
+                    </section>
 
                     <section>
                         <h3>Les options intéressantes</h3>
                         <ul>
                             <li>Options :</li>
                             <ul>
-                                <li></li>
-                                <li></li>
+                                <li><b>-A | --all</b> : Ajout de toutes les modifications d'un seul coup</li>
+                                <li><b>-p | --patch</b> : Ajout partiel de code dans un fichier</li>
+                                <li><b>-f</b> : Force l'ajout d'un fichier contenu dans le .gitignore</li>
                             </ul>
                         </ul>
                     </section>
 				</section>
-				
-				<section>
-					<section>
-						<h3>Git pull</h3>
-					</section>
+
+                <section>
+                    <section>
+                        <h3>Git checkout</h3>
+                        <!-- TODO : insérer schéma de l'utilisation du staging (avec ajout du checkout). -->
+                    </section>
 
                     <section>
-                        <h3>Les options intéressantes</h3>
-                        <ul>
-                            <li>Options :</li>
-                            <ul>
-                                <li></li>
-                                <li></li>
-                            </ul>
-                        </ul>
+                        <pre><code data-trim>
+							git checkout [filename]
+						</code></pre>
                     </section>
-				</section>
-				
-				<section>
+                </section>
+
+                <section>
 					<section>
-						<h3>Git commit</h3>
+                        <h3>Git commit</h3>
+                        <!-- TODO : insérer schéma de l'utilisation du staging (avec ajout du add). -->
 					</section>
 
                     <section>
@@ -345,7 +368,25 @@ git log
 
                 <section>
                     <section>
-                        <h2>Git diff</h2>
+                        <h2>Git reset</h2>
+                    </section>
+
+                    <section>
+                        <h3>Les options intéressantes</h3>
+                        <ul>
+                            <li>Options :</li>
+                            <ul>
+                                <li></li>
+                                <li></li>
+                            </ul>
+                        </ul>
+                    </section>
+                </section>
+
+
+                <section>
+                    <section>
+                        <h3>Git pull</h3>
                     </section>
 
                     <section>
@@ -362,7 +403,7 @@ git log
 
                 <section>
                     <section>
-                        <h2>Git reset</h2>
+                        <h2>Git diff</h2>
                     </section>
 
                     <section>
@@ -433,7 +474,13 @@ git log
                     </section>
                 </section>
 
-				<section>
+                <section>
+                    <section>
+                        <h2>Git checkout</h2>
+                    </section>
+                </section>
+
+                <section>
 					<section>
 						<h2>Git push</h2>
 					</section>
