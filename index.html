@@ -15,6 +15,14 @@
 		<link rel="stylesheet" href="reveal-3.2.0/css/theme/sky.css" id="theme">
 		<link rel="stylesheet" href="reveal-3.2.0/lib/css/zenburn.css">
 
+        <style>
+            .reveal section img.imgNoDecorate {
+                border:0;
+                box-shadow: 0 0 0;
+                background: initial;
+            }
+        </style>
+
 		<!-- Printing and PDF exports -->
 		<script>
 			var link = document.createElement( 'link' );
@@ -37,26 +45,115 @@
                 <!-- *************************************************************** -->
 
 				<section>
-					<h1>Maîtriser GIT</h1>
-					<h3>Formation à l'outil de gestion de version</h3>
+					<h1>GIT</h1>
+					<h3>A la découverte de l'outil de gestion de version</h3>
+                    <p></p>
 					<p>
 						<small>Créé par Tony MEMBOT via l'API de présentation <a href="https://github.com/hakimel/reveal.js">Reveal.js</a></small>
 					</p>
+
+                    <aside class="notes">
+                        <ul>
+                            <li>Se présenter</li>
+                            <li>Les faire se présenter</li>
+                            <li>Niveau de connaissance des outils de version / Git</li>
+                        </ul>
+                    </aside>
 				</section>
 
-				<section>
-					<h2>Maîtriser GIT</h2>
-					<ul>
-						<li>Pourquoi choisir GIT ?</li>
-						<li>Mise en place</li>
-						<li>Les commandes de bases</li>
-						<li>Les commandes avancés</li>
-						<li>Les commandes "experts"</li>
-						<li>Le Git Flow</li>
-						<li>Les pull/merge request</li>
-						<li>Ligne de commande ou IDE ?</li>
-					</ul>
-				</section>
+
+                <!-- *************************************************************** -->
+                <!-- 0. A l'aventure ! -->
+                <!-- *************************************************************** -->
+
+                <section>
+                    <section>
+                        <h3>Suivons l'histoire vraie de Robin</h3>
+
+                        <img src="img/section0/robin.jpg" class="imgNoDecorate" width="400"/>
+
+                        <aside class="notes">
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h3>Création d'un site internet</h3>
+
+                        <ul>
+                            <li>Indéxer ses films préférés
+                                <ul>
+                                    <li class="fragment">Trotro le coquin / Robocar Polly fait des bêtises / ...</li>
+                                </ul>
+                            </li>
+                            <li class="fragment">Evolutif
+                                <ul>
+                                    <li>Critique de série</li>
+                                    <li>Réseau social</li>
+                                    <li>Création d'une crypto-monnaie ...</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                        <aside class="notes">
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h3>Première version</h3>
+
+                        <img src="img/section0/site.1.0.0.png" class="imgNoDecorate" width="800"/>
+
+                        <aside class="notes">
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h3>Une première évolution ...</h3>
+
+                        <ul>
+                            <li>Ajout de bloc de publicité un peu partout sur le site
+                                <ul>
+                                    <li>Nécessite l'inclusion de plusieurs librairies javascript</li>
+                                    <li>Modification de la majorité des pages</li>
+                                    <li>Modification de la base de données</li>
+                                    <li>Etc.</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                        <aside class="notes">
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h3>... qui se passe mal</h3>
+
+                        <img src="img/section0/helico.gif" class="imgNoDecorate" />
+
+                        <aside class="notes">
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h3>Il faut revenir en arrière !</h3>
+
+                        <ul>
+                            <li>Trop de fichiers modifiés</li>
+                            <li>Pas de sauvegarde du site avant la modification</li>
+                            <li>Des heures de bonheur en vue ...</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3>Première VRAI évolution</h3>
+                        <h4>Mise en place d'un sytème de gestion de version</h4>
+                        <p class="fragment">
+                            Robin part à la chasse et tombe sur GIT<br />
+                            <img src="img/section0/logo_Git_alpha.png" class="imgNoDecorate"/>
+                        </p>
+                    </section>
+
+                </section>
 
                 <!-- *************************************************************** -->
                 <!-- 1. Pourquoi choisir GIT ? -->
@@ -68,25 +165,38 @@
                         <h2>Pourquoi choisir GIT ?</h2>
                     </section>
 
+                    <section>
+                        <h3>Il était une fois l'histoire de GIT</h3>
+
+                        <img src="img/section1/cat_sleep.gif" class="imgNoDecorate"/>
+
+                        <aside class="notes">
+                            <ul>
+                                <li>Parti ennuyeuse mais nécessaire</li>
+                            </ul>
+                        </aside>
+                    </section>
+
 					<section>
 						<h3>Il était une fois l'histoire de GIT</h3>
 						<ul>
-							<li class="fragment"><b>2002</b> : Linus Torvalds utilise BitKeeper pour Linux, logiciel propriétaire.</li>
+							<li><b>2002</b> : Linus Torvalds utilise BitKeeper pour Linux, logiciel propriétaire.</li>
 							<li class="fragment"><b>Début 2005</b> : BitKeeper arrête sa version gratuite.</li>
-							<li class="fragment"><b>Avril 2005</b> : Linus Torvald crée GIT, répondant à ses besoins.
+							<li class="fragment"><b>Avril 2005</b> : Linus Torvald crée GIT, répondant à ses besoins (en 5 jours).
 								<ul>
 									<li>Système de fichier évolué</li>
 									<li>Décentralisé</li>
 									<li>Libre</li>
 								</ul>
 							</li>
+                            <li class="fragment">Dernière version : <b>2.15.1</b> (28/11/2017)</li>
 						</ul>
 					</section>
 
 					<section>
 						<h3>Centralisé VS décentralisé</h3>
 
-						<!-- TODO : Image centralisé VS Décentralisé -->
+                        <img src="img/section1/svn-vs-git.png" class="imgNoDecorate"/>
 
                         <aside class="notes">
                             <ul>
@@ -99,13 +209,13 @@
                     <section>
                         <h3>Les ingrédients de GIT</h3>
                         <ul>
-                            <li>Tout est SHA1 : Identifiant unique de chaque objet :
+                            <li>Tout est SHA1 : Identifiant unique de chaque objet
                                 <ul>
                                     <li><b>Blob</b> : contenu des fichiers</li>
                                     <li><b>Tree</b> : répertoire de blob et/ou autre tree</li>
                                     <li><b>Commit</b> :
                                         <ul>
-                                            <li>Un arbre</li>
+                                            <li>Un Tree</li>
                                             <li>0 ou N commits parents</li>
                                             <li>Un message de description</li>
                                         </ul>
@@ -114,46 +224,71 @@
                                 </ul>
                             </li>
                         </ul>
+
+                        <aside class="notes">
+                            <ul>
+                                <li>Les tags sont bien à part des références.</li>
+                            </ul>
+                        </aside>
                     </section>
 
                     <section>
+                        <h3>Les objets GIT</h3>
+                        <img src="img/objets_git.png" class="imgNoDecorate"/>
+                    </section>
 
-                        <!-- TODO : Schéma représentant des commits et tags + SHA 1 -->
-
+                    <section>
+                        <h3>Cheminement des commits</h3>
+                        <img src="img/objets_git_1.png" class="imgNoDecorate"/>
                     </section>
 
                     <section>
                         <h3>Particularités</h3>
                         <ul>
-                            <li>Tout est ajout (même les suppressions de fichiers / dossiers)</li>
+                            <li>Tout est ajout
+                                <ul>
+                                    <li>Même les suppressions de fichiers / dossiers</li>
+                                    <li>Même les merge</li>
+                                </ul>
+                            </li>
                             <li>Les liens / commit déférencés sont automatiquement supprimés</li>
                         </ul>
                     </section>
 
                     <section>
+                        <h3>Différence de stockage</h3>
+                        <img src="img/git-storage.png" class="imgNoDecorate" />
 
-                        <!-- TODO : Schmé représentant la différence SVN / GIT sur la sauvegardes des fichiers (path vs full) -->
-
+                        <aside class="notes">
+                            <ul>
+                                <li>Tout SHA1 : Git stock le fichier complet</li>
+                            </ul>
+                        </aside>
                     </section>
 
                     <section>
                         <h3>Git est optimiser pour ...</h3>
                         <ul>
-                            <li>être rapide</li>
-                            <li>être robute</li>
-                            <li>gérer un grand nombre de fichier</li>
-                            <li>réaliser des développements distribués</li>
-                            <li>rendre trivial la gestion des branches et des merge</li>
-                            <li>sa compatibilité : SVN / CVS / HTTP / SSH / ...</li>
+                            <li>Être rapide</li>
+                            <li>Être robute</li>
+                            <li>Gérer un grand nombre de fichier</li>
+                            <li>Réaliser des développements distribués</li>
+                            <li>Rendre trivial la gestion des branches et des merge</li>
+                            <li>Sa compatibilité : SVN / CVS / HTTP / SSH / ...</li>
                         </ul>
                     </section>
 
                     <section>
                         <h3>... mais l'est moins pour</h3>
                         <ul>
-                            <li>gérer les gros fichiers binaires</li>
-                            <li>son côté non "user friendly" aux premiers abords</li>
+                            <li>Gérer les gros fichiers binaires</li>
+                            <li>Son côté non "user friendly" / brouillon aux premiers abords</li>
                         </ul>
+                    </section>
+
+                    <section>
+                        <h3>Robin est convaincu, il part sur GIT</h3>
+                        <img src="img/section1/convaincu.gif" class="imgNoDecorate"/>
                     </section>
 				</section>
 
@@ -199,7 +334,7 @@
 							</li>
 						</ol>
 					</section>
-					
+
 					<section>
 						<h3>Identifiez vous !</h3>
                         <pre><code data-trim>
@@ -485,7 +620,7 @@ git log
 						<h2>Git push</h2>
 					</section>
 				</section>
-				
+
 				<section>
 					<section>
 						<h2>Git fetch</h2>
@@ -514,7 +649,7 @@ git log
 						<li>log</li>
 					</ul>
 				</section>
-				
+
 				<section>
 					<h2>Les commandes "experts"</h2>
 					<ul>
@@ -525,17 +660,17 @@ git log
 						<li>cherry-pick</li>
 					</ul>
 				</section>
-				
+
 				<section>
 					<section>
 						<h2>Git flow</h2>
 					</section>
-					
+
 					<section>
-						
+
 					</section>
 				</section>
-				
+
 				<section>
 					<h2>Ligne de commande ou IDE ?</h2>
 				</section>
@@ -548,7 +683,7 @@ git log
                     </code></pre>
                     <p>[color]   ui = auto</p>
                 </section>
-				
+
 			</div> <!-- End div slide -->
 
 		</div> <!-- End div Reveal -->
