@@ -3,9 +3,9 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>Maîtriser Git</title>
+		<title>Git</title>
 
-		<meta name="description" content="Formation à l'utilisation de l'outil de gestion de version GIT">
+		<meta name="description" content="A la découverte de l'outil de gestion de version">
 		<meta name="author" content="Tony MEMBOT">
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -146,7 +146,7 @@
 
                     <section>
                         <h3>Première VRAI évolution</h3>
-                        <h4>Mise en place d'un sytème de gestion de version</h4>
+                        <h4>Mise en place d'un système de gestion de version</h4>
                         <p class="fragment">
                             Robin part à la chasse et tombe sur GIT<br />
                             <img src="img/section0/logo_Git_alpha.png" class="imgNoDecorate"/>
@@ -181,17 +181,25 @@
 						<h3>Il était une fois l'histoire de GIT</h3>
 						<ul>
 							<li><b>2002</b> : Linus Torvalds utilise BitKeeper pour Linux, logiciel propriétaire.</li>
-							<li class="fragment"><b>Début 2005</b> : BitKeeper arrête sa version gratuite.</li>
-							<li class="fragment"><b>Avril 2005</b> : Linus Torvald crée GIT, répondant à ses besoins (en 5 jours).
-								<ul>
-									<li>Système de fichier évolué</li>
-									<li>Décentralisé</li>
-									<li>Libre</li>
-								</ul>
-							</li>
-                            <li class="fragment">Dernière version : <b>2.15.1</b> (28/11/2017)</li>
 						</ul>
+                        <img class="fragment" src="img/section1/torvald.jpg" class="imgNoDecorate" width="600"/>
 					</section>
+
+                    <section>
+                        <h3>Il était une fois l'histoire de GIT</h3>
+                        <ul>
+                            <li><b>2002</b> : Linus Torvalds utilise BitKeeper pour Linux, logiciel propriétaire.</li>
+                            <li><b>Début 2005</b> : BitKeeper arrête sa version gratuite.</li>
+                            <li class="fragment"><b>Avril 2005</b> : Linus Torvald crée GIT, répondant à ses besoins (en 5 jours).
+                                <ul>
+                                    <li>Système de fichier évolué</li>
+                                    <li>Décentralisé</li>
+                                    <li>Libre</li>
+                                </ul>
+                            </li>
+                            <li class="fragment">Dernière version : <b>2.15.1</b> (28/11/2017)</li>
+                        </ul>
+                    </section>
 
 					<section>
 						<h3>Centralisé VS décentralisé</h3>
@@ -234,12 +242,45 @@
 
                     <section>
                         <h3>Les objets GIT</h3>
-                        <img src="img/objets_git.png" class="imgNoDecorate"/>
+                        <img src="img/section1/objets_git.png" class="imgNoDecorate"/>
                     </section>
 
                     <section>
                         <h3>Cheminement des commits</h3>
-                        <img src="img/objets_git_1.png" class="imgNoDecorate"/>
+                        <img src="img/section1/objets_git_1.png" class="imgNoDecorate"/>
+                    </section>
+
+                    <section>
+                        <h3>Les références</h3>
+
+                        <ul>
+                            <li>Système de pointeur vers des commit</li>
+                            <li>Ce qui conduit à un système évolués de branching (déviation)</li>
+                            <li>Merge rapides et simplifiés, accompagnés d'outils</li>
+                            <li>=> Travail en parallèle</li>
+                            <li>=> Reprise de commits d'une autre branche</li>
+                            <li>=> etc.</li>
+                        </ul>
+
+                        <aside class="notes">
+                            <ul>
+                                <li>Le système de commit + référence encourage à commit régulièrement</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h3>L'espace de travail</h3>
+                        <img src="img/section1/local_stage_0.svg" class="imgNoDecorate"/>
+
+                        <aside class="notes">
+                            <ul>
+                                <li>Système d'historisation local</li>
+                                <li>On ne pousse sur le remote que quand on est prêt</li>
+                                <li>Même système sur le remote (distribué)</li>
+                                <li>On rentre dans le détail plus tard</li>
+                            </ul>
+                        </aside>
                     </section>
 
                     <section>
@@ -261,7 +302,8 @@
 
                         <aside class="notes">
                             <ul>
-                                <li>Tout SHA1 : Git stock le fichier complet</li>
+                                <li>Tout SHA1 : Git stock le fichier complet (snapshot du repo)</li>
+                                <li>GIT utilise des pointeurs (SHA1)</li>
                             </ul>
                         </aside>
                     </section>
@@ -270,7 +312,7 @@
                         <h3>Git est optimiser pour ...</h3>
                         <ul>
                             <li>Être rapide</li>
-                            <li>Être robute</li>
+                            <li>Être robuste</li>
                             <li>Gérer un grand nombre de fichier</li>
                             <li>Réaliser des développements distribués</li>
                             <li>Rendre trivial la gestion des branches et des merge</li>
@@ -283,12 +325,19 @@
                         <ul>
                             <li>Gérer les gros fichiers binaires</li>
                             <li>Son côté non "user friendly" / brouillon aux premiers abords</li>
+                            <li>Les interfaces UI => vive la console</li>
                         </ul>
                     </section>
 
                     <section>
                         <h3>Robin est convaincu, il part sur GIT</h3>
                         <img src="img/section1/convaincu.gif" class="imgNoDecorate"/>
+
+                        <aside class="notes">
+                            <ul>
+                                <li>GIT est hype/moderne</li>
+                            </ul>
+                        </aside>
                     </section>
 				</section>
 
@@ -305,42 +354,108 @@
                     <section>
                         <h3>Installation</h3>
                         <ul>
-                            <li>Linux<br/>
-                                <pre><code>sudo apt-get install git</code></pre>
+                            <li>Systèmes Linux<br/>
+                                <pre><code data-trim>yum install git</code></pre>
+                                <pre><code data-trim>sudo apt-get install git</code></pre>
                             </li>
-                            <li>Windows (émulation)<br />
-                                <pre><code>https://git-scm.com/</code></pre>
+                            <li>Systèmes windows (émulation git bash)<br />
+                                <pre><code data-trim>http://gitforwindows.org/</code></pre>
                             </li>
                         </ul>
+
+                        <aside class="notes">
+                            <ul>
+                                <li>Linux
+                                    <ul>
+                                        <li>Conseillé d'installer depuis les sources (paquet distrib trop vieux)</li>
+                                        <li>Il faut installer gitk soit même : apt-get install gitk</li>
+                                    </ul>
+                                </li>
+                                <li>Windows
+                                    <ul>
+                                        <li>Emulation avec git bash / intégrer au système (très bien fait)</li>
+                                        <li>Bien coché l'intégration de bash.</li>
+                                    </ul>
+                                </li>
+                                <li>Référence : https://git-scm.com/book/fr/v1/D%C3%A9marrage-rapide-Installation-de-Git</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h3>Installation</h3>
+                        <ul>
+                            <li>Linux : dans un terminal</li>
+                            <li>Windows : dans git bash</li>
+                        </ul>
+
+                        <img src="img/section2/git_version.png" class="imgNoDecorate"/>
+
+                        <aside class="notes">
+                            <ul>
+                                <li>Windows : Attention d'inclure git/bin dans le path windows</li>
+                            </ul>
+                        </aside>
                     </section>
 
 					<section>
 						<h3>Paramétrer GIT</h3>
 						<ol>
-							<li>Locale (repository)<br>
+							<li>Locale (repository)<br />
 								<pre><code data-trim>
 									git config --local
 								</code></pre>
 							</li>
-							<li>Global (user)<br>
+							<li>Global (user)<br />
 								<pre><code data-trim>
 									git config --global
 								</code></pre>
 							</li>
-							<li>Système (tout users)<br>
+							<li>Système (tout users)<br />
 								<pre><code data-trim>
 									git config --system
 								</code></pre>
 							</li>
 						</ol>
+
+                        <aside class="notes">
+                            <ul>
+                                <li>Il est possible de paramétrer de nombreuses choses</li>
+                                <li>Outils externes, gestion couleurs, méthode de merge, ...</li>
+                                <li>On verra cela au fur et à mesure</li>
+                                <li>Toutes les valeurs possibles : https://git-scm.com/docs/git-config#_values</li>
+                            </ul>
+                        </aside>
 					</section>
+
+                    <section>
+                        <h3>Paramétrer GIT</h3>
+                        <ul>
+                            <li>Vérifier ses paramètres<br />
+                                <pre><code data-trim>
+                                    git config --list
+								</code></pre>
+                            </li>
+                            <li>Vérifier un paramètre spécifique<br />
+                                <pre><code data-trim>
+                                    git config user.email
+								</code></pre>
+                            </li>
+                        </ul>
+
+                        <aside class="notes">
+                            <ul>
+                                <li>Il peut y avoir plusieurs fois la même clé, git prend la dernière</li>
+                            </ul>
+                        </aside>
+                    </section>
 
 					<section>
 						<h3>Identifiez vous !</h3>
                         <pre><code data-trim>
-git config --global user.name t.membot
+git config --global user.name r.hood
 
-git config --global user.email tmembot@gmail.com
+git config --global user.email robin.hood@gmail.com
                         </code></pre>
 					</section>
 
@@ -357,10 +472,28 @@ git status
 git log
                         </code></pre>
                     </section>
+
+                    <section>
+                        <h3>Robin met en pratique</h3>
+
+                        <ul>
+                            <li>Installer de git sur le poste</li>
+                            <li>Vérifier l'installation</li>
+                            <li>Configurer git au niveau user</li>
+                            <li>Initialiser un repo vide</li>
+                            <li>Créer un fichier vide dans ce repo et je le commit</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3>Robin est prêt à mettre en place GIT</h3>
+
+                        <img src="img/section2/thumb_up.gif" class="imgNoDecorate"/>
+                    </section>
                 </section>
 
                 <!-- *************************************************************** -->
-                <!-- 3. Maîtriser les bases -->
+                <!-- 3. MAITRISER LES BASES -->
                 <!-- *************************************************************** -->
 
 				<section>
@@ -369,17 +502,23 @@ git log
                     </section>
 				</section>
 
+                <!-- *************************************************************** -->
+                <!-- 3.1. GIT INIT -->
+                <!-- *************************************************************** -->
+
 				<section>
 					<section>
-						<h3>(init) Initialiser un nouveau repo</h3>
+						<h3>Initialiser un nouveau repository</h3>
 						<pre><code data-trim>
 							git init
 						</code></pre>
 						<ul>
 							<li>Permet d'initialiser un repository vierge.</li>
-							<li>Crée un dossier ".git"</li>
-                            <li>Initialise une branche nommée "master"</li>
-                            <li>Peut être créé dans un dossier contenant déjà des dossiers/fichiers</li>
+                            <li>Crée un dossier <b>.git</b></li>
+                            <li>Initialise une branche nommée <b>master</b></li>
+                            <li>Initialise une référence <b>HEAD</b></li>
+                            <li>Initialise un <b>working tree/arbre de travail</b></li>
+                            <li>Peut être utilisé dans un dossier contenant déjà des dossiers/fichiers</li>
 						</ul>
 					</section>
 
@@ -409,7 +548,7 @@ git log
                             <li>
                                 <ul>
                                     <li><b>--bare</b> : Création d'un repository sans arbre de travail.</li>
-                                    <li><b>--shared</b> : Partager son repository.</li>
+                                    <li><b>--shared</b> : Partager son repository (user linux)</li>
                                 </ul>
                             </li>
 						</ul>
@@ -417,35 +556,127 @@ git log
                             <b>Note</b> : Pour obtenir de l'aide sur une commande<br />
                             <pre><code data-trim>git [command] --help</code></pre>
                         </p>
+
+                        <aside class="notes">
+                            <ul>
+                                <li>Bare est utile pour les repo serveur</li>
+                            </ul>
+                        </aside>
 					</section>
 				</section>
 
                 <section>
                     <section>
-                        <h3>La zone de staging</h3>
-                    </section>
+                        <h3>Rappel structure du working tree</h3>
 
-                    <section>
-                        <!-- TODO : insérer schéma de l'utilisation du staging. -->
+                        <img src="img/section2/local_stage_0.svg" class="imgNoDecorate"/>
                     </section>
                 </section>
 
+                <!-- *************************************************************** -->
+                <!-- 3.2. GIT STATUS -->
+                <!-- *************************************************************** -->
+
                 <section>
                     <section>
-                        <h3>Git status</h3>
+                        <h3>Status du repository</h3>
                         <pre><code data-trim>
 							git status
 						</code></pre>
+                        <ul>
+                            <li>Permet de voir l'état du working tree</li>
+                            <li>Identifie les éléments
+                                <ul>
+                                    <li>Prêt à être commit (staged)</li>
+                                    <li>Suivis mais non staged (tracked)</li>
+                                    <li>Non suivis (untracked)</li>
+                                </ul>
+                            </li>
+                            <li>Aide à la prochaine action</li>
+                        </ul>
+
+                        <aside class="notes">
+                            <ul>
+                                <li>Référence : https://git-scm.com/docs/git-status</li>
+                            </ul>
+                        </aside>
                     </section>
+
+                    <section>
+                        <h3>Git status</h3>
+                        <img src="img/section3/git_status.png" class="imgNoDecorate"/>
+
+                        <aside class="notes">
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h3>Les options intéressantes</h3>
+                        <ul>
+                            <li>Options :</li>
+                            <li>
+                                <ul>
+                                    <li><b>--short | -s</b> : affiche le statut en short-format</li>
+                                    <li><b>--branch | -b</b> : avec <b>short</b> affiche les infos de branch</li>
+                                    <li><b>--untracked-files= | -u</b> : paramètre l'affiche des untracked
+                                        <ul>
+                                            <li><b>--untracked-files=no | -uno</b> : N'affiche rien</li>
+                                            <li><b>--untracked-files=normal | -unormal</b> : Affichage normal</li>
+                                            <li><b>--untracked-files=all | -uall</b> : Affichage verbeux</li>
+                                        </ul>
+                                    </li>
+                                    <li><b>--ignored</b> : voir les fichiers ignorés</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                        <aside class="notes">
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h3>Git status</h3>
+                        <img src="img/section3/git_status_s.png" class="imgNoDecorate"/>
+
+                        <aside class="notes">
+                            <ul>
+                                <li>Utile pour des commandes de batch</li>
+                                <li>Possible de préciser des formatages précis</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h3>Les options intéressantes</h3>
+                        <pre><code data-trim>
+git config --global status.added yellow
+
+git config --global status.changed green
+
+git config --global status.untracked cya
+
+git config --global status.showUntrackedFiles all
+						</code></pre>
+                    </section>
+
                 </section>
 
+                <!-- *************************************************************** -->
+                <!-- 3.3. GIT ADD -->
+                <!-- *************************************************************** -->
+
                 <section>
+
                     <section>
-                        <h3>Git add</h3>
+                        <h3>Mettre à jour l'index</h3>
+
                         <!-- TODO : insérer schéma de l'utilisation du staging (avec ajout du add). -->
+                        <img src="img/section2/local_stage_0.svg" class="imgNoDecorate"/>
                     </section>
 
                     <section>
+                        <h3>Mettre à jour l'index</h3>
+
                         <pre><code data-trim>
 							git add [filename]
 						</code></pre>
@@ -453,88 +684,331 @@ git log
                         <ul>
                             <li>Permet d'ajouter des fichiers dans la zone d'index (staging)</li>
                             <li>Permet d'ajouter des <b>portions de code</b> dans la zone d'index</li>
+                            <li>Se base sur le contenu du working tree</li>
                             <li>Ignore les fichiers / dossiers du .gitignore</li>
                         </ul>
+
+                        <aside class="notes">
+                            <ul>
+                                <li>Ca permet également de supprimer des fichiers</li>
+                                <li>Référence : https://git-scm.com/docs/git-add</li>
+                            </ul>
+                        </aside>
                     </section>
 
                     <section>
                         <h3>Les options intéressantes</h3>
+
                         <ul>
                             <li>Options :</li>
                             <ul>
-                                <li><b>-A | --all</b> : Ajout de toutes les modifications d'un seul coup</li>
-                                <li><b>-p | --patch</b> : Ajout partiel de code dans un fichier</li>
-                                <li><b>-f</b> : Force l'ajout d'un fichier contenu dans le .gitignore</li>
+                                <li><b>--all | -A</b> : Ajout de toutes les modifications</li>
+                                <li><b>--patch | -p</b> : Ajout partiel</li>
+                                <li><b>--dry-run | -n</b> : Test, sans appliquer la commande</li>
+                                <li><b>--ignore-removal</b> : Ignorer les fichiers supprimés</li>
                             </ul>
                         </ul>
                     </section>
-				</section>
 
-                <section>
                     <section>
-                        <h3>Git checkout</h3>
-                        <!-- TODO : insérer schéma de l'utilisation du staging (avec ajout du checkout). -->
+                        <h3>Quelques exemples</h3>
+                        <ul>
+                            <li>Tous les png du dossier image (et sous dossiers)<br />
+                                <pre><code data-trim>
+		        					git add image/\*.png
+        						</code></pre>
+                            </li>
+                            <li>Tous les properties à la racine (sans les sous dossiers)<br />
+                                <pre><code data-trim>
+		        					git add *.properties
+        						</code></pre>
+                            </li>
+                        </ul>
                     </section>
 
                     <section>
+                        <h3>Quelques exemples</h3>
+                        <ul>
+                            <li>Ajouter tous les fichiers et sous dossiers à partir de la commande<br />
+                                <pre><code data-trim>
+		        					git add .
+        						</code></pre>
+                            </li>
+                            <li>Prendre en compte toutes les modifications<br />
+                                <pre><code data-trim>
+		        					git add -A
+        						</code></pre>
+                            </li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3>Quelques exemples</h3>
+                        <ul>
+                            <li>Ajouter du code partiellement<br />
+                                <pre><code data-trim>
+		        					git add -p index.html
+        						</code></pre>
+                            </li>
+                            <li><a href="https://git-scm.com/docs/git-add#git-add-patch">https://git-scm.com/docs/git-add#git-add-patch</a></li>
+                        </ul>
+                        <img src="img/section3/git_add_p.png" class="imgNoDecorate"/>
+
+                        <aside class="notes">
+                            <ul>
+                                <li>Très utile pour le gitflow, mais on y reviendra</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h3>Remarque</h3>
+
                         <pre><code data-trim>
-							git checkout [filename]
+							git add [filename]
+						</code></pre>
+                        <p><b>==</b></p>
+                        <pre><code data-trim>
+							git stage [filename]
 						</code></pre>
                     </section>
-                </section>
-
-                <section>
-					<section>
-                        <h3>Git commit</h3>
-                        <!-- TODO : insérer schéma de l'utilisation du staging (avec ajout du add). -->
-					</section>
-
-                    <section>
-                        <h3>Les options intéressantes</h3>
-                        <ul>
-                            <li>Options :</li>
-                            <ul>
-                                <li></li>
-                                <li></li>
-                            </ul>
-                        </ul>
-                    </section>
 				</section>
 
+                <!-- *************************************************************** -->
+                <!-- 3.4. GIT COMMIT -->
+                <!-- *************************************************************** -->
+
                 <section>
                     <section>
-                        <h2>Git reset</h2>
+                        <h3>Stocker mon travail</h3>
+
+                        <!-- TODO : insérer schéma de l'utilisation du staging (avec ajout du add). -->
+                        <img src="img/section2/local_stage_0.svg" class="imgNoDecorate"/>
+                    </section>
+
+                    <section>
+                        <h3>Stocker mon travail</h3>
+
+                        <pre><code data-trim>
+							git commit
+						</code></pre>
+
+                        <ul>
+                            <li>Permet de stocker l'index dans un commit</li>
+                            <li>Une description est obligatoire !</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3>Git commit</h3>
+
+                        <img src="img/section3/git_commit.png" class="imgNoDecorate"/>
                     </section>
 
                     <section>
                         <h3>Les options intéressantes</h3>
+
                         <ul>
                             <li>Options :</li>
                             <ul>
-                                <li></li>
-                                <li></li>
+                                <li><b>--all | -a</b> : Réalise un add avant de faire le commit</li>
+                                <li><b>--patch | -p</b> : Pour réaliser un commit partiel</li>
+                                <li><b>--dry-run | -n</b> : Test, sans appliquer la commande</li>
+                                <li><b>--message "message" | -m "message"</b> : Appliquer une description</li>
+                                <li><b>--amend</b> : met à jour le précédent commit plutôt que d'en recréer un</li>
+                                <li>Il est possible de spécifier un dossier/fichier pour ne commit que lui</li>
                             </ul>
                         </ul>
-                    </section>
-                </section>
-
-
-                <section>
-                    <section>
-                        <h3>Git pull</h3>
                     </section>
 
                     <section>
                         <h3>Les options intéressantes</h3>
+                        <pre><code data-trim>
+git config --global core.editor nano
+
+git config --global commit.template ~/.template.txt
+
+git config --global commit.status true
+						</code></pre>
+
+                        <aside class="notes">
+                            <ul>
+                                <li>template : défini un format hint, rappel des pratiques</li>
+                                <li>commit.status : par défaut true, affiche le status dans le commit en commentaire</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h3>Normer son message de commit</h3>
+                        <ul>
+                            <li>Commencer par une courte description d'au plus 50 caractères</li>
+                            <li>Laisser la deuxième ligne vide</li>
+                            <li>Réaliser une description détaillé dans les lignes suivantes.</li>
+                            <li>Le # défini un commentaire et est ignoré par défaut</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3>Quelques exemples</h3>
+                        <ul>
+                            <li>Réaliser un commit de l'index en place avec description<br />
+                                <pre><code data-trim>
+		        					git commit -m "feat(section3): init section"
+        						</code></pre>
+                            </li>
+                            <li>Réaliser un commit en réalisant un add<br />
+                                <pre><code data-trim>
+		        					git commit -a
+        						</code></pre>
+                            </li>
+                            <li>Si on ne donne aucune description</li>
+                        </ul>
+                        <img src="img/section3/git_commit_vide.png" class="imgNoDecorate"/>
+                    </section>
+
+                </section>
+
+                <!-- *************************************************************** -->
+                <!-- 3.7. GIT LOG -->
+                <!-- *************************************************************** -->
+
+                <section>
+                    <section>
+                        <h3>Historique des commit</h3>
+
+                        <pre><code data-trim>
+							git log
+						</code></pre>
+
+                        <ul>
+                            <li>Permet de visualiser l'historique de commit</li>
+                        </ul>
+
+                        <img src="img/section3/git_log.png" class="imgNoDecorate"/>
+
+                        <aside class="notes">
+                            <ul>
+                                <li>Par défaut s'affiche dans l'ordre chrono inverse (plus récent)</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h3>Les options intéressantes</h3>
+
                         <ul>
                             <li>Options :</li>
                             <ul>
-                                <li></li>
-                                <li></li>
+                                <li><b>--oneline</b> : Affiche un commit sur une ligne</li>
+                                <li><b>--decorate=full</b> : Permet d'afficher les références</li>
+                                <li><b>--format=</b> : Pour spécifier un format custom (short / fuller / ...</li>
+                                <li>Il est possible de spécifier un path pour connaître son historique</li>
+                                <li>Possibilité de filtrer sur
+                                    <ul>
+                                        <li>Des dates (since / after / until / ...)</li>
+                                        <li>Des numéros de commit, des auteurs</li>
+                                        <li>Des merges, regex, ...</li>
+                                    </ul>
+                                </li>
                             </ul>
                         </ul>
                     </section>
+
+                    <section>
+                        <h3>Quelques exemples</h3>
+                        <ul>
+                            <li>Récupérer le maximum d'information<br />
+                                <pre><code data-trim>
+		        					git log --decorate=full --format=fuller
+        						</code></pre>
+                            </li>
+                        </ul>
+                        <img src="img/section3/git_log_fuller.png" class="imgNoDecorate"/>
+                    </section>
+
+                    <section>
+                        <h3>Quelques exemples</h3>
+                        <ul>
+                            <li>Avoir une vue rapide sur l'ensemble des commits<br />
+                                <pre><code data-trim>
+		        					git log --oneline
+        						</code></pre>
+                            </li>
+                        </ul>
+                        <img src="img/section3/git_log_oneline.png" class="imgNoDecorate"/>
+                    </section>
+
+                    <section>
+                        <h3>Quelques exemples</h3>
+                        <ul>
+                            <li>En mode graph, avec les branches, format custom, date relative ...<br />
+                                <pre><code data-trim>
+git log --graph --abbrev-commit --decorate --date=relative --all
+--format=format:'%C(bold blue)%h%C(reset) -
+%C(bold green)(%ar)%C(reset) %C(white)%s%C(reset)
+%C(dim white) - %an%C(reset) %C(bold yellow)%d%C(reset)'
+        						</code></pre>
+                            </li>
+                        </ul>
+                        <img src="img/section3/git_log_all.png" class="imgNoDecorate"/>
+                    </section>
+
+
+                    <!-- TODO -->
+                    <section>
+                        TODO LOG paramètres config 
+                    </section>
+
                 </section>
+
+                <!-- *************************************************************** -->
+                <!-- 3.5. EXERCICE INIT / STATUS / ADD / COMMIT / LOG -->
+                <!-- *************************************************************** -->
+
+                <section>
+
+                    <section>
+                        <h3>Robin met en pratique</h3>
+
+                        <ul>
+                            <li>Initialiser un repo GIT dans un projet existant (index.html)</li>
+                            <li>Ajouter tous les fichiers du repo à l'index</li>
+                            <li>Réaliser le commit d'initalisation</li>
+                            <li>Créer un fichier index.css & index.js. Modifier index.html sur 2 lignes différentes</li>
+                            <li>Gérer et vérifier l'index pour ne commit que index.js</li>
+                            <li>Gérer et vérifier l'index pour ne commit que la deuxième modification d'index.html</li>
+                            <li>Commit tous les fichiers</li>
+                            <li>Supprimer physiquement index.css et réaliser le commit</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3>Robin est content</h3>
+
+                        <img src="img/section3/exited.gif" class="imgNoDecorate"/>
+
+                        <ul>
+                            <li>Il a commit son projet, il est en mesure d'être safe dans ses développements</li>
+                            <li>Mais il a des besoins un peu plus poussés :
+                                <ul>
+                                    <li>Comment revenir sur un add/commit malencontreux</li>
+                                    <li>Comment checker les différences entre deux versions</li>
+                                    <li>Comment dominer le monde du cinéma ...</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </section>
+
+                </section>
+
+                <!-- *************************************************************** -->
+                <!-- 4. MAITRISER LES BASES - PART 2 -->
+                <!-- *************************************************************** -->
+
+                <!-- *************************************************************** -->
+                <!-- 4.1 GIT DIFF -->
+                <!-- *************************************************************** -->
 
                 <section>
                     <section>
@@ -553,6 +1027,48 @@ git log
                     </section>
                 </section>
 
+                <!-- *************************************************************** -->
+                <!-- 3.6. GIT CHECKOUT -->
+                <!-- *************************************************************** -->
+
+                <section>
+                    <section>
+                        <h3>Git checkout</h3>
+                        <!-- TODO : insérer schéma de l'utilisation du staging (avec ajout du checkout). -->
+                    </section>
+
+                    <section>
+                        <pre><code data-trim>
+							git checkout [filename]
+						</code></pre>
+                    </section>
+                </section>
+
+                <!-- *************************************************************** -->
+                <!-- 3.7. GIT RESET -->
+                <!-- *************************************************************** -->
+
+                <section>
+                    <section>
+                        <h2>Git reset</h2>
+                    </section>
+
+                    <section>
+                        <h3>Les options intéressantes</h3>
+                        <ul>
+                            <li>Options :</li>
+                            <ul>
+                                <li></li>
+                                <li></li>
+                            </ul>
+                        </ul>
+                    </section>
+                </section>
+
+                <!-- *************************************************************** -->
+                <!-- 3.9. GIT REVERT -->
+                <!-- *************************************************************** -->
+
                 <section>
                     <section>
                         <h2>Git revert</h2>
@@ -569,6 +1085,10 @@ git log
                         </ul>
                     </section>
                 </section>
+
+                <!-- *************************************************************** -->
+                <!-- 3.10. GIT CLEAN -->
+                <!-- *************************************************************** -->
 
                 <section>
                     <section>
@@ -615,6 +1135,27 @@ git log
                     </section>
                 </section>
 
+                <!-- *************************************************************** -->
+                <!-- 4.. GIT PULL -->
+                <!-- *************************************************************** -->
+
+                <section>
+                    <section>
+                        <h3>Git pull</h3>
+                    </section>
+
+                    <section>
+                        <h3>Les options intéressantes</h3>
+                        <ul>
+                            <li>Options :</li>
+                            <ul>
+                                <li></li>
+                                <li></li>
+                            </ul>
+                        </ul>
+                    </section>
+                </section>
+
                 <section>
 					<section>
 						<h2>Git push</h2>
@@ -642,7 +1183,7 @@ git log
 						<li>branch</li>
 						<li>stash</li>
 						<li>merge</li>
-						<li">rebase</li>
+						<li>rebase</li>
 						<li>tag</li>
 						<li>mv</li>
 						<li>rm</li>
@@ -696,10 +1237,12 @@ git log
 			// Full list of configuration options available at:
 			// https://github.com/hakimel/reveal.js#configuration
 			Reveal.initialize({
-				controls: true,
-				progress: true,
+                width: 1015,
+				controls: true, // affiche les flèches de contrôles
+				progress: true, // affiche barre de progression
 				history: true,
-				center: true,
+				center: true, // center verticalement
+                slideNumber: true, // afficher les numéros de slide
 
 				transition: 'slide', // none/fade/slide/convex/concave/zoom
 
