@@ -324,9 +324,28 @@
                         <h3>... mais l'est moins pour</h3>
                         <ul>
                             <li>Gérer les gros fichiers binaires</li>
-                            <li>Son côté non "user friendly" / brouillon aux premiers abords</li>
-                            <li>Les interfaces UI => vive la console</li>
+                            <li>Son côté non "user friendly" / brouillon aux premiers abords
+                                <ul>
+                                    <li>Nombreuses commandes</li>
+                                    <li>Très paramétrables</li>
+                                    <li>...</li>
+                                </ul>
+                            </li>
+                            <li class="fragment">Les interfaces UI => vive la console !</li>
                         </ul>
+                    </section>
+
+                    <section>
+                        <h3>Robin est fan de la console</h3>
+                        <img src="img/section1/no_cmd.gif" class="imgNoDecorate"/>
+
+                        <aside class="notes">
+                            <ul>
+                                <li>GIT est user friendly sous terminal</li>
+                                <li>C'est un gestionnaire de fichier</li>
+                                <li>Les UI s'améliorent et on verra des UI à la fin</li>
+                            </ul>
+                        </aside>
                     </section>
 
                     <section>
@@ -355,11 +374,11 @@
                         <h3>Installation</h3>
                         <ul>
                             <li>Systèmes Linux<br/>
-                                <pre><code data-trim>yum install git</code></pre>
-                                <pre><code data-trim>sudo apt-get install git</code></pre>
+                                <pre><code class="Bash" data-trim>yum install git</code></pre>
+                                <pre><code class="Bash" data-trim>sudo apt-get install git</code></pre>
                             </li>
                             <li>Systèmes windows (émulation git bash)<br />
-                                <pre><code data-trim>http://gitforwindows.org/</code></pre>
+                                <pre><code class="Bash" data-trim>http://gitforwindows.org/</code></pre>
                             </li>
                         </ul>
 
@@ -402,17 +421,17 @@
 						<h3>Paramétrer GIT</h3>
 						<ol>
 							<li>Locale (repository)<br />
-								<pre><code data-trim>
+								<pre><code class="Bash" data-trim>
 									git config --local
 								</code></pre>
 							</li>
 							<li>Global (user)<br />
-								<pre><code data-trim>
+								<pre><code class="Bash" data-trim>
 									git config --global
 								</code></pre>
 							</li>
 							<li>Système (tout users)<br />
-								<pre><code data-trim>
+								<pre><code class="Bash" data-trim>
 									git config --system
 								</code></pre>
 							</li>
@@ -429,16 +448,30 @@
 					</section>
 
                     <section>
+                        <h3>Identifiez vous !</h3>
+                        <pre><code class="Bash" data-trim>
+git config --global user.name r.hood
+
+git config --global user.email robin.hood@gmail.com
+                        </code></pre>
+                    </section>
+
+                    <section>
                         <h3>Paramétrer GIT</h3>
                         <ul>
                             <li>Vérifier ses paramètres<br />
-                                <pre><code data-trim>
+                                <pre><code class="Bash" data-trim>
                                     git config --list
 								</code></pre>
                             </li>
                             <li>Vérifier un paramètre spécifique<br />
-                                <pre><code data-trim>
+                                <pre><code class="Bash" data-trim>
                                     git config user.email
+								</code></pre>
+                            </li>
+                            <li>Supprimer une entrée dans la config
+                                <pre><code class="Bash" data-trim>
+                                    git config --global --unset user.email
 								</code></pre>
                             </li>
                         </ul>
@@ -450,18 +483,22 @@
                         </aside>
                     </section>
 
-					<section>
-						<h3>Identifiez vous !</h3>
-                        <pre><code data-trim>
-git config --global user.name r.hood
+                    <section>
+                        <h3>Paramétrer GIT</h3>
+                        <ul>
+                            <li>Editer un fichier de config manuellement
+                                <pre><code class="Bash" data-trim>
+                                    git config --global --edit
+								</code></pre>
+                            </li>
+                        </ul>
 
-git config --global user.email robin.hood@gmail.com
-                        </code></pre>
-					</section>
+                        <img src="img/section2/git_config_edit.png" class="imgNoDecorate"/>
+                    </section>
 
                     <section>
                         <h3>Get Started</h3>
-                        <pre><code data-trim>
+                        <pre><code class="Bash" data-trim>
 git init
 touch readme.txt
 git status
@@ -477,11 +514,11 @@ git log
                         <h3>Robin met en pratique</h3>
 
                         <ul>
-                            <li>Installer de git sur le poste</li>
+                            <li>Installer git sur le poste</li>
                             <li>Vérifier l'installation</li>
                             <li>Configurer git au niveau user</li>
                             <li>Initialiser un repo vide</li>
-                            <li>Créer un fichier vide dans ce repo et je le commit</li>
+                            <li>Créer un fichier vide dans ce repo et le commit</li>
                         </ul>
                     </section>
 
@@ -509,7 +546,7 @@ git log
 				<section>
 					<section>
 						<h3>Initialiser un nouveau repository</h3>
-						<pre><code data-trim>
+						<pre><code class="Bash" data-trim>
 							git init
 						</code></pre>
 						<ul>
@@ -554,7 +591,7 @@ git log
 						</ul>
                         <p>
                             <b>Note</b> : Pour obtenir de l'aide sur une commande<br />
-                            <pre><code data-trim>git [command] --help</code></pre>
+                            <pre><code class="Bash" data-trim>git [command] --help</code></pre>
                         </p>
 
                         <aside class="notes">
@@ -580,7 +617,7 @@ git log
                 <section>
                     <section>
                         <h3>Status du repository</h3>
-                        <pre><code data-trim>
+                        <pre><code class="Bash" data-trim>
 							git status
 						</code></pre>
                         <ul>
@@ -604,6 +641,7 @@ git log
 
                     <section>
                         <h3>Git status</h3>
+
                         <img src="img/section3/git_status.png" class="imgNoDecorate"/>
 
                         <aside class="notes">
@@ -648,12 +686,12 @@ git log
 
                     <section>
                         <h3>Les options intéressantes</h3>
-                        <pre><code data-trim>
-git config --global status.added yellow
+                        <pre><code class="Bash" data-trim>
+git config --global color.status.added "green bold"
 
-git config --global status.changed green
+git config --global color.status.changed "red bold"
 
-git config --global status.untracked cya
+git config --global color.status.untracked "cyan bold"
 
 git config --global status.showUntrackedFiles all
 						</code></pre>
@@ -677,7 +715,7 @@ git config --global status.showUntrackedFiles all
                     <section>
                         <h3>Mettre à jour l'index</h3>
 
-                        <pre><code data-trim>
+                        <pre><code class="Bash" data-trim>
 							git add [filename]
 						</code></pre>
 
@@ -714,12 +752,12 @@ git config --global status.showUntrackedFiles all
                         <h3>Quelques exemples</h3>
                         <ul>
                             <li>Tous les png du dossier image (et sous dossiers)<br />
-                                <pre><code data-trim>
+                                <pre><code class="Bash" data-trim>
 		        					git add image/\*.png
         						</code></pre>
                             </li>
                             <li>Tous les properties à la racine (sans les sous dossiers)<br />
-                                <pre><code data-trim>
+                                <pre><code class="Bash" data-trim>
 		        					git add *.properties
         						</code></pre>
                             </li>
@@ -730,12 +768,12 @@ git config --global status.showUntrackedFiles all
                         <h3>Quelques exemples</h3>
                         <ul>
                             <li>Ajouter tous les fichiers et sous dossiers à partir de la commande<br />
-                                <pre><code data-trim>
+                                <pre><code class="Bash" data-trim>
 		        					git add .
         						</code></pre>
                             </li>
                             <li>Prendre en compte toutes les modifications<br />
-                                <pre><code data-trim>
+                                <pre><code class="Bash" data-trim>
 		        					git add -A
         						</code></pre>
                             </li>
@@ -746,7 +784,7 @@ git config --global status.showUntrackedFiles all
                         <h3>Quelques exemples</h3>
                         <ul>
                             <li>Ajouter du code partiellement<br />
-                                <pre><code data-trim>
+                                <pre><code class="Bash" data-trim>
 		        					git add -p index.html
         						</code></pre>
                             </li>
@@ -764,11 +802,11 @@ git config --global status.showUntrackedFiles all
                     <section>
                         <h3>Remarque</h3>
 
-                        <pre><code data-trim>
+                        <pre><code class="Bash" data-trim>
 							git add [filename]
 						</code></pre>
                         <p><b>==</b></p>
-                        <pre><code data-trim>
+                        <pre><code class="Bash" data-trim>
 							git stage [filename]
 						</code></pre>
                     </section>
@@ -789,7 +827,7 @@ git config --global status.showUntrackedFiles all
                     <section>
                         <h3>Stocker mon travail</h3>
 
-                        <pre><code data-trim>
+                        <pre><code class="Bash" data-trim>
 							git commit
 						</code></pre>
 
@@ -823,7 +861,7 @@ git config --global status.showUntrackedFiles all
 
                     <section>
                         <h3>Les options intéressantes</h3>
-                        <pre><code data-trim>
+                        <pre><code class="Bash" data-trim>
 git config --global core.editor nano
 
 git config --global commit.template ~/.template.txt
@@ -853,12 +891,12 @@ git config --global commit.status true
                         <h3>Quelques exemples</h3>
                         <ul>
                             <li>Réaliser un commit de l'index en place avec description<br />
-                                <pre><code data-trim>
+                                <pre><code class="Bash" data-trim>
 		        					git commit -m "feat(section3): init section"
         						</code></pre>
                             </li>
                             <li>Réaliser un commit en réalisant un add<br />
-                                <pre><code data-trim>
+                                <pre><code class="Bash" data-trim>
 		        					git commit -a
         						</code></pre>
                             </li>
@@ -877,7 +915,7 @@ git config --global commit.status true
                     <section>
                         <h3>Historique des commit</h3>
 
-                        <pre><code data-trim>
+                        <pre><code class="Bash" data-trim>
 							git log
 						</code></pre>
 
@@ -902,7 +940,7 @@ git config --global commit.status true
                             <ul>
                                 <li><b>--oneline</b> : Affiche un commit sur une ligne</li>
                                 <li><b>--decorate=full</b> : Permet d'afficher les références</li>
-                                <li><b>--format=</b> : Pour spécifier un format custom (short / fuller / ...</li>
+                                <li><b>--format=</b> : Pour spécifier un format custom (short / fuller / ...)</li>
                                 <li>Il est possible de spécifier un path pour connaître son historique</li>
                                 <li>Possibilité de filtrer sur
                                     <ul>
@@ -919,7 +957,7 @@ git config --global commit.status true
                         <h3>Quelques exemples</h3>
                         <ul>
                             <li>Récupérer le maximum d'information<br />
-                                <pre><code data-trim>
+                                <pre><code class="Bash" data-trim>
 		        					git log --decorate=full --format=fuller
         						</code></pre>
                             </li>
@@ -931,7 +969,7 @@ git config --global commit.status true
                         <h3>Quelques exemples</h3>
                         <ul>
                             <li>Avoir une vue rapide sur l'ensemble des commits<br />
-                                <pre><code data-trim>
+                                <pre><code class="Bash" data-trim>
 		        					git log --oneline
         						</code></pre>
                             </li>
@@ -943,7 +981,7 @@ git config --global commit.status true
                         <h3>Quelques exemples</h3>
                         <ul>
                             <li>En mode graph, avec les branches, format custom, date relative ...<br />
-                                <pre><code data-trim>
+                                <pre><code class="Bash" data-trim>
 git log --graph --abbrev-commit --decorate --date=relative --all
 --format=format:'%C(bold blue)%h%C(reset) -
 %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset)
@@ -954,10 +992,47 @@ git log --graph --abbrev-commit --decorate --date=relative --all
                         <img src="img/section3/git_log_all.png" class="imgNoDecorate"/>
                     </section>
 
-
-                    <!-- TODO -->
                     <section>
-                        TODO LOG paramètres config 
+                        <h3>J'arriverais jamais à retenir cette longue commande !</h3>
+                        <img src="img/section3/memory.gif" class="imgNoDecorate"/>
+                    </section>
+
+                    <section>
+                        <h3>Les options intéressantes</h3>
+                        <pre><code class="Bash" data-trim>
+git config --global format.pretty fuller
+
+git config --global log.date relative
+						</code></pre>
+                        <ul>
+                            <li>Format par défaut : médium</li>
+                            <li>Date par défaut : Sat May 8 19:35:34 2010 -0500</li>
+                        </ul>
+
+                        <aside class="notes">
+                            <ul>
+                                <li>template : défini un format hint, rappel des pratiques</li>
+                                <li>commit.status : par défaut true, affiche le status dans le commit en commentaire</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h3>Les alias</h3>
+                        <pre><code class="Bash" data-trim>
+git config --global alias.logall "log --graph --abbrev-commit --decorate
+--date=relative --all --format=format:'%C(bold blue)%h%C(reset) -
+%C(bold green)(%ar)%C(reset) %C(white)%s%C(reset)
+%C(dim white) - %an%C(reset) %C(bold yellow)%d%C(reset)'"
+        						</code></pre>
+
+                        <pre><code class="Bash" data-trim>
+git config --global alias.ca "commit --amend"
+        						</code></pre>
+
+                        <pre><code class="Bash" data-trim>
+git config --global alias.addjs "add \*.js"
+        						</code></pre>
                     </section>
 
                 </section>
@@ -980,6 +1055,7 @@ git log --graph --abbrev-commit --decorate --date=relative --all
                             <li>Gérer et vérifier l'index pour ne commit que la deuxième modification d'index.html</li>
                             <li>Commit tous les fichiers</li>
                             <li>Supprimer physiquement index.css et réaliser le commit</li>
+                            <li>Vérifier via la commande log les commits réalisés</li>
                         </ul>
                     </section>
 
@@ -990,10 +1066,10 @@ git log --graph --abbrev-commit --decorate --date=relative --all
 
                         <ul>
                             <li>Il a commit son projet, il est en mesure d'être safe dans ses développements</li>
-                            <li>Mais il a des besoins un peu plus poussés :
+                            <li>Mais il a des besoins un peu plus poussés
                                 <ul>
                                     <li>Comment revenir sur un add/commit malencontreux</li>
-                                    <li>Comment checker les différences entre deux versions</li>
+                                    <li>Comment vérifier les différences entre deux versions</li>
                                     <li>Comment dominer le monde du cinéma ...</li>
                                 </ul>
                             </li>
@@ -1003,112 +1079,631 @@ git log --graph --abbrev-commit --decorate --date=relative --all
                 </section>
 
                 <!-- *************************************************************** -->
-                <!-- 4. MAITRISER LES BASES - PART 2 -->
+                <!-- 4. MAÎTRISER LES BASES - PART 2 -->
                 <!-- *************************************************************** -->
 
                 <!-- *************************************************************** -->
-                <!-- 4.1 GIT DIFF -->
+                <!-- 4.1 GIT IGNORE -->
+                <!-- *************************************************************** -->
+
+                <section>
+
+                    <section>
+                        <h3>Ignorer des ressources</h3>
+
+                        <pre><code class="Bash" data-trim>
+							.gitignore
+						</code></pre>
+
+                        <ul>
+                            <li>Le fichier (A la racine du projet) permet de spécifier les ressources à ignorer</li>
+                        </ul>
+
+                        <pre><code class="Bash" data-trim>
+### IntellIJ ###
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.idea/dictionaries
+
+### Java ###
+*.class
+*.jar
+*.war
+
+### Maven ###
+target/
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+                        </code></pre>
+
+                        <aside class="notes">
+                            <ul>
+                                <li>gitignore.io</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h3>Ignorer des ressources</h3>
+
+                        <ul>
+                            <li>Toutes les commandes GIT ignoreront par défaut les ressources (non déjà tracked) définis dans le fichier</li>
+                            <li>Le fichier .gitignore doit être commit</li>
+                            <li>Il existe des générateurs : <a href="https://www.gitignore.io/">https://www.gitignore.io/</a></li>
+                        </ul>
+                    </section>
+
+                </section>
+
+                <!-- *************************************************************** -->
+                <!-- 4.1.1 Petite note sur le HEAD -->
+                <!-- *************************************************************** -->
+
+                <section>
+                    <h3>Une petite note sur HEAD</h3>
+
+                    <ul>
+                        <li>HEAD est une référence à la branche courante (master) et au commit courant</li>
+                        <li>HEAD^ == HEAD~1 désigne le commit précédent</li>
+                        <li>HEAD~X ou X > 1 désigne le Xème commit en partant de HEAD</li>
+                        <li>Ces annotations sont valables sur les branches : master~2</li>
+                    </ul>
+
+                    <img src="img/section3/git_log_all.png" class="imgNoDecorate"/>
+                </section>
+
+                <!-- *************************************************************** -->
+                <!-- 4.2 GIT DIFF -->
                 <!-- *************************************************************** -->
 
                 <section>
                     <section>
-                        <h2>Git diff</h2>
+                        <h3>Voir les différences entre deux états</h3>
+
+                        <pre><code class="Bash" data-trim>
+							git diff
+						</code></pre>
+
+                        <ul>
+                            <li>Permet de visualiser les différences entre
+                                <ul>
+                                    <li>Le répertoire de travail et l'index (défaut)</li>
+                                    <li>L'index et le HEAD</li>
+                                    <li>Deux commits</li>
+                                    <li>...</li>
+                                </ul>
+                            </li>
+                            <li>Pour tout le projet, ou des fichiers définis</li>
+                        </ul>
+
+                        <aside class="notes">
+                        </aside>
                     </section>
 
                     <section>
                         <h3>Les options intéressantes</h3>
+
                         <ul>
                             <li>Options :</li>
                             <ul>
-                                <li></li>
-                                <li></li>
+                                <li><b>--no-index [path] [path]</b> : Comparer deux fichiers</li>
+                                <li><b>--cached [commit]</b> : Comparer l'index et un commit</li>
+                                <li><b>--staged [commit]</b> : idem cached</li>
+                                <li><b>[commit] [commit]</b> : Comparer deux commits</li>
+                                <li><b>--diff-algorithm={algo}</b>: choisir l'algo de diff
+                                <ul>
+                                    <li><b>myers</b> : greedy, par défaut</li>
+                                    <li><b>minimal</b> : sort un diff minimal</li>
+                                    <li><b>patience</b> : utilisé pour générer les patchs</li>
+                                    <li><b>histogram</b> : extention de patience</li>
+                                </ul></li>
                             </ul>
                         </ul>
+
+                        <aside class="notes">
+                            <ul>
+                                <li>Tout un tas d'option pour stats</li>
+                                <li>Différence d'affichage du diff</li>
+                                <li>Référence : <a href="https://git-scm.com/docs/git-diff">https://git-scm.com/docs/git-diff</a></li>
+                            </ul>
+                        </aside>
                     </section>
+
+                    <section>
+                        <h3>La boite de pandore</h3>
+                        <ul>
+                            <li>Git diff est très complet, nombreuses options</li>
+                            <li>Commandes spécialisées (raw output format)
+                                <ul>
+                                    <li>git-diff-index [tree-ish]</li>
+                                    <li>git-diff-index --cached [tree-ish]</li>
+                                    <li>git-diff-tree [-r] [tree-ish-1] [tree-ish-2]</li>
+                                    <li>git-diff-files</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                        <img src="img/section4/git_diff_raw.png" class="imgNoDecorate"/>
+
+                        <aside class="notes">
+                            <ul>
+                                <li>raw est utilisé pour les traitements automatique</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h3>Quelques exemples</h3>
+                        <p>Diff par défaut (dév vs index)<br />
+                            <pre><code class="Bash" data-trim>
+                                git diff
+                            </code></pre>
+                        </p>
+
+                        <img src="img/section4/git_diff.png" class="imgNoDecorate"/>
+
+                        <aside class="notes">
+                            <ul>
+                                <li>Ce qui est déjà dans l'index n'apparaît pas</li>
+                                <li>Par défaut le diff est sur la ligne</li>
+                                <li>Chaque modifications est un diff</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h3>Quelques exemples</h3>
+                        <p>Diff par défaut avec mots colorés<br />
+                            <pre><code class="Bash" data-trim>
+                                git diff --color-words
+                            </code></pre>
+                        </p>
+
+                        <img src="img/section4/git_diff_color_word.png" class="imgNoDecorate"/>
+
+                        <aside class="notes">
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h3>Quelques exemples</h3>
+                        <p>Diff entre le staged et le HEAD<br />
+                            <pre><code class="Bash" data-trim>
+                                git diff --staged
+                            </code></pre>
+                        </p>
+
+                        <img src="img/section4/git_diff_staged.png" class="imgNoDecorate"/>
+
+                        <aside class="notes">
+                            <ul>
+                                <li>On ne précise pas de commit pas défaut donc HEAD</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h3>Quelques exemples</h3>
+                        <p>Diff entre deux commits<br />
+                        <pre><code class="Bash" data-trim>
+                                git diff 6813253 71ba976
+                            </code></pre>
+                        </p>
+
+                        <img src="img/section4/git_diff_commit.png" class="imgNoDecorate"/>
+
+                        <aside class="notes">
+                            <ul>
+                                <li>On ne précise pas de commit pas défaut donc HEAD</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h3>Les options intéressantes</h3>
+
+                        <pre><code class="Bash" data-trim>
+git config --global color.diff.old "red bold"
+git config --global color.diff.new "green bold"
+git config --global diff.algorithm patience
+                            </code></pre>
+                        </p>
+
+                        <ul>
+                            <li><b>color.diff.</b> : context, old, new, commit, whitespace, oldMoved, newMoved, ...</li>
+                            <li><b>value</b> : normal, black, red, green, yellow, blue, magenta, cyan, white, bold, dim, ul, blink, reverse</li>
+                        </ul>
+
+                        <aside class="notes">
+                            <ul>
+                                <li>Si deux couleurs, 1ere = text, 2ème = back</li>
+                            </ul>
+                        </aside>
+                    </section>
+
                 </section>
 
                 <!-- *************************************************************** -->
-                <!-- 3.6. GIT CHECKOUT -->
+                <!-- 4.3. GIT CHECKOUT -->
                 <!-- *************************************************************** -->
 
                 <section>
                     <section>
-                        <h3>Git checkout</h3>
+                        <h3>Annuler mes modification en cours</h3>
+
                         <!-- TODO : insérer schéma de l'utilisation du staging (avec ajout du checkout). -->
+                        <img src="img/section2/local_stage_0.svg" class="imgNoDecorate"/>
                     </section>
 
                     <section>
-                        <pre><code data-trim>
+                        <h3>Annuler mes modification en cours</h3>
+
+                        <pre><code class="Bash" data-trim>
 							git checkout [filename]
 						</code></pre>
+
+                        <ul>
+                            <li>Met à jour un fichier dans le répertoire de travail avec la version de l'index ou du repository</li>
+                            <li>Une fois fait les modifications sont perdues !</li>
+                        </ul>
                     </section>
+
+                    <section>
+                        <h3>Git checkout</h3>
+
+                        <pre><code class="Bash" data-trim>
+                            git checkout -- index.html
+                        </code></pre>
+
+                        <img src="img/section4/git_checkout.png" class="imgNoDecorate"/>
+
+                        <aside class="notes">
+                            <ul>
+                                <li>Les -- sont une commande unix pour ne plus interpréter les options</li>
+                                <li>Dans le cas d'une branche qui porte le même nom qu'un fichier</li>
+                                <li>Valable pour toutes les commandes qui prennent des chemins</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h3>Quelques exemples</h3>
+                        <ul>
+                            <li>Supprimer également ce qu'il y a dans l'index<br />
+                                <pre><code class="Bash" data-trim>
+		        					git checkout HEAD -- index.html
+        						</code></pre>
+                            </li>
+                        </ul>
+                        <img src="img/section4/git_checkout_head.png" class="imgNoDecorate"/>
+                    </section>
+
+                    <section>
+                        <h3>Quelques exemples</h3>
+                        <ul>
+                            <li>Se mettre à jour selon un commit<br />
+                                <pre><code class="Bash" data-trim>
+		        					git checkout 0e40D47 index.html
+        						</code></pre>
+                            </li>
+                        </ul>
+                        <img src="img/section4/git_checkout_commit.png" class="imgNoDecorate"/>
+                    </section>
+
+                    <section>
+                        <h3>Quelques exemples</h3>
+                        <ul>
+                            <li>Oups, j'ai supprimé un fichier<br />
+                                <pre><code class="Bash" data-trim>
+                                    git checkout -- '*.html'
+        						</code></pre>
+                            </li>
+                        </ul>
+                        <img src="img/section4/git_checkout_html.png" class="imgNoDecorate"/>
+
+                        <aside class="notes">
+                            <ul>
+                                <li>Attention aux quotes obligatoires</li>
+                                <li>Ici on se base sur l'index, dans l'index le fichier supprimé existait</li>
+                            </ul>
+                        </aside>
+                    </section>
+
                 </section>
 
                 <!-- *************************************************************** -->
-                <!-- 3.7. GIT RESET -->
+                <!-- 4.4. GIT RESET -->
                 <!-- *************************************************************** -->
 
                 <section>
                     <section>
-                        <h2>Git reset</h2>
+                        <h3>Annuler le dernier commit ou l'index</h3>
+
+                        <!-- TODO : insérer schéma de l'utilisation du staging (avec ajout du reset). -->
+                        <img src="img/section2/local_stage_0.svg" class="imgNoDecorate"/>
+                    </section>
+
+                    <section>
+                        <h3>Annuler un commit ou un index</h3>
+
+                        <pre><code class="Bash" data-trim>
+git reset [path]
+git reset [toTargetCommit]
+						</code></pre>
+
+                        <ul>
+                            <li>En précisant une ressource, la désindexe pour la remettre en statut modifiée
+                            <ul>
+                                <li>C'est l'inverse du git add</li>
+                            </ul></li>
+                            <li>En précisant un commit, annule tout jusqu'à ce commit et remet les ressources associées en statut modifiées
+                            <ul>
+                                <li>C'est l'inverse du git commit</li>
+                            </ul></li>
+                        </ul>
+
+                        <aside class="notes">
+                            <ul>
+                                <li>Attention au reset commit : on reset VERS ce commit </li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h3>Désindexer une ressource</h3>
+
+                        <pre><code class="Bash" data-trim>
+							git reset index.html
+						</code></pre>
+
+                        <img src="img/section4/git_reset.png" class="imgNoDecorate"/>
+
+                        <aside class="notes">
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h3>Désindexer une ressource partiellement</h3>
+
+                        <pre><code class="Bash" data-trim>
+							git reset -p index.html
+						</code></pre>
+
+                        <img src="img/section4/git_reset_partiel.png" class="imgNoDecorate"/>
+
+                        <aside class="notes">
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h3>Supprimer un commit</h3>
+
+                        <pre><code class="Bash" data-trim>
+git reset 027def7
+git reset HEAD
+						</code></pre>
+
+                        <img src="img/section4/git_reset_commit.png" class="imgNoDecorate"/>
                     </section>
 
                     <section>
                         <h3>Les options intéressantes</h3>
+
                         <ul>
                             <li>Options :</li>
                             <ul>
-                                <li></li>
-                                <li></li>
+                                <li><b>--soft</b> : Conserve les ressources reset (default)</li>
+                                <li><b>--hard</b> : Supprime les ressources reset</li>
                             </ul>
                         </ul>
+
+                        <aside class="notes">
+                        </aside>
                     </section>
+
+                    <section>
+                        <h3>Quelques exemples</h3>
+                        <ul>
+                            <li>Supprimer totalement les deux derniers commits<br />
+                                <pre><code class="Bash" data-trim>
+		        					git reset--hard HEAD~2
+        						</code></pre>
+                            </li>
+                        </ul>
+                        <img src="img/section4/git_reset_hard.png" class="imgNoDecorate"/>
+                    </section>
+
                 </section>
 
                 <!-- *************************************************************** -->
-                <!-- 3.9. GIT REVERT -->
+                <!-- 4.5. GIT REVERT -->
                 <!-- *************************************************************** -->
 
                 <section>
                     <section>
-                        <h2>Git revert</h2>
+                        <h3>Annuler un commit plus ancien</h3>
+
+                        <!-- TODO : insérer schéma de l'utilisation du staging (avec ajout du revert). -->
+                        <img src="img/section2/local_stage_0.svg" class="imgNoDecorate"/>
+                    </section>
+
+                    <section>
+                        <h3>Annuler un commit plus ancien</h3>
+
+                        <pre><code class="Bash" data-trim>
+                            git revert [TargetCommit]
+						</code></pre>
+
+                        <ul>
+                            <li>Crée un nouveau commit avec l'effet inverse du commit ciblé
+                                <ul>
+                                    <li>Les fichiers créés sont supprimés et inversement</li>
+                                    <li>Les modifications sont inversées</li>
+                                    <li>Etc.</li>
+                                </ul>
+                            </li>
+                            <li>La commande peut entraîner des conflits</li>
+                        </ul>
+
+                        <aside class="notes">
+                        </aside>
                     </section>
 
                     <section>
                         <h3>Les options intéressantes</h3>
+
                         <ul>
                             <li>Options :</li>
                             <ul>
-                                <li></li>
-                                <li></li>
+                                <li><b>--no-edit</b> : Pour laisser git gérer le message du commit revert</li>
+                                <li><b>--no-commit</b> : Pour ne pas laisser git faire un commit</li>
+                                <li>En cas de conflit :
+                                    <ul>
+                                        <li><b>--continue</b> : pour continuer après la résolution du conflit </li>
+                                        <li><b>--abort</b> : pour abandonner le revert en cours </li>
+                                    </ul>
+                                </li>
                             </ul>
                         </ul>
+
+                        <aside class="notes">
+                            <ul>
+                                <li>--no-commit : git met tout dans l'index prêt à être commit</li>
+                            </ul>
+                        </aside>
                     </section>
+
+                    <section>
+                        <h3>Quelques exemples</h3>
+                        <ul>
+                            <li>Revert un commit au milieu de l'arbre<br />
+                                <pre><code class="Bash" data-trim>
+		        					git revert 0e40d47
+        						</code></pre>
+                            </li>
+                        </ul>
+                        <img src="img/section4/git_revert.png" class="imgNoDecorate"/>
+
+                        <aside class="notes">
+                            <ul>
+                                <li>Utilisation de show : décrit le contenu d'un commit</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h3>Quelques exemples</h3>
+                        <ul>
+                            <li>Revert un commit au milieu de l'arbre avec conflit<br />
+                                <pre><code class="Bash" data-trim>
+		        					git revert 0e40d47
+        						</code></pre>
+                            </li>
+                        </ul>
+                        <img src="img/section4/git_revert_conflit.png" class="imgNoDecorate"/>
+
+                        <aside class="notes">
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h3>Quelques exemples</h3>
+                        <ul>
+                            <li>Revert avec conflit mais qu'on abandonne<br />
+                                <pre><code class="Bash" data-trim>
+		        					git revert 0e40d47
+        						</code></pre>
+                            </li>
+                        </ul>
+                        <img src="img/section4/git_revert_conflit_abort.png" class="imgNoDecorate"/>
+
+                        <aside class="notes">
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h3>Quelques exemples</h3>
+                        <ul>
+                            <li>Revert plusieurs commits (premier non inclus)<br />
+                                <pre><code class="Bash" data-trim>
+		        					git revert ca82cb2..0e40d47
+        						</code></pre>
+                            </li>
+                        </ul>
+                        <img src="img/section4/git_revert_multiple.png" class="imgNoDecorate"/>
+
+                        <aside class="notes">
+                            <ul>
+                                <li>Il y a bien un commit par revert effectué</li>
+                            </ul>
+                        </aside>
+                    </section>
+
                 </section>
 
                 <!-- *************************************************************** -->
-                <!-- 3.10. GIT CLEAN -->
+                <!-- 4.6. EXERCICE ignore / diff / checkout / reset / revert -->
                 <!-- *************************************************************** -->
 
                 <section>
+
                     <section>
-                        <h2>Git clean</h2>
+                        <h3>Robin met en pratique</h3>
+
+                        <ul>
+                            <li>Modifier index.html l'add à l'index (sans le commit)</li>
+                            <li>Modifier index.html puis revenir à l'état de l'index</li>
+                            <li>Créer un fichier test.txt à la racine et faire que git l'ignore</li>
+                            <li>Réaliser le commit du gitignore sans commit index.html</li>
+                            <li>Réaliser le commit d'index.html</li>
+                            <li>Vérifier le diff entre le commit HEAD~1 et le HEAD</li>
+                            <li>Revert le commit du git ignore</li>
+                            <li>Reset le revert réalisé précédemment</li>
+                        </ul>
                     </section>
 
                     <section>
-                        <h3>Les options intéressantes</h3>
+                        <h3>Robin se sent un maître en git</h3>
+
+                        <img src="img/section4/master.gif" class="imgNoDecorate"/>
+
                         <ul>
-                            <li>Options :</li>
-                            <ul>
-                                <li></li>
-                                <li></li>
-                            </ul>
+                            <li>Mais il a besoins de faire des évolutions en parallèles ...</li>
+                            <li>Mais aussi de faire des poc de librairies / fonctions ...</li>
+                            <li>... tout ça sans casser son code principal</li>
                         </ul>
                     </section>
+
                 </section>
 
                 <!-- *************************************************************** -->
-                <!-- 4. Explorons les repos distant -->
+                <!-- 5. Le système de branche -->
+                <!-- *************************************************************** -->
+
+                <!-- TODO : faire ici le système de branche -->
+
+                <section>
+                    <h2>Travailler avec des branches</h2>
+
+                    <aside class="notes">
+                        <ul>
+                            <li>C'est le grand intérêt de GIT</li>
+                            <li>Travailler en parallèle, laisser tomber des évolutions longues</li>
+                            <li>Aussi le travail collaboratif</li>
+                        </ul>
+                    </aside>
+                </section>
+
+                <section>
+                    <li>checkout</li>
+                    <li>branch</li>
+                    <li>merge</li>
+                    <li>rebase</li>
+                    <li>stash</li>
+                </section>
+
+                <!-- *************************************************************** -->
+                <!-- 5. Explorons les repos distant -->
                 <!-- *************************************************************** -->
 
                 <section>
@@ -1136,7 +1731,7 @@ git log --graph --abbrev-commit --decorate --date=relative --all
                 </section>
 
                 <!-- *************************************************************** -->
-                <!-- 4.. GIT PULL -->
+                <!-- 5.2.. GIT PULL -->
                 <!-- *************************************************************** -->
 
                 <section>
@@ -1168,32 +1763,27 @@ git log --graph --abbrev-commit --decorate --date=relative --all
 					</section>
 				</section>
 
-                <section>
-                    <h3>GIT ignore</h3>
-                    <ul>
-                        <li>Git ignore</li>
-                        <li>Git ignore global (dans le fichier, partie core : excludesfile = ~/.gitignore_global)</li>
-                        <li>www.gitignore.io</li>
-                    </ul>
-                </section>
+                <!-- *************************************************************** -->
+                <!-- 5.2.. COMMANDES AVANCES-->
+                <!-- *************************************************************** -->
 
-				<section>
+                <section>
 					<h2>Les commandes avancées</h2>
 					<ul>
-						<li>branch</li>
 						<li>stash</li>
-						<li>merge</li>
-						<li>rebase</li>
 						<li>tag</li>
 						<li>mv</li>
 						<li>rm</li>
-						<li>log</li>
+                        <li>clean</li>
 					</ul>
 				</section>
 
-				<section>
-					<h2>Les commandes "experts"</h2>
-					<ul>
+
+                <section>
+                    Plus loin
+
+                    <ul>
+                        <li>git show</li>
 						<li>blame</li>
 						<li>bisect</li>
 						<li>archive</li>
