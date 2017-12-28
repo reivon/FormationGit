@@ -1680,26 +1680,196 @@ git reset HEAD
                 <!-- 5. Le système de branche -->
                 <!-- *************************************************************** -->
 
-                <!-- TODO : faire ici le système de branche -->
-
                 <section>
-                    <h2>Travailler avec des branches</h2>
 
-                    <aside class="notes">
+                    <section>
+                        <h2>Travailler avec des branches</h2>
+
+                        <aside class="notes">
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h3>Travailler avec des branches</h3>
+
                         <ul>
-                            <li>C'est le grand intérêt de GIT</li>
-                            <li>Travailler en parallèle, laisser tomber des évolutions longues</li>
-                            <li>Aussi le travail collaboratif</li>
+                            <li>C'est l'un des grands intérêt de GIT</li>
+                            <li>Travailler en parallèle, switcher rapidement d'évolutions</li>
+                            <li>Une branche n'est qu'un pointeur sur un commit</li>
+                            <li>On travaille depuis le début sur une branche : master</li>
+                            <li>Qui dit branch, dit merge, mais GIT est optimisé pour</li>
                         </ul>
-                    </aside>
+                    </section>
+
+                    <section>
+                        <h3>Exemple d'arbre GIT</h3>
+
+                        <img src="img/section5/Branch_full.svg" class="imgNoDecorate"/>
+
+                        <p class="fragment">Il se passe quoi si je commit sur master (HEAD) ?</p>
+
+                        <aside class="notes">
+                            <ul>
+                                <li>HEAD indique la branche courante (celle de travail)</li>
+                                <li>On peut avoir plusieurs étiquettes sur un commit</li>
+                                <li>On peut voir un exemple d'un point de merge</li>
+                                <li>feat2 est le résultat d'un rebase</li>
+                                <li>Les numéros de commit sont juste indicatifs</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h3>Commit sur master</h3>
+
+                        <img src="img/section5/Branch_full_commit.svg" class="imgNoDecorate"/>
+
+                        <p class="fragment">Il se passe quoi si je commit sur feat2 ?</p>
+
+                        <aside class="notes">
+                            <ul>
+                                <li>Implique que je switch de branche</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h3>Commit sur feat2</h3>
+
+                        <img src="img/section5/Branch_full_commit_2.svg" class="imgNoDecorate"/>
+
+                        <aside class="notes">
+                            <ul>
+                                <li>On crée une déviance</li>
+                            </ul>
+                        </aside>
+                    </section>
+
                 </section>
 
+                <!-- *************************************************************** -->
+                <!-- 5.1 GIT BRANCH -->
+                <!-- *************************************************************** -->
+
                 <section>
+
+                    <section>
+                        <h3>Gérer les branches</h3>
+
+                        <pre><code class="Bash" data-trim>
+							git branch
+						</code></pre>
+
+                        <ul>
+                            <li>Permet de lister / créer / supprimer une branche</li>
+                            <li>Permet d'avoir une vision d'ensemble des branches</li>
+                            <li>Ne manipule pas l'arbre en lui même, juste les références</li>
+                        </ul>
+
+                        <aside class="notes">
+                            <ul>
+                                <li>Référence : https://git-scm.com/docs/git-branch</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h3>Les options intéressantes</h3>
+                        <ul>
+                            <li>Options :</li>
+                            <li>
+                                <ul>
+                                    <li><b>--list</b> : Affiche la liste des branches locales</li>
+                                    <li><b>--all | -a</b> : Affiche les branches locales et remotes</li>
+                                    <li><b>--no-merged</b> : liste les branches non merged</li>
+                                    <li><b>--delete | -d</b> : Supprime la branche si elle est merged</li>
+                                    <li><b>--delete --force | -D</b> : Supprime la branche</li>
+                                    <li><b>--move | -m</b> : renomme une branche</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                        <aside class="notes">
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h3>Quelques exemples</h3>
+                        <ul>
+                            <li>Créer une branche sur le commit pointé par HEAD<br />
+                                <pre><code class="Bash" data-trim>
+		        					git branch feat1
+        						</code></pre>
+                            </li>
+                            <li>Créer une branche sur le commit désigné<br />
+                                <pre><code class="Bash" data-trim>
+		        					git branch feat2 0e40d47
+        						</code></pre>
+                            </li>
+                            <li>Lister les branches<br />
+                                <pre><code class="Bash" data-trim>
+		        					git branch --list
+        						</code></pre>
+                            </li>
+                        </ul>
+
+                        <img src="img/section5/git_branch.png" class="imgNoDecorate"/>
+                    </section>
+
+                    <section>
+                        <h3>Quelques exemples</h3>
+                        <ul>
+                            <li>Renommer une branche<br />
+                                <pre><code class="Bash" data-trim>
+		        					git branch feat1 feature1
+        						</code></pre>
+                            </li>
+                            <li>Supprimer une branche<br />
+                                <pre><code class="Bash" data-trim>
+                                    git branch -D feature1
+        						</code></pre>
+                            </li>
+                            <li>Attention Git interdit de supprimer la branche courante</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3>Pourquoi git protège le delete</h3>
+                        <ul>
+                            <li>Ajouter du code partiellement<br />
+                                <pre><code class="Bash" data-trim>
+		        					git add -p index.html
+        						</code></pre>
+                            </li>
+                            <li><a href="https://git-scm.com/docs/git-add#git-add-patch">https://git-scm.com/docs/git-add#git-add-patch</a></li>
+                        </ul>
+                        <img src="img/section3/git_add_p.png" class="imgNoDecorate"/>
+
+                        <aside class="notes">
+                            <ul>
+                                <li>Très utile pour le gitflow, mais on y reviendra</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                </section>
+
+
+                <!-- *************************************************************** -->
+                <!-- 5.2 GIT CHECKOUT -->
+                <!-- *************************************************************** -->
+
+                <section>
+
                     <li>checkout</li>
-                    <li>branch</li>
+
+                    quoi encore ?
+                    oui, on a vu qu'une petite partie de checkout
+
                     <li>merge</li>
                     <li>rebase</li>
-                    <li>stash</li>
+
+                    résolution de conflit
                 </section>
 
                 <!-- *************************************************************** -->
@@ -1707,9 +1877,12 @@ git reset HEAD
                 <!-- *************************************************************** -->
 
                 <section>
-                    <h2>Explorons les repos distants</h2>
+                    <h2>Travailler en collaboratif avec un repo distant</h2>
                 </section>
 
+                <!-- *************************************************************** -->
+                <!-- 5.2.. GIT CLONE -->
+                <!-- *************************************************************** -->
                 <section>
                     <section>
                         <h3>Git clone</h3>
@@ -1724,9 +1897,12 @@ git reset HEAD
                     </section>
                 </section>
 
+                <!-- *************************************************************** -->
+                <!-- 5.2.. GIT FETCH -->
+                <!-- *************************************************************** -->
                 <section>
                     <section>
-                        <h2>Git checkout</h2>
+                        <h2>Git fetch</h2>
                     </section>
                 </section>
 
@@ -1751,15 +1927,12 @@ git reset HEAD
                     </section>
                 </section>
 
+                <!-- *************************************************************** -->
+                <!-- 5.2.. GIT PUSH -->
+                <!-- *************************************************************** -->
                 <section>
 					<section>
 						<h2>Git push</h2>
-					</section>
-				</section>
-
-				<section>
-					<section>
-						<h2>Git fetch</h2>
 					</section>
 				</section>
 
@@ -1776,11 +1949,20 @@ git reset HEAD
 						<li>rm</li>
                         <li>clean</li>
 					</ul>
+
+                    git mv ==
+
+                    $ mv LISEZMOI.txt LISEZMOI
+                    $ git rm LISEZMOI.txt
+                    $ git add LISEZMOI
+
+                    l'historique est gardé si le commit modifie pas trop le fichier (sinon considéré comme tout autre)
 				</section>
 
 
                 <section>
                     Plus loin
+
 
                     <ul>
                         <li>git show</li>
