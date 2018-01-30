@@ -978,26 +978,6 @@ git config --global commit.status true
                     </section>
 
                     <section>
-                        <h3>Quelques exemples</h3>
-                        <ul>
-                            <li>En mode graph, avec les branches, format custom, date relative ...<br />
-                                <pre><code class="Bash" data-trim>
-git log --graph --abbrev-commit --decorate --date=relative --all
---format=format:'%C(bold blue)%h%C(reset) -
-%C(bold green)(%ar)%C(reset) %C(white)%s%C(reset)
-%C(dim white) - %an%C(reset) %C(bold yellow)%d%C(reset)'
-        						</code></pre>
-                            </li>
-                        </ul>
-                        <img src="img/section3/git_log_all.png" class="imgNoDecorate"/>
-                    </section>
-
-                    <section>
-                        <h3>J'arriverais jamais à retenir cette longue commande !</h3>
-                        <img src="img/section3/memory.gif" class="imgNoDecorate"/>
-                    </section>
-
-                    <section>
                         <h3>Les options intéressantes</h3>
                         <pre><code class="Bash" data-trim>
 git config --global format.pretty fuller
@@ -1015,6 +995,26 @@ git config --global log.date relative
                                 <li>commit.status : par défaut true, affiche le status dans le commit en commentaire</li>
                             </ul>
                         </aside>
+                    </section>
+
+                    <section>
+                        <h3>Quelques exemples</h3>
+                        <ul>
+                            <li>En mode graph, avec les branches, format custom, date relative ...<br />
+                                <pre><code class="Bash" data-trim>
+git log --graph --abbrev-commit --decorate --date=relative --all
+--format=format:'%C(bold blue)%h%C(reset) -
+%C(bold green)(%ar)%C(reset) %C(white)%s%C(reset)
+%C(dim white) - %an%C(reset) %C(bold yellow)%d%C(reset)'
+        						</code></pre>
+                            </li>
+                        </ul>
+                        <img src="img/section3/git_log_all.png" class="imgNoDecorate"/>
+                    </section>
+
+                    <section>
+                        <h3>J'arriverais jamais à retenir cette longue commande !</h3>
+                        <img src="img/section3/memory.gif" class="imgNoDecorate"/>
                     </section>
 
                     <section>
@@ -1546,6 +1546,9 @@ git reset HEAD
                         </ul>
 
                         <aside class="notes">
+                            <ul>
+                                <li>On verra la résolution des conflit plus tard.</li>
+                            </ul>
                         </aside>
                     </section>
 
@@ -1836,53 +1839,593 @@ git reset HEAD
                     <section>
                         <h3>Pourquoi git protège le delete</h3>
                         <ul>
-                            <li>Ajouter du code partiellement<br />
-                                <pre><code class="Bash" data-trim>
-		        					git add -p index.html
-        						</code></pre>
-                            </li>
-                            <li><a href="https://git-scm.com/docs/git-add#git-add-patch">https://git-scm.com/docs/git-add#git-add-patch</a></li>
+                            <li>Pour vivre dans git un commit doit être attaché à une référence</li>
+                            <li>Un commit non référencé passe dans le garbage</li>
+                            <li>Supprimer une branche non mergé, c'est "perdre" les commits qui s'y trouvent</li>
                         </ul>
-                        <img src="img/section3/git_add_p.png" class="imgNoDecorate"/>
+
+                        <img src="img/section5/Branch_delete.svg" class="imgNoDecorate" />
 
                         <aside class="notes">
                             <ul>
-                                <li>Très utile pour le gitflow, mais on y reviendra</li>
+                                <li>Supprimer la branche test fait perdre les commit 11 / 12.</li>
+                                <li>Supprimer la branche feat1 ne fait rien perdre.</li>
+                                <li>"Perdre" est relatif. On peut s'en sortir avec des commandes avancées tant que le garbage n'est pas passé.</li>
+                                <li>http://sametmax.com/recuperer-une-branche-supprimee-sous-git/</li>
                             </ul>
                         </aside>
                     </section>
 
                 </section>
 
-
                 <!-- *************************************************************** -->
-                <!-- 5.2 GIT CHECKOUT -->
+                <!-- 5.2 GIT TAG -->
                 <!-- *************************************************************** -->
 
                 <section>
 
-                    <li>checkout</li>
+                    <section>
+                        <h3>Tag un commit</h3>
 
-                    quoi encore ?
-                    oui, on a vu qu'une petite partie de checkout
+                        <pre><code class="Bash" data-trim>
+							git tag nomTag [branch | commit]
+						</code></pre>
 
-                    <li>merge</li>
-                    <li>rebase</li>
+                        <ul>
+                            <li>Permet de placer une référence statique sur un <b>commit</b></li>
+                            <li>Si on cible une branche, c'est le commit HEAD de la branche qui est tag</li>
+                        </ul>
 
-                    résolution de conflit
+                        <aside class="notes">
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h3>Quelques exemples</h3>
+                        <ul>
+                            <li>Lister les tags<br />
+                                <pre><code class="Bash" data-trim>
+		        					git tag
+        						</code></pre>
+                            </li>
+                            <li>Créer un tag sur le commit associé au HEAD<br />
+                                <pre><code class="Bash" data-trim>
+                                    git tag v1.0
+        						</code></pre>
+                            </li>
+                            <li>Créer un tag sur une branche<br />
+                                <pre><code class="Bash" data-trim>
+                                    git tag feat2
+        						</code></pre>
+                            </li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3>Voir les tags dans les logs</h3>
+
+                        <img src="img/section5/git_tag_log.png" class="imgNoDecorate"/>
+                    </section>
+
+                    <section>
+                        <h3>Les options intéressantes</h3>
+
+                        <ul>
+                            <li>Possibilité pour un tag d'être :
+                                <ul>
+                                    <li>supprimé</li>
+                                    <li>annoté</li>
+                                    <li>signé (GPC)</li>
+                                    <li>...</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                        <aside class="notes">
+                            <ul>
+                                <li><a href="https://git-scm.com/docs/git-tag">https://git-scm.com/docs/git-tag</a></li>
+                            </ul>
+                        </aside>
+                    </section>
+
                 </section>
 
                 <!-- *************************************************************** -->
-                <!-- 5. Explorons les repos distant -->
+                <!-- 5.3 GIT CHECKOUT -->
+                <!-- *************************************************************** -->
+
+                <section>
+
+                    <section>
+                        <h3>Checkout</h3>
+
+                        <img src="img/section5/what.gif" class="imgNoDecorate fragment"/>
+
+                        <aside class="notes">
+                            <ul>
+                                <li>Checkout ne sert pas qu'à reset un fichier dans l'index</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h3>Switcher de révision</h3>
+
+                        <pre><code class="Bash" data-trim>
+							git checkout [branch | commit]
+						</code></pre>
+
+                        <ul>
+                            <li>Checkout ne sert pas qu'à reset l'index</li>
+                            <li>Permet de (dé)placer son working tree
+                                <ul>
+                                    <li>Sur un commit (SHA-1)</li>
+                                    <li>Sur une branche</li>
+                                    <li>Sur un tag</li>
+                                </ul>
+                            </li>
+                            <li>Le switch peut être bloqué si modifications "bloquantes" dans l'index</li>
+                        </ul>
+
+                        <aside class="notes">
+                            <ul>
+                                <li>C'est bien le working tree qu'on switch sur une révision.</li>
+                                <li>Si le switch provoque un conflit, généralement c'est bloqué.</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h3>Switcher sur une branche</h3>
+                        <pre><code class="Bash" data-trim>
+							git checkout feat1
+						</code></pre>
+
+                        <img src="img/section5/Branch_checkout_branch.svg" class="imgNoDecorate"/>
+
+                        <aside class="notes">
+                            <ul>
+                                <li>Si je commit, celui ci partira du commit 9 et la branche et le head suivront</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h3>Switcher sur un commit</h3>
+                        <pre><code class="Bash" data-trim>
+							git checkout 2
+						</code></pre>
+
+                        <img src="img/section5/Branch_checkout_commit_1.svg" class="imgNoDecorate"/>
+
+                        <aside class="notes">
+                            <ul>
+                                <li>Le HEAD passe en detached car lié à aucune branche</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h3>Commit en Detached Head</h3>
+                        <pre><code class="Bash" data-trim>
+							git commit -am "I'll lost my work"
+						</code></pre>
+
+                        <img src="img/section5/Branch_checkout_commit_2.svg" class="imgNoDecorate"/>
+                    </section>
+
+                    <section>
+                        <h3>Perdre des commits</h3>
+                        <pre><code class="Bash" data-trim>
+							git checkout master
+						</code></pre>
+
+                        <img src="img/section5/Branch_checkout_commit_3.svg" class="imgNoDecorate"/>
+                    </section>
+
+                    <section>
+                        <h3>Switcher sur un tag</h3>
+                        <pre><code class="Bash" data-trim>
+							git checkout V1.0.0
+						</code></pre>
+
+                        <img src="img/section5/Branch_checkout_tag.svg" class="imgNoDecorate"/>
+
+                        <aside class="notes">
+                            <ul>
+                                <li>Un tag est forcément en "DETACHED" car il ne peut pas évoluer</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h3>Créer et switcher de branche</h3>
+                        <pre><code class="Bash" data-trim>
+							git checkout -b feat4
+						</code></pre>
+
+                        <img src="img/section5/git_checkout_b.png" class="imgNoDecorate"/>
+
+                        <aside class="notes">
+                            <ul>
+                                <li>On utilise plutôt ça pour créer une branche</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                </section>
+
+                <!-- *************************************************************** -->
+                <!-- 5.4 GIT MERGE -->
+                <!-- *************************************************************** -->
+
+                <section>
+
+                    <section>
+                        <h3>Fusionner deux branches</h3>
+
+                        <pre><code class="Bash" data-trim>
+                            git merge targetBranch
+						</code></pre>
+
+                        <ul>
+                            <li>Récupère le contenu de targetBranch pour le fusionner dans la branche courante</li>
+                            <li>Tous les commits depuis le point d'origine commun au deux branches sont récupérés</li>
+                            <li>La commande peut entraîner des conflits</li>
+                        </ul>
+
+                        <aside class="notes">
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h3>Fusionner sur master qui n'a pas dévié</h3>
+
+                        <pre><code class="Bash" data-trim>
+							git merge feat1
+						</code></pre>
+
+                        <img src="img/section5/merge_ff_step_1.svg" class="imgNoDecorate"/>
+
+                        <aside class="notes">
+                            <ul>
+                                <li>On appel ce type de merge le fast forward</li>
+                                <li>Il a juste un déplacement de la référence master</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h3>Fusionner sur master qui a dévié</h3>
+
+                        <pre><code class="Bash" data-trim>
+							git merge feat1
+						</code></pre>
+
+                        <img src="img/section5/merge_noff_step1.svg" class="imgNoDecorate"/>
+
+                        <aside class="notes">
+                            <ul>
+                                <li>On appel ce type de merge le no fast forward</li>
+                                <li>Il a juste un commit de merge qui est créé, la branche sera toujours visible</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h3>Les options intéressantes</h3>
+
+                        <ul>
+                            <li>Options :</li>
+                            <ul>
+                                <li><b>--no-ff</b> : Pour forcer un merge avec commit</li>
+                                <li><b>--ff-only</b> : Pour autoriser que les merge fast forward</li>
+                                <li><b>-m</b> : Pour préciser le message de commit de merge</li>
+                                <li>En cas de conflit :
+                                    <ul>
+                                        <li><b>--continue</b> : pour continuer après la résolution du conflit</li>
+                                        <li><b>--abort</b> : pour abandonner le merge en cours</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </ul>
+
+                        <aside class="notes">
+                            <ul>
+                                <li>--ff-only : si pas fast forward, le merge échoue</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                </section>
+
+                <!-- *************************************************************** -->
+                <!-- 5.5 RESOUDRE UN CONFLIT -->
+                <!-- *************************************************************** -->
+
+                <section>
+
+                    <section>
+                        <h3>Résoudre un conflit</h3>
+
+                        <ul>
+                            <li>Plusieurs opérations peuvent produire un conflit</li>
+                            <li>La résolution se fait en plusieurs étapes
+                                <ol>
+                                    <li>Identifier les fichiers en confit avec git status</li>
+                                    <li>Editer les fichiers et résoudre les conflits</li>
+                                    <li>Réaliser un git add ou git rm sur les fichiers en conflits</li>
+                                    <li>Réaliser un git commit pour valider le merge</li>
+                                </ol>
+                            </li>
+                            <li>A tout moment, on peut abandonner le merge<br />
+                                <pre><code class="Bash" data-trim>
+                                    git merge --abort
+                                </code></pre>
+                            </li>
+                        </ul>
+
+                        <aside class="notes">
+                            <ul>
+                                <li>Produire un conflit : merge / revert / pull / ...</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h3>Résoudre un conflit manuellement</h3>
+
+                        <ul>
+                            <li>Dans un fichier, il faut se repérer aux marqueurs de conflits
+                            <ul>
+                                <li><b><<<<<<< HEAD</b> : ce qui suit est la branche locale</li>
+                                <li><b>=======</b> : ce qui suit est a branche en cours de merge</li>
+                                <li><b>>>>>>> branchName</b> : marque la fin du conflit</li>
+                            </ul></li>
+                        </ul>
+
+                        <img src="img/section5/merge_conflict.png" class="imgNoDecorate"/>
+                    </section>
+
+                    <section>
+                        <h3>Résoudre un conflit graphiquement</h3>
+
+                        <ul>
+                            <li>Résoudre un conflit est parfois complexe manuellement</li>
+                            <li>Les éditeurs de texte ont quasi tous un plugin permettant de le gérer</li>
+                            <li>On peut paramétrer git sur un logiciel externe pour gérer les conflits<br />
+                                <pre><code class="Bash" data-trim>
+                                    git config merge.tool vimdiff
+						        </code></pre>
+                            </li>
+                            <li>Pour le lancer lors d'un conflit : <br />
+                                <pre><code class="Bash" data-trim>
+                                    git mergetool
+                                </code></pre>
+                            </li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3>Résoudre un conflit graphiquement</h3>
+
+                        <img src="img/section5/git_mergetool.png" class="imgNoDecorate"/>
+
+                        <aside class="notes">
+                            <ul>
+                                <li>vimdiff : https://gist.github.com/karenyyng/f19ff75c60f18b4b8149</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                </section>
+
+                <!-- *************************************************************** -->
+                <!-- 5.6 GIT REBASE -->
+                <!-- *************************************************************** -->
+
+                <section>
+                    <section>
+                        <h3>Travailler l'arbre de commit</h3>
+
+                        <pre><code class="Bash" data-trim>
+                            git rebase [branch | commit]
+						</code></pre>
+
+                        <ul>
+                            <li>De base, récupère les commits de la branche courante pour les remettre à partir de la révision ciblée</li>
+                            <li>Permet également de travailler ses commits :
+                            <ul>
+                                <li>Renommer</li>
+                                <li>Réordonner</li>
+                                <li>Supprimer</li>
+                                <li>Fusionner</li>
+                                <li>Éditer</li>
+                            </ul></li>
+                        </ul>
+
+                        <aside class="notes">
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h3>Rebase sur une révision</h3>
+
+                        <img src="img/section5/Rebase_branche.svg" class="imgNoDecorate"/>
+
+                        <aside class="notes">
+                            <ul>
+                                <li>Important : ce sont de nouveaux commit</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h3>Changer l'ordre de commit</h3>
+
+                        <img src="img/section5/Rebase_interactif_ordre.svg" class="imgNoDecorate"/>
+
+                        <aside class="notes">
+                            <ul>
+                                <li>Important : ce sont de nouveaux commit</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h3>Fusionner des commits</h3>
+
+                        <img src="img/section5/Rebase_interactif_squash.svg" class="imgNoDecorate"/>
+
+                        <aside class="notes">
+                            <ul>
+                                <li>Important : ce sont de nouveaux commit</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h3>Quelques exemples</h3>
+                        <ul>
+                            <li>Se rebaser (branche courante) sur master<br />
+                                <pre><code class="Bash" data-trim>
+                                    git rebase master
+        						</code></pre>
+                            </li>
+                            <li>Travailler les deux derniers commits de la branche<br />
+                                <pre><code class="Bash" data-trim>
+		        					git rebase -i HEAD~2
+        						</code></pre>
+                            </li>
+                        </ul>
+
+                        <img src="img/section5/rebase_options.png" class="imgNoDecorate"/>
+
+                        <aside class="notes">
+                            <ul>
+                                <li>Attention HEAD~2 cible le 3ème commit. Rebase prend tout ce qui est après</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h3>Les options intéressantes</h3>
+
+                        <ul>
+                            <li>Options :</li>
+                            <ul>
+                                <li><b>-i</b> : Active le mode interactif</li>
+                                <li><b>--onto</b> : Permet de spécifier la cible (par défaut l'upstream)</li>
+                                <li><b>--exec</b> : Exécute une commande pour chaque étape de rebase</li>
+                                <li>En cas de conflit :
+                                    <ul>
+                                        <li><b>--continue</b> : pour continuer après la résolution du conflit</li>
+                                        <li><b>--abort</b> : pour abandonner le rebase en cours</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </ul>
+
+                        <aside class="notes">
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h3>Rebase hiérarchique</h3>
+                        <pre><code class="Bash" data-trim>
+                            git rebase master
+                        </code></pre>
+
+                        <img src="img/section5/Rebase_hierarchique_full.svg" class="imgNoDecorate"/>
+
+                        <aside class="notes">
+                            <ul>
+                                <li>Tous les commits ont été pris en compte jusqu'à master</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h3>Rebase hiérarchique</h3>
+                        <pre><code class="Bash" data-trim>
+                            git rebase feat1 feat2 --onto master
+                        </code></pre>
+
+                        <img src="img/section5/Rebase_hierarchique_onto.svg" class="imgNoDecorate"/>
+
+                        <aside class="notes">
+                            <ul>
+                                <li>Je prend tous les commits de feat1 vers feat2 et j'applique dans master</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                </section>
+
+                <section>
+                    <h3>Les commandes déjà vues</h3>
+                    <ul>
+                        <li>git diff branch1 branch2</li>
+                        <li>git log branch1</li>
+                        <li>Sur un commit de mege :
+                            <ul>
+                                <li>git reset HEAD</li>
+                                <li>git revert HEAD -m numParent</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+
+                <!-- *************************************************************** -->
+                <!-- 5.7. EXERCICE branch / checkout / merge /  -->
+                <!-- *************************************************************** -->
+
+                <section>
+
+                    <section>
+                        <h3>Robin met en pratique</h3>
+
+                        <ul>
+                            <li>Depuis master, créer les branche feat1, feat2 et feat3</li>
+                            <li>Commit sur feat2 et merger avec master</li>
+                            <li>Commit sur feat1 en modifiant index.html</li>
+                            <li>Commit sur master en modifiant index.html au même endroit</li>
+                            <li>Merger feat1 sur master</li>
+                            <li>Checkout sur commit et y réaliser un nouveau commit</li>
+                            <li>En regardant les logs, revenir sur master</li>
+                            <li>Sur feat3, réaliser trois commit nommé "un" / "deux" / "trois" puis en changer l'ordre</li>
+                            <li>Rebase feat3 sur master</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3>Robin est un vrai bûcheron</h3>
+
+                        <img src="img/section5/tree_chuck.gif" class="imgNoDecorate"/>
+
+                        <ul>
+                            <li>Mais il a  maintenant trop de sujet pour travailler seul ...</li>
+                            <li>Et il souhaite ouvrir son magnifique code au monde entier</li>
+                        </ul>
+                    </section>
+
+                </section>
+
+                <!-- *************************************************************** -->
+                <!-- 6. Explorons les repos distant -->
                 <!-- *************************************************************** -->
 
                 <section>
                     <h2>Travailler en collaboratif avec un repo distant</h2>
+
+                    set lupstream sil n'est pas défini : git push -u origin topic
+
                 </section>
 
                 <!-- *************************************************************** -->
-                <!-- 5.2.. GIT CLONE -->
+                <!-- 5.1. GIT CLONE -->
                 <!-- *************************************************************** -->
+
                 <section>
                     <section>
                         <h3>Git clone</h3>
@@ -1900,6 +2443,7 @@ git reset HEAD
                 <!-- *************************************************************** -->
                 <!-- 5.2.. GIT FETCH -->
                 <!-- *************************************************************** -->
+
                 <section>
                     <section>
                         <h2>Git fetch</h2>
@@ -1930,11 +2474,66 @@ git reset HEAD
                 <!-- *************************************************************** -->
                 <!-- 5.2.. GIT PUSH -->
                 <!-- *************************************************************** -->
+
                 <section>
 					<section>
 						<h2>Git push</h2>
 					</section>
 				</section>
+
+
+
+                <section>
+                    Le rebase avec les repos public :
+
+                    Ne rebasez jamais des commits qui ont déjà été poussés sur un dépôt public.
+
+
+                    <img src="img/section6/git_rebase_push_force.png" class="imgNoDecorate"/>
+
+                </section>
+
+                <!-- *************************************************************** -->
+                <!-- 5.2.. GIT FLOW -->
+                <!-- *************************************************************** -->
+
+                <section>
+                    Comment bien travaillé avec git
+                    norme de commit
+                    norme de branche / merge
+                    ...
+                </section>
+
+                <section>
+                    Les serveurs cloud
+                    bitbucket
+                    github
+                    assembla
+                </section>
+
+                <section>
+                    Les installations entreprise
+                    git lab
+                    teamforge
+                    github enterprise
+                    stash
+                </section>
+
+                <section>
+                    Client git
+                    la ligne de commande !!!
+                    GitKraken
+                    sourcetree
+                    tortoisegit
+                    github
+                    egit
+                    smartgit
+                    git cola
+                </section>
+
+                <section>
+                    C'est quoi une pull request ?
+                </section>
 
                 <!-- *************************************************************** -->
                 <!-- 5.2.. COMMANDES AVANCES-->
@@ -1944,10 +2543,10 @@ git reset HEAD
 					<h2>Les commandes avancées</h2>
 					<ul>
 						<li>stash</li>
-						<li>tag</li>
 						<li>mv</li>
 						<li>rm</li>
                         <li>clean</li>
+                        <li>cherry-pick</li>
 					</ul>
 
                     git mv ==
@@ -1960,42 +2559,41 @@ git reset HEAD
 				</section>
 
 
+                <!-- *************************************************************** -->
+                <!-- 5.2.. ALLER BEAUCOUP PLUS LOIN-->
+                <!-- *************************************************************** -->
+
                 <section>
                     Plus loin
 
-
                     <ul>
+                        <li>git reflog : http://www.experience-developpement.fr/git-a-la-recherche-du-commit-perdu/</li>
                         <li>git show</li>
 						<li>blame</li>
 						<li>bisect</li>
 						<li>archive</li>
 						<li>gitk</li>
-						<li>cherry-pick</li>
 					</ul>
+
+                    <ul>
+                        <li>30 astuces : https://delicious-insights.com/fr/articles/30-options-git-qui-gagnent-a-etre-connues/#fouiller-intelligemment-les-logs-avec-s-et-g-</li>
+                        <li>https://www.git-tower.com/learn/git/faq</li>
+                    </ul>
+
 				</section>
 
-				<section>
-					<section>
-						<h2>Git flow</h2>
-					</section>
 
-					<section>
-
-					</section>
-				</section>
-
-				<section>
-					<h2>Ligne de commande ou IDE ?</h2>
-				</section>
+                <!-- *************************************************************** -->
+                <!-- FIN FORMATION ->
+                <!-- *************************************************************** -->
 
                 <section>
-                    <h2>Allons plus loin</h2>
-                    <pre><code data-trim>
-                        git config --global alias.logall "log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white) - %an%C(reset) %C(bold yellow)%d%C(reset)' --all"
-                        git config --global alias.wdiff "diff --word-diff"
-                    </code></pre>
-                    <p>[color]   ui = auto</p>
+                    <h3>Maintenant vous maitriser GIT comme Robin</h3>
+
+                    <img src="img/fin_formation.gif" class="imgNoDecorate"/>
+
                 </section>
+
 
 			</div> <!-- End div slide -->
 
