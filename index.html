@@ -2416,42 +2416,238 @@ git reset HEAD
                 <!-- *************************************************************** -->
 
                 <section>
-                    <h2>Travailler en collaboratif avec un repo distant</h2>
 
-                    set lupstream sil n'est pas défini : git push -u origin topic
+                    <section>
+                        <h2>Travailler en collaboratif avec un repo distant</h2>
+                    </section>
+
+                    <section>
+                        <h3>Initialiser un repository distant</h3>
+
+                        <ul>
+                            <li>Sur un cloud : <b>github</b> / bitbucket / assembla / ...</li>
+                            <li>Sur un réseau entreprise : Git / Gitlab / ...</li>
+                            <li>Normalement sans working tree <br />
+                                <pre><code class="Bash" data-trim>
+                                    git init --bare
+                                </code></pre>
+                            </li>
+                            <li>Différent type de communication : Git / SSH / HTTPS</li>
+                        </ul>
+
+                        <aside class="notes">
+                            <ul>
+                                <li>SSH plus sécurisé "normalement"</li>
+                                <li>HTTPS privilégié aujourd'hui</li>
+                                <li>On va se basé sur github</li>
+                            </ul>
+                        </aside>
+                    </section>
 
                 </section>
 
                 <!-- *************************************************************** -->
-                <!-- 5.1. GIT CLONE -->
+                <!-- 6.1. GIT CLONE -->
                 <!-- *************************************************************** -->
 
                 <section>
+
                     <section>
-                        <h3>Git clone</h3>
-                        <p>Commande permettant de dupliquer un repository distant.</p>
-                        <p>C'est la branche par défaut (généralement nommée master) qui est récupéré</p>
-                        <p><small><a href="https://git-scm.com/docs/git-clone"><img src="img/logoGit.png" />https://git-scm.com/docs/git-clone</a></small></p>
+                        <h3>Cloner un repository distant</h3>
+
+                        <!-- TODO : insérer schéma de l'utilisation du staging (avec ajout du reset). -->
+                        <img src="img/section2/local_stage_0.svg" class="imgNoDecorate"/>
+
+                        <aside class="notes">
+                            <ul>
+                                <li>On est bien décentraliser, on parle de clonage</li>
+                                <li>On duplique, le repo cloner peut à son tour devenir source</li>
+                            </ul>
+                        </aside>
                     </section>
 
                     <section>
-                        <h3>SSH ou HTTPS ?</h3>
-                        <p></p>
+                        <h3>Cloner un repository distant</h3>
+
+                        <pre><code class="Bash" data-trim>
+                            git clone targetUrl
+						</code></pre>
+
+                        <ul>
+                            <li>Duplique un repository distant en local</li>
+                            <li>Place automatiquement le working tree sur la branche par défaut (généralement master)</li>
+                            <li>Récupère tous l'états du repo (git fetch et pull sont automatiquement réalisés)</li>
+                            <li>Les branches locales sont automatiquement liés aux remotes</li>
+                        </ul>
+
+                        <aside class="notes">
+                            <ul>
+                                <li>https://git-scm.com/docs/git-clone</li>
+                            </ul>
+                        </aside>
                     </section>
+
+                    <section>
+                        <h3>Les options intéressantes</h3>
+
+                        <ul>
+                            <li>Options :</li>
+                            <ul>
+                                <li><b>-l | --local</b> : Permet de cloner en passant un chemin</li>
+                                <li><b>--bare</b> : Pour cloner sans créer de working tree</li>
+                                <li><b>--mirror</b> : Avec bare, permet de créer un mirror du repo</li>
+                            </ul>
+                        </ul>
+
+                        <aside class="notes">
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h3>Quelques exemples</h3>
+
+                        <ul>
+                            <li>Cloner un repository local<br />
+                                <pre><code class="Bash" data-trim>
+                                    git clone /home/robin/projets/myProject
+                                </code></pre>
+                            </li>
+                            <li>Cloner un repository distant en https (recommandé)<br />
+                                <pre><code class="Bash" data-trim>
+                                    git clone https://github.com/reivon/FormationGit.git
+                                </code></pre>
+                            </li>
+                            <li>Cloner un repostory distant en ssh / git<br />
+                                <pre><code class="Bash" data-trim>
+git clone git@github.com:reivon/FormationGit.git
+git clone ssh://git@example.org/~/example.git
+                                </code></pre>
+                            </li>
+                        </ul>
+
+                        <aside class="notes">
+                            <ul>
+                                <li>Github recommande par défaut https, même si ssh parait plus sûr</li>
+                                <li>Git n'est pas sécurisé (pas d'authentification)</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h3>La variable origin</h3>
+                        <ul>
+                            <li>Lors d'un clone <b>origin</b> est automatiquement créée pour le repo</li>
+                            <li>Contient l'url de repo remote</li>
+                            <li>Variable utilisée dans les différentes commandes</li>
+                            <li>On peut modifier origin <br/>
+                                <pre><code class="Bash" data-trim>
+git remote -v
+# origin  https://github.com/user/repo.git (fetch)
+# origin  https://github.com/user/repo.git (push)
+
+git remote set-url origin https://github.com/user/repo2.git
+                                </code></pre>
+                            </li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3>La variable origin</h3>
+                        <ul>
+                            <li>Sa déclaration est dans le git config du repo <br />
+                                <pre><code class="Bash" data-trim>
+                                    git config --local --edit
+                                </code></pre>
+                            </li>
+                        </ul>
+
+                        <img src="img/section6/git_config_remote.png" class="imgNoDecorate"/>
+
+                    </section>
+
                 </section>
 
                 <!-- *************************************************************** -->
-                <!-- 5.2.. GIT FETCH -->
+                <!-- 6.2. GIT FETCH -->
                 <!-- *************************************************************** -->
 
                 <section>
+
                     <section>
-                        <h2>Git fetch</h2>
+                        <h3>Récupérer l'état du repo distant</h3>
+
+                        <!-- TODO : insérer schéma de l'utilisation du staging (avec ajout du reset). -->
+                        <img src="img/section2/local_stage_0.svg" class="imgNoDecorate"/>
+
+                        <aside class="notes">
+                            <ul>
+                                <li></li>
+                                <li>On duplique, le repo cloner peut à son tour devenir source</li>
+                            </ul>
+                        </aside>
                     </section>
+
+                    <section>
+                        <h3>Récupérer l'état du repo distant</h3>
+
+                        <pre><code class="Bash" data-trim>
+                            git fetch [remote]
+						</code></pre>
+
+                        <ul>
+                            <li>Met à jour les références remotes (branches/tags) en local</li>
+                            <li>Ne modifie <b>pas</b> les branches locales</li>
+                            <li>Si remote n'est pas spécifié => origin</li>
+                        </ul>
+
+                        <aside class="notes">
+                            <ul>
+                                <li>https://git-scm.com/docs/git-fetch</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h3>Les options intéressantes</h3>
+
+                        <ul>
+                            <li>Options :</li>
+                            <ul>
+                                <li><b>-all</b> : Fetch tous les remotes (pas seulement origin)</li>
+                                <li><b>--dry-run</b> : Montre ce qui va être réalisé, sans l'appliquer</li>
+                                <li><b>--prune | -p</b> : Avant le fetch, supprime toute les références remote qui n'existent plus dans le repo distant</li>
+                            </ul>
+                        </ul>
+
+                        <pre><code class="Bash" data-trim>
+                            git config --global fetch.prune true
+                        </code></pre>
+
+
+                        <aside class="notes">
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h3>Quelques exemples</h3>
+
+                        <pre><code class="Bash" data-trim>
+                            git fetch --prune
+                        </code></pre>
+
+                        <img src="img/section6/git_fetch.png" class="imgNoDecorate"/>
+
+                        <aside class="notes">
+                            <ul>
+                                <li>Ici le prune ne fait rien, pas de branche remote supprimée</li>
+                            </ul>
+                        </aside>
+                    </section>
+
                 </section>
 
                 <!-- *************************************************************** -->
-                <!-- 5.2.. GIT PULL -->
+                <!-- 6.3. GIT PULL -->
                 <!-- *************************************************************** -->
 
                 <section>
@@ -2472,13 +2668,16 @@ git reset HEAD
                 </section>
 
                 <!-- *************************************************************** -->
-                <!-- 5.2.. GIT PUSH -->
+                <!-- 6.4. GIT PUSH -->
                 <!-- *************************************************************** -->
 
                 <section>
 					<section>
 						<h2>Git push</h2>
 					</section>
+
+
+                    set lupstream sil n'est pas défini : git push -u origin topic
 				</section>
 
 
@@ -2493,8 +2692,21 @@ git reset HEAD
 
                 </section>
 
+
                 <!-- *************************************************************** -->
-                <!-- 5.2.. GIT FLOW -->
+                <!-- 6.5. EXO -->
+                <!-- *************************************************************** -->
+
+                <section>
+                    exercice
+
+                    Créer un compte github
+                    Initialiser un repo sur github et le cloner en local
+                </section>
+
+
+                <!-- *************************************************************** -->
+                <!-- 7. GIT FLOW -->
                 <!-- *************************************************************** -->
 
                 <section>
@@ -2502,21 +2714,6 @@ git reset HEAD
                     norme de commit
                     norme de branche / merge
                     ...
-                </section>
-
-                <section>
-                    Les serveurs cloud
-                    bitbucket
-                    github
-                    assembla
-                </section>
-
-                <section>
-                    Les installations entreprise
-                    git lab
-                    teamforge
-                    github enterprise
-                    stash
                 </section>
 
                 <section>
@@ -2573,6 +2770,7 @@ git reset HEAD
 						<li>bisect</li>
 						<li>archive</li>
 						<li>gitk</li>
+                        <li>remote</li>
 					</ul>
 
                     <ul>
