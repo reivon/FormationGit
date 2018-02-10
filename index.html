@@ -2623,7 +2623,6 @@ git remote set-url origin https://github.com/user/repo2.git
                             git config --global fetch.prune true
                         </code></pre>
 
-
                         <aside class="notes">
                         </aside>
                     </section>
@@ -2652,18 +2651,85 @@ git remote set-url origin https://github.com/user/repo2.git
 
                 <section>
                     <section>
-                        <h3>Git pull</h3>
+                        <h3>Mettre à jour son local</h3>
+
+                        <!-- TODO : insérer schéma de l'utilisation du staging (avec ajout du reset). -->
+                        <img src="img/section2/local_stage_0.svg" class="imgNoDecorate"/>
+
+                        <aside class="notes">
+                            <ul>
+                                <li></li>
+                                <li>On met son master au niveau de d'origin/master</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h3>Mettre à jour son local</h3>
+
+                        <pre><code class="Bash" data-trim>
+                            git pull [options] [remote] [branch]
+						</code></pre>
+
+                        <ul>
+                            <li>Met à jour sa branche locale selon la branche distantes</li>
+                            <li>C'est une combinaison d'un git fetch et d'un git merge</li>
+                            <li>Par défaut, le merge est fast forward</li>
+                            <li>Si l'utpstream est configuré, pas besoin de préciser remote et branch</li>
+                            <li>Ne fonctionnera pas si on a du travail en cours</li>
+                        </ul>
+
+                        <aside class="notes">
+                            <ul>
+                                <li>https://git-scm.com/docs/git-pull</li>
+                            </ul>
+                        </aside>
                     </section>
 
                     <section>
                         <h3>Les options intéressantes</h3>
+
                         <ul>
                             <li>Options :</li>
                             <ul>
-                                <li></li>
-                                <li></li>
+                                <li><b>--rebase | -r =[false|true|preserve|interactive]</b> : Pour réaliser un rebase au lieu d'un merge</li>
+                                <li><b>--no-edit</b> : Pour accepter le message de merge auto</li>
+                                <li><b>--no-ff</b> : Pour forcer un commit de merge</li>
+                                <li><b>--ff-only</b> : Refuse le merge si non fast forward</li>
                             </ul>
                         </ul>
+
+                        <aside class="notes">
+                            <ul>
+                                <li>rebase preserve : pour préserver les merges locaux, sinon les flat</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h3>Quelques exemples</h3>
+
+                        <pre><code class="Bash" data-trim>
+                            git pull origin master
+                        </code></pre>
+
+                        <img src="img/section6/Pull_merge.svg" class="imgNoDecorate"/>
+
+                        <aside class="notes">
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h3>Quelques exemples</h3>
+
+                        <pre><code class="Bash" data-trim>
+                            git pull --rebase=true origin master
+                        </code></pre>
+
+                        <img src="img/section6/Pull_rebase.svg" class="imgNoDecorate"/>
+
+                        <aside class="notes">
+                        </aside>
                     </section>
                 </section>
 
@@ -2692,9 +2758,47 @@ git remote set-url origin https://github.com/user/repo2.git
 
                 </section>
 
+                <!-- *************************************************************** -->
+                <!-- 6.5. J'AI DEJA UN PROJET A PUSH SUR UN REPO DISTANT -->
+                <!-- *************************************************************** -->
+
+                <section>
+
+                    <section>
+                        <h2>Init un repo distant</h2>
+                        <h3>Première solution</h3>
+                        <ol>
+                            <li>Créer le repo distant</li>
+                            <li>Cloner en local ce repo</li>
+                            <li>Copier les fichiers projets dans ce repo</li>
+                            <li>Réaliser les commandes suivantes</li>
+                        </ol>
+
+                        <pre><code class="Bash" data-trim>
+git add .
+git commit -m "init du projet"
+git push origin master
+						</code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Init un repo distant</h2>
+                        <h3>Deuxième solution</h3>
+
+                        <pre><code class="Bash" data-trim>
+git init
+git add .
+git commit -m "init du projet"
+git push origin master
+git remote add origin [remote_repository_URL]
+git push origin master
+						</code></pre>
+                    </section>
+
+                </section>
 
                 <!-- *************************************************************** -->
-                <!-- 6.5. EXO -->
+                <!-- 6.6. EXO -->
                 <!-- *************************************************************** -->
 
                 <section>
