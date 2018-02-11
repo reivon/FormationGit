@@ -2064,6 +2064,12 @@ git reset HEAD
                     <section>
                         <h3>Fusionner deux branches</h3>
 
+                        <img src="img/section5/git_merge_meme.gif" class="imgNoDecorate"/>
+                    </section>
+
+                    <section>
+                        <h3>Fusionner deux branches</h3>
+
                         <pre><code class="Bash" data-trim>
                             git merge targetBranch
 						</code></pre>
@@ -2738,23 +2744,93 @@ git remote set-url origin https://github.com/user/repo2.git
                 <!-- *************************************************************** -->
 
                 <section>
-					<section>
-						<h2>Git push</h2>
-					</section>
+                    <section>
+                        <h3>Mettre à jour le repo distant</h3>
 
+                        <!-- TODO : insérer schéma de l'utilisation du staging (avec ajout du reset). -->
+                        <img src="img/section2/local_stage_0.svg" class="imgNoDecorate"/>
 
-                    set lupstream sil n'est pas défini : git push -u origin topic
-				</section>
+                        <aside class="notes">
+                        </aside>
+                    </section>
 
+                    <section>
+                        <h3>Mettre à jour le repo distant</h3>
 
+                        <pre><code class="Bash" data-trim>
+                            git push [options] [remote] [branch]
+						</code></pre>
 
-                <section>
-                    Le rebase avec les repos public :
+                        <ul>
+                            <li>Met à jour le repo distant avec son local</li>
+                            <li>Si l'utpstream est configuré, pas besoin de préciser remote et branch</li>
+                            <li>Ne fonctionnera pas si le remote a été mis à jour entre temps</li>
+                        </ul>
 
-                    Ne rebasez jamais des commits qui ont déjà été poussés sur un dépôt public.
+                        <aside class="notes">
+                            <ul>
+                                <li>https://git-scm.com/docs/git-pull</li>
+                            </ul>
+                        </aside>
+                    </section>
 
+                    <section>
+                        <h3>Les options intéressantes</h3>
 
-                    <img src="img/section6/git_rebase_push_force.png" class="imgNoDecorate"/>
+                        <ul>
+                            <li>Options :</li>
+                            <ul>
+                                <li><b>-u | --set-upstream</b> : Permet de lier la remote au local</li>
+                                <li><b>--delete</b> : Pour supprimer les références en paramètre (pareil que :)</li>
+                                <li><b>-f | --force</b> : Pour forcer le push quoi qu'il arrive</li>
+                                <li><b>-n | --dry-run</b> : Pour faire un fake push et voir ce qu'il se passe</li>
+                            </ul>
+                        </ul>
+
+                        <aside class="notes">
+                            <ul>
+                                <li>-u : pour ne plus préciser origin master à l'avenir pour les new branches</li>
+                                <li>On peut modifier le push pour faire un delete</li>
+                                <li></li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h3>Quelques exemples</h3>
+
+                        <pre><code class="Bash" data-trim>
+                            git push -u origin master
+                        </code></pre>
+
+                        <img src="img/section6/Push_simple.svg" class="imgNoDecorate"/>
+
+                        <aside class="notes">
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h3>Quelques exemples</h3>
+
+                        <ul>
+                            <li>Supprimer une remote branch (mais pas en local) <br />
+                                <pre><code class="Bash" data-trim>
+git push origin :myBranch
+git push -d origin myBranch
+                                </code></pre>
+                            </li>
+                            <li>Tenter un push sur un remote qui a bougé <br />
+                                <pre><code class="Bash" data-trim>
+                                    git push origin feat3
+                                </code></pre>
+                            </li>
+                        </ul>
+
+                        <img src="img/section6/git_push_failed.png" class="imgNoDecorate"/>
+
+                        <aside class="notes">
+                        </aside>
+                    </section>
 
                 </section>
 
@@ -2789,7 +2865,6 @@ git push origin master
 git init
 git add .
 git commit -m "init du projet"
-git push origin master
 git remote add origin [remote_repository_URL]
 git push origin master
 						</code></pre>
@@ -2802,22 +2877,69 @@ git push origin master
                 <!-- *************************************************************** -->
 
                 <section>
-                    exercice
 
-                    Créer un compte github
-                    Initialiser un repo sur github et le cloner en local
+                    <section>
+                        <h2>Robin met en pratique</h2>
+
+                        <ul>
+                            <li>Cloner le projet suivant (on l'appelera repo1)</li>
+                            <li>Cloner le repo que vous venez de cloner (on l'appelera repo2)</li>
+                            <li>Dans repo1, branch master, modifier et commit index.html ligne 2</li>
+                            <li>Dans repo2
+                                <ul>
+                                    <li>Merge feat2 dans feat1 sans avoir de commit de merge et push feat1</li>
+                                    <li>Supprimer la branche feat2 (local et remote)</li>
+                                    <li>Modifier et commit le fichier index.html ligne 2</li>
+                                    <li>Pusher master sans perdre aucun commit</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2>Robin maîtrise le teamwork</h2>
+
+                        <div style="display:table">
+                            <div style="display:table-cell;margin:10px;">
+                                <img src="img/section6/teamwork2.gif" class="imgNoDecorate"/>
+                            </div>
+                            <div style="display:table-cell;vertical-align: middle">
+                                <ul>
+                                    <li>Il travaille avec de nombreux sous fifres</li>
+                                    <li>Mais chacun à sa méthode de push</li>
+                                    <li>Personne ne sait sur quelle branche travailler</li>
+                                    <li>Il ne comprend rien à l'organisation des commits</li>
+                                    <li>Il est temps de normer tout ça ...</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
                 </section>
-
 
                 <!-- *************************************************************** -->
                 <!-- 7. GIT FLOW -->
                 <!-- *************************************************************** -->
 
                 <section>
+                    <h1>Git flow</h1>
+
+                    <img src="img/section7/groot_flow.gif" class="imgNoDecorate"/>
+                </section>
+
+                <section>
                     Comment bien travaillé avec git
                     norme de commit
                     norme de branche / merge
                     ...
+
+
+
+                    Ne rebasez jamais des commits qui ont déjà été poussés sur un dépôt public.
+
+
+                    <img src="img/section7/git_rebase_push_force.png" class="imgNoDecorate"/>
+
                 </section>
 
                 <section>
