@@ -1,4 +1,7 @@
 <!doctype html>
+
+<!-- Formation réalisé par Tony MEMBOT -->
+
 <html lang="fr">
 	<head>
 		<meta charset="utf-8">
@@ -875,16 +878,6 @@ git config --global commit.status true
                                 <li>commit.status : par défaut true, affiche le status dans le commit en commentaire</li>
                             </ul>
                         </aside>
-                    </section>
-
-                    <section>
-                        <h3>Normer son message de commit</h3>
-                        <ul>
-                            <li>Commencer par une courte description d'au plus 50 caractères</li>
-                            <li>Laisser la deuxième ligne vide</li>
-                            <li>Réaliser une description détaillé dans les lignes suivantes.</li>
-                            <li>Le # défini un commentaire et est ignoré par défaut</li>
-                        </ul>
                     </section>
 
                     <section>
@@ -2835,7 +2828,7 @@ git push -d origin myBranch
                 </section>
 
                 <!-- *************************************************************** -->
-                <!-- 6.5. J'AI DEJA UN PROJET A PUSH SUR UN REPO DISTANT -->
+                <!-- 6.5. J'AI DÉJÀ UN PROJET A PUSH SUR UN REPO DISTANT -->
                 <!-- *************************************************************** -->
 
                 <section>
@@ -2869,6 +2862,18 @@ git remote add origin [remote_repository_URL]
 git push origin master
 						</code></pre>
                     </section>
+
+                </section>
+
+                <section>
+                    <h3>Au fait, c'est quoi une pull request ?</h3>
+
+                    <ul>
+                        <li>N'appartient pas à git (surcouche)</li>
+                        <li>Commit bloqué dans pour approbation avant merge</li>
+                    </ul>
+
+                    <img src="img/section6/pull_request.png" class="imgNoDecorate"/>
 
                 </section>
 
@@ -2913,6 +2918,14 @@ git push origin master
                                 </ul>
                             </div>
                         </div>
+
+                        <aside class="notes">
+                            <ul>
+                                <li>On a vu que Git est un outil puissant</li>
+                                <li>On peut facilement dévier et faire n'importe quoi</li>
+                                <li>On se doit de respecter une norme</li>
+                            </ul>
+                        </aside>
                     </section>
 
                 </section>
@@ -2922,25 +2935,148 @@ git push origin master
                 <!-- *************************************************************** -->
 
                 <section>
-                    <h1>Git flow</h1>
 
-                    <img src="img/section7/groot_flow.gif" class="imgNoDecorate"/>
+                    <section>
+                        <h1>Git flow</h1>
+
+                        <img src="img/section7/groot_flow.gif" class="imgNoDecorate"/>
+                    </section>
+
+                    <section>
+                        <h3>Git flow</h3>
+
+                        <ul>
+                            <li>Une entreprise = un git flow ...</li>
+                            <li>... mais il y a des règles communes à toute</li>
+                            <li>Défini des normes / process :
+                                <ul>
+                                    <li>Message de commit</li>
+                                    <li>Merge ou rebase ? (ff ou no ff)</li>
+                                    <li>Master ou branches features / develop</li>
+                                    <li>...</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3>Ne pas réécrire l'arbre du repo public</h3>
+
+                        <img src="img/section7/git_rebase_push_force.png" class="imgNoDecorate"/>
+
+                        <aside class="notes">
+                            <ul>
+                                <li>Pose des problèmes de merge / on est perdu</li>
+                                <li>On ne doit jamais push force une master</li>
+                                <li>On peut le faire sur des branches privé en vue d'un merge</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h3>Normer son message de commit</h3>
+                        <ul>
+                            <li>Commencer par une courte description d'au plus 50 caractères</li>
+                            <li>Laisser la deuxième ligne vide</li>
+                            <li>Réaliser une description détaillé dans les lignes suivantes</li>
+                            <li>Le # défini un commentaire et est ignoré</li>
+                        </ul>
+
+                        <img src="img/section7/commit_norme.png" class="imgNoDecorate"/>
+                    </section>
+
+                    <section>
+                        <h3>Normer son message de commit</h3>
+                        <ul>
+                            <li>On utilise de plus en plus la norme <a href="https://github.com/angular/angular/blob/master/CONTRIBUTING.md#type">angular</a> <br />
+                                <pre><code class="txt" data-trim>
+&lt;type&gt;(&lt;scope&gt;): &lt;subject&gt;
+&lt;BLANK LINE&gt;
+&lt;body&gt;
+&lt;BLANK LINE&gt;
+&lt;footer&gt;
+                                </code></pre>
+                            </li>
+                            <li><b>Type</b> : build / ci / docs / feat / fix / perf / refactor / style / test</li>
+                            <li><b>Scope</b> : A définir par l'entreprise : customer / payment / ...</li>
+                            <li><b>Subject</b> : Courte mais évocatrice</li>
+                            <li>Utiliser l'impératif au possible</li>
+                            <li>Si tout est respecté, permet de générer des <b>changelogs !</b></li>
+                        </ul>
+
+                        <aside class="notes">
+                            <ul>
+                                <li>Le scope doit être un package ou un domaine fonctionnel</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+
+                    <section>
+                        <h3>Le principe git flow</h3>
+
+                        <img src="img/section7/gitflow.png" class="imgNoDecorate" />
+                    </section>
+
+                    <section>
+                        <h3>L'outil git flow</h3>
+
+                        <ul>
+                            <li>Plugin : <a href="https://github.com/nvie/gitflow/wiki/Installation">https://github.com/nvie/gitflow/wiki/Installation</a></li>
+                        </ul>
+
+                        <pre><code class="Bash" data-trim>
+git flow init
+git flow feature start [nom]
+git flow feature finish [nom]
+git flow release start/finish [nom]
+git flow hotfix start/finish [nom]
+						</code></pre>
+
+                        <aside class="notes">
+                            <ul>
+                                <li>Réf : https://blog.nathanaelcherrier.com/2016/07/11/gitflow-la-methodologie-et-la-pratique/</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2>De nombreux autres flow !</h2>
+
+                        <img src="img/section7/onlymaster.jpg" class="imgNoDecorate" />
+                    </section>
+
+                    <section>
+                        <h2>De nombreux autres flow !</h2>
+
+                        <img src="img/section7/Flow_other.svg" class="imgNoDecorate" />
+                    </section>
+
+                    <section>
+                        <h2>Une seule règle pour les gouverner toutes</h2>
+
+                        <img src="img/section7/respectGitProcess.jpg" class="imgNoDecorate" />
+                    </section>
+
                 </section>
+
+                <!-- *************************************************************** -->
+                <!-- 8. LES INTERFACES GRAPHIQUES -->
+                <!-- *************************************************************** -->
 
                 <section>
-                    Comment bien travaillé avec git
-                    norme de commit
-                    norme de branche / merge
-                    ...
+                    <section>
+                        <h1>les interfaces graphiques</h1>
+                    </section>
 
+                    <section>
 
-
-                    Ne rebasez jamais des commits qui ont déjà été poussés sur un dépôt public.
-
-
-                    <img src="img/section7/git_rebase_push_force.png" class="imgNoDecorate"/>
-
+                    </section>
                 </section>
+
+                <!-- *************************************************************** -->
+                <!-- 5.2.. COMMANDES AVANCES-->
+                <!-- *************************************************************** -->
 
                 <section>
                     Client git
@@ -2957,10 +3093,6 @@ git push origin master
                 <section>
                     C'est quoi une pull request ?
                 </section>
-
-                <!-- *************************************************************** -->
-                <!-- 5.2.. COMMANDES AVANCES-->
-                <!-- *************************************************************** -->
 
                 <section>
 					<h2>Les commandes avancées</h2>
