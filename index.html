@@ -3130,30 +3130,130 @@ git flow hotfix start/finish [nom]
                 </section>
 
                 <!-- *************************************************************** -->
-                <!-- 9. LES COMMANDES AVANCES-->
+                <!-- 9.1 LES COMMANDES AVANCES - GIT STASH -->
                 <!-- *************************************************************** -->
 
                 <section>
-					<h2>Les commandes avancées</h2>
-					<ul>
-						<li>stash</li>
-						<li>mv</li>
-						<li>rm</li>
-                        <li>clean</li>
-                        <li>cherry-pick</li>
-					</ul>
+                    <section>
+                        <h1>Les extras utiles</h1>
+                    </section>
+
+                    <section>
+                        <h3>Planquer son travail temporairement</h3>
+
+                        <pre><code class="Bash" data-trim>
+							git stash [command]
+						</code></pre>
+
+                        <ul>
+                            <li>Sauvegarde l'état courant des modifications dans une zone tampon et clean le working tree vers le HEAD</li>
+                            <li>Permet de sauvegarder un état pour réaliser d'autres actions sur le repo</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3>Cas d'utilisation</h3>
+                        <pre><code class="Bash" data-trim>
+# ... hack hack hack ...
+$ git checkout -b my_wip
+$ git commit -a -m "WIP"
+$ git checkout master
+$ edit emergency fix
+$ git commit -a -m "Fix in a hurry"
+$ git checkout my_wip
+$ git reset --soft HEAD^
+# ... continue hacking ...
+						</code></pre>
+                        <pre><code class="Bash" data-trim>
+# ... hack hack hack ...
+$ git stash
+$ edit emergency fix
+$ git commit -a -m "Fix in a hurry"
+$ git stash pop
+# ... continue hacking ...
+						</code></pre>
+
+                    </section>
+
+                    <section>
+                        <h3>Git stash</h3>
+
+                        <img src="img/section9/git_stash.png" class="imgNoDecorate"/>
+                    </section>
+
+                    <section>
+                        <h3>Les options intéressantes</h3>
+
+                        <ul>
+                            <li>Options :</li>
+                            <ul>
+                                <li><b>list</b> : Liste les stash du repo</li>
+                                <li><b>show</b> : Permet d'inspecter un stash</li>
+                                <li><b>push</b> : Permet de créer un stash<ul>
+                                    <li><b>-m</b> : pour nommer son stash</li>
+                                </ul></li>
+                                <li><b>apply</b> : Applique un stash sans l'effacer</li>
+                                <li><b>pop</b> : Applique un stash et le drop</li>
+                                <li><b>drop</b> : Supprime un stash</li>
+                                <li><b>clear</b> : Supprime tous les stash</li>
+                            </ul>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3>Quelques exemples</h3>
+                        <ul>
+                            <li>Créer un stash nommé<br />
+                                <pre><code class="Bash" data-trim>
+		        					git stash push -m "temp"
+        						</code></pre>
+                            </li>
+                            <li>Appliquer et supprimer un stash<br />
+                                <pre><code class="Bash" data-trim>
+		        					git stash pop
+        						</code></pre>
+                            </li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3>C'est une liste LIFO</h3>
+
+                        <img src="img/section9/git_stash_lifo.png" class="imgNoDecorate"/>
+                    </section>
+
+                </section>
+
+                <!-- *************************************************************** -->
+                <!-- 9.2 GIT SHOW -->
+                <!-- *************************************************************** -->
+
+                <!-- *************************************************************** -->
+                <!-- 9.3 GIT BLAME -->
+                <!-- *************************************************************** -->
+
+                <!-- *************************************************************** -->
+                <!-- 9.4 GIT CHERRY PICK -->
+                <!-- *************************************************************** -->
+
+                <!-- *************************************************************** -->
+                <!-- 9.5 GIT MV -->
+                <!-- *************************************************************** -->
+
+                <section>
+                    Et si on renommait un fichier ?
+                    l'historique est gardé si le commit modifie pas trop le fichier (sinon considéré comme tout autre)
+
 
                     git mv ==
-
                     $ mv LISEZMOI.txt LISEZMOI
                     $ git rm LISEZMOI.txt
                     $ git add LISEZMOI
+                </section>
 
-                    l'historique est gardé si le commit modifie pas trop le fichier (sinon considéré comme tout autre)
-				</section>
 
                 <!-- *************************************************************** -->
-                <!-- 5.2.. ALLER BEAUCOUP PLUS LOIN-->
+                <!-- 10.. ALLER BEAUCOUP PLUS LOIN-->
                 <!-- *************************************************************** -->
 
                 <section>
@@ -3161,12 +3261,13 @@ git flow hotfix start/finish [nom]
 
                     <ul>
                         <li>git reflog : http://www.experience-developpement.fr/git-a-la-recherche-du-commit-perdu/</li>
-                        <li>git show</li>
-						<li>blame</li>
 						<li>bisect</li>
 						<li>archive</li>
 						<li>gitk</li>
                         <li>remote</li>
+                        <li>mv</li>
+                        <li>rm</li>
+                        <li>clean</li>
 					</ul>
 
                     <ul>
@@ -3181,10 +3282,9 @@ git flow hotfix start/finish [nom]
                 <!-- *************************************************************** -->
 
                 <section>
-                    <h3>Maintenant vous maitriser GIT comme Robin</h3>
+                    <h3>Maintenant vous maîtriser GIT comme Robin</h3>
 
                     <img src="img/fin_formation.gif" class="imgNoDecorate"/>
-
                 </section>
 
 
