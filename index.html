@@ -296,6 +296,7 @@
                                 </ul>
                             </li>
                             <li>Les liens / commit déférencés sont automatiquement supprimés</li>
+                            <li>Autement scriptable / automatisable</li>
                         </ul>
                     </section>
 
@@ -2974,6 +2975,12 @@ git push origin master
                     </section>
 
                     <section>
+                        <h3>When I push force</h3>
+
+                        <img src="img/section7/git_push_force.gif" class="imgNoDecorate"/>
+                    </section>
+
+                    <section>
                         <h3>Normer son message de commit</h3>
                         <ul>
                             <li>Commencer par une courte description d'au plus 50 caractères</li>
@@ -3228,61 +3235,305 @@ $ git stash pop
                 <!-- 9.2 GIT SHOW -->
                 <!-- *************************************************************** -->
 
-                <!-- *************************************************************** -->
-                <!-- 9.3 GIT BLAME -->
-                <!-- *************************************************************** -->
+                <section>
+                    <section>
+                        <h3>Voir les détails d'un objet git</h3>
+
+                        <pre><code class="Bash" data-trim>
+                            git show [options] [object]
+                        </code></pre>
+
+                        <ul>
+                            <li>Permet de consulter les détails
+                                <ul>
+                                    <li><b>Commit</b> : log message & diff</li>
+                                    <li><b>branches</b> : log message & diff du dernier commit de la branche</li>
+                                    <li><b>tags</b> : tag message et objets référencés</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3>Les options intéressantes</h3>
+
+                        <ul>
+                            <li>Options :</li>
+                            <ul>
+                                <li><b>--abbrev-commit</b> : Pour avoir le sha1 version courte</li>
+                                <li><b>--pretty=[format] | --format=[format]</b> : Formatter les infos de commit</li>
+                                <li><b>--color-words</b> : Pour avoir un diff aux mots</li>
+                                <li>Plus toutes les options de git log et git diff ...</li>
+                            </ul>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3>Quelques exemples</h3>
+
+                        <ul>
+                            <li>Avoir les détails d'un commit<br />
+                                <pre><code class="Bash" data-trim>
+                                    git show f6ef819
+                                </code></pre>
+                            </li>
+                        </ul>
+
+                        <img src="img/section9/git_show.png" class="imgNoDecorate"/>
+
+                    </section>
+
+                    <section>
+                        <h3>Quelques exemples</h3>
+
+                        <ul>
+                            <li>Récupérer la liste des fichiers impactés dans un commit<br />
+                                <pre><code class="Bash" data-trim>
+                                    git show --pretty="" --name-only 7f6ce03
+                                </code></pre>
+                            </li>
+                        </ul>
+
+                        <img src="img/section9/git_show_pretty.png" class="imgNoDecorate"/>
+
+                        <ul>
+                            <li>Récupérer la liste des fichiers impactés avec leur stat<br />
+                                <pre><code class="Bash" data-trim>
+                                    git show --stat 7f6ce03
+                                </code></pre>
+                            </li>
+                        </ul>
+
+                        <img src="img/section9/git_show_stat.png" class="imgNoDecorate"/>
+                    </section>
+
+                </section>
 
                 <!-- *************************************************************** -->
-                <!-- 9.4 GIT CHERRY PICK -->
+                <!-- 9.3 GIT CHERRY PICK -->
                 <!-- *************************************************************** -->
+
+                <section>
+                    <section>
+                        <h3>Copier un commit sur une autre réf</h3>
+
+                        <pre><code class="Bash" data-trim>
+                            git cherry-pick [options] [commit]
+                        </code></pre>
+
+                        <ul>
+                            <li>Peut appliquer plusieurs commit à la fois</li>
+                            <li>Le head doit être propre (aucune modification en cours)</li>
+                            <li>Des merges peuvent avoir lieu, ils sont résolu de manière classique</li>
+                            <li>Utile pour des branches "patch" ou pour débloquer un développement</li>
+                            <li>Attention cependant à ne pas le généraliser</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3>Les options intéressantes</h3>
+
+                        <ul>
+                            <li>Options :</li>
+                            <ul>
+                                <li><b>--edit | -e</b> : Permet d'éditer le message de commit</li>
+                                <li>En cas de conflit
+                                    <ul>
+                                        <li><b>--continue</b> : En cas de conflit, une fois résolu, permet de continuer</li>
+                                        <li><b>--quit</b> : Permet de quitter en l'état le process</li>
+                                        <li><b>--abort</b> : Permet de revenir en arrière sur le process</li>
+                                    </ul>
+                                </li>
+                                <li><b>--no-commit | -n</b> : Pour appliquer un cherry-pick sans commit</li>
+                            </ul>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3>Quelques exemples</h3>
+
+                        <pre><code class="Bash" data-trim>
+                            git cherry-pick 5397e5b
+                        </code></pre>
+
+                        <img src="img/section9/git_cherry1.png" class="imgNoDecorate"/>
+                    </section>
+
+                    <section>
+                        <h3>Quelques exemples</h3>
+
+                        <img src="img/section9/git_cherry2.png" class="imgNoDecorate"/>
+                    </section>
+
+                </section>
+
+                <!-- *************************************************************** -->
+                <!-- 9.4 GIT BLAME -->
+                <!-- *************************************************************** -->
+
+                <section>
+                    <section>
+                        <h3>Culpabiliser ses collègues</h3>
+
+                        <pre><code class="Bash" data-trim>
+                            git blame [file]
+                        </code></pre>
+
+                        <ul>
+                            <li>Pour chaque ligne du fichier indique
+                                <ul>
+                                    <li>L'auteur de la dernière modification</li>
+                                    <li>Le commit (révision) de la dernière modification</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3>Les options intéressantes</h3>
+
+                        <ul>
+                            <li>Options :</li>
+                            <ul>
+                                <li><b>-L [start],[end]</b> : Pour préciser les lignes souhaitées</li>
+                                <li><b>--since=[date]</b> : Pour ne voir que les modifications depuis une date</li>
+                            </ul>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3>Quelques exemples</h3>
+                        <ul>
+                            <li>Voir les modifications sur le fichier index.html<br />
+                                <pre><code class="Bash" data-trim>
+                                    git blame index.html
+                                </code></pre>
+                            </li>
+                        </ul>
+
+                        <img src="img/section9/git_blame.png" class="imgNoDecorate"/>
+
+                    </section>
+
+                    <section>
+                        <h3>Quelques exemples</h3>
+                        <ul>
+                            <li>Voir les modifications des lignes 40 à 60<br />
+                                <pre><code class="Bash" data-trim>
+                                    git blame -L 40,60 index.html
+                                </code></pre>
+                            </li>
+                            <li>Voir les modifications de moins de trois semaines<br />
+                                <pre><code class="Bash" data-trim>
+                                    git blame --since=3.weeks -- index.html
+                                </code></pre>
+                            </li>
+                        </ul>
+                    </section>
+
+                </section>
 
                 <!-- *************************************************************** -->
                 <!-- 9.5 GIT MV -->
                 <!-- *************************************************************** -->
 
                 <section>
-                    Et si on renommait un fichier ?
-                    l'historique est gardé si le commit modifie pas trop le fichier (sinon considéré comme tout autre)
+                    <section>
+                        <h3>Déplacer/renommer un fichier</h3>
 
+                        <pre><code class="Bash" data-trim>
+                            git mv [options] [source] [dest]
+                        </code></pre>
 
-                    git mv ==
-                    $ mv LISEZMOI.txt LISEZMOI
-                    $ git rm LISEZMOI.txt
-                    $ git add LISEZMOI
+                        <ul>
+                            <li>Permet de déplacer un dossier/fichier</li>
+                            <li>Tombe en erreur si
+                                <ul>
+                                    <li>La ressource dest existe déjà</li>
+                                    <li>La ressource source n'existe pas</li>
+                                </ul>
+                            </li>
+                            <li>Equivalent des commandes : </li>
+                        </ul>
+
+                        <pre><code class="Bash" data-trim>
+$ mv LISEZMOI.txt LISEZMOI
+$ git rm LISEZMOI.txt
+$ git add LISEZMOI
+                        </code></pre>
+
+                    </section>
+
+                    <section>
+                        <h3>Les options intéressantes</h3>
+
+                        <ul>
+                            <li>Options :</li>
+                            <ul>
+                                <li><b>--dry-run | -n</b> : Ne réalise pas vraiment les actions</li>
+                                <li><b>--force | -f</b> : Force le renommage / déplacement</li>
+                                <li><b>-k</b> : Skip l'action en cas d'erreur</li>
+                            </ul>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3>La perte d'historique</h3>
+                        <ul>
+                            <li>Git permet de ne pas perdre l'historique lors d'un move simple</li>
+                            <li>Si dans le même commit, on réalise un move et beaucoup de modification sur le fichier, git considère que ce sont deux fichiers différents</li>
+                            <li>Pour avoir le full history d'un fichier qui a été déplacé, il est parfois nécessaire de préciser l'option --follow</li>
+                        </ul>
+
+                        <pre><code class="Bash" data-trim>
+                            git log --follow index.html
+                        </code></pre>
+                    </section>
+
                 </section>
-
 
                 <!-- *************************************************************** -->
                 <!-- 10.. ALLER BEAUCOUP PLUS LOIN-->
                 <!-- *************************************************************** -->
 
                 <section>
-                    Plus loin
+                    <h3>Aller plus loin</h3>
 
                     <ul>
-                        <li>git reflog : http://www.experience-developpement.fr/git-a-la-recherche-du-commit-perdu/</li>
-						<li>bisect</li>
-						<li>archive</li>
-						<li>gitk</li>
-                        <li>remote</li>
-                        <li>mv</li>
-                        <li>rm</li>
-                        <li>clean</li>
-					</ul>
-
-                    <ul>
-                        <li>30 astuces : https://delicious-insights.com/fr/articles/30-options-git-qui-gagnent-a-etre-connues/#fouiller-intelligemment-les-logs-avec-s-et-g-</li>
-                        <li>https://www.git-tower.com/learn/git/faq</li>
+                        <li>git reflog</li>
+						<li>git bisect</li>
+						<li>git archive</li>
+                        <li>git remote</li>
+                        <li>git rm</li>
+                        <li>git clean</li>
+                        <li>git for-each-ref </li>
+                        <li>gitk</li>
+                        <li>...</li>
                     </ul>
 
 				</section>
+
+                <section>
+                    <h3>Quelques ressources</h3>
+
+                    <ul>
+                        <li><a href="https://try.github.io/levels/1/challenges/1">Try github : Apprendre git en 15min</a></li>
+                        <li><a href="https://github.com/Gazler/githug">Git hug : Jeu de résolution git</a></li>
+                        <li><a href="https://github.com/git-game/git-game">Git game : Challenge de résolution git</a></li>
+                        <li><a href="https://learngitbranching.js.org/">Learn branching : S'entraîner avec les branches git</a></li>
+                        <li><a href="http://ohshitgit.com/">Les situations courantes et leurs solutions</a></li>
+                        <li><a href="http://www.experience-developpement.fr/git-a-la-recherche-du-commit-perdu/">A la recherche des commits perdus</a></li>
+                        <li><a href="https://delicious-insights.com/fr/articles/30-options-git-qui-gagnent-a-etre-connues/">30 astuces GIT</a></li>
+                        <li><a href="https://www.git-tower.com/learn/git/faq">Et quelques autres astuces ...</a></li>
+                    </ul>
+                </section>
 
                 <!-- *************************************************************** -->
                 <!-- FIN FORMATION ->
                 <!-- *************************************************************** -->
 
                 <section>
-                    <h3>Maintenant vous maîtriser GIT comme Robin</h3>
+                    <h3>Maintenant vous maîtriser GIT<br /> comme Robin</h3>
 
                     <img src="img/fin_formation.gif" class="imgNoDecorate"/>
                 </section>
