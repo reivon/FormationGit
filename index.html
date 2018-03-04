@@ -52,7 +52,7 @@
 					<h3>A la découverte de l'outil de gestion de version</h3>
                     <p></p>
 					<p>
-						<small>Créé par Tony MEMBOT via l'API de présentation <a href="https://github.com/hakimel/reveal.js">Reveal.js</a></small>
+						<small>Créée par Tony MEMBOT via l'API de présentation <a href="https://github.com/hakimel/reveal.js">Reveal.js</a></small>
 					</p>
 
                     <aside class="notes">
@@ -83,7 +83,7 @@
                         <h3>Création d'un site internet</h3>
 
                         <ul>
-                            <li>Indéxer ses films préférés
+                            <li>Indexer ses films préférés
                                 <ul>
                                     <li class="fragment">Trotro le coquin / Robocar Polly fait des bêtises / ...</li>
                                 </ul>
@@ -114,7 +114,7 @@
                         <h3>Une première évolution ...</h3>
 
                         <ul>
-                            <li>Ajout de bloc de publicité un peu partout sur le site
+                            <li>Ajout de blocs de publicité un peu partout sur le site
                                 <ul>
                                     <li>Nécessite l'inclusion de plusieurs librairies javascript</li>
                                     <li>Modification de la majorité des pages</li>
@@ -148,7 +148,7 @@
                     </section>
 
                     <section>
-                        <h3>Première VRAI évolution</h3>
+                        <h3>Première VRAIE évolution</h3>
                         <h4>Mise en place d'un système de gestion de version</h4>
                         <p class="fragment">
                             Robin part à la chasse et tombe sur GIT<br />
@@ -166,6 +166,8 @@
 
                     <section>
                         <h2>Pourquoi choisir GIT ?</h2>
+
+                        <img src="img/section1/git_siffle_svn.jpg" class="imgNoDecorate"/>
                     </section>
 
                     <section>
@@ -258,11 +260,11 @@
 
                         <ul>
                             <li>Système de pointeur vers des commit</li>
-                            <li>Ce qui conduit à un système évolués de branching (déviation)</li>
+                            <li>Ce qui conduit à un système évolué de branching (déviation)</li>
                             <li>Merge rapides et simplifiés, accompagnés d'outils</li>
-                            <li>=> Travail en parallèle</li>
-                            <li>=> Reprise de commits d'une autre branche</li>
-                            <li>=> etc.</li>
+                            <li>Travail en parallèle</li>
+                            <li>Reprise de commit d'une autre branche</li>
+                            <li>etc.</li>
                         </ul>
 
                         <aside class="notes">
@@ -554,7 +556,7 @@ git log
 							git init
 						</code></pre>
 						<ul>
-							<li>Permet d'initialiser un repository vierge.</li>
+							<li>Permet d'initialiser un repository vierge</li>
                             <li>Crée un dossier <b>.git</b></li>
                             <li>Initialise une branche nommée <b>master</b></li>
                             <li>Initialise une référence <b>HEAD</b></li>
@@ -585,8 +587,7 @@ git log
 					<section>
 						<h3>Les options intéressantes</h3>
 						<ul>
-							<li>Options :</li>
-                            <li>
+							<li>Options :
                                 <ul>
                                     <li><b>--bare</b> : Création d'un repository sans arbre de travail.</li>
                                     <li><b>--shared</b> : Partager son repository (user linux)</li>
@@ -628,7 +629,7 @@ git log
                             <li>Permet de voir l'état du working tree</li>
                             <li>Identifie les éléments
                                 <ul>
-                                    <li>Prêt à être commit (staged)</li>
+                                    <li>Prêts à être commit (staged)</li>
                                     <li>Suivis mais non staged (tracked)</li>
                                     <li>Non suivis (untracked)</li>
                                 </ul>
@@ -655,16 +656,15 @@ git log
                     <section>
                         <h3>Les options intéressantes</h3>
                         <ul>
-                            <li>Options :</li>
-                            <li>
+                            <li>Options :
                                 <ul>
                                     <li><b>--short | -s</b> : affiche le statut en short-format</li>
                                     <li><b>--branch | -b</b> : avec <b>short</b> affiche les infos de branch</li>
-                                    <li><b>--untracked-files= | -u</b> : paramètre l'affiche des untracked
+                                    <li><b>--untracked-files= | -u</b> : paramètre l'affichage des untracked
                                         <ul>
-                                            <li><b>--untracked-files=no | -uno</b> : N'affiche rien</li>
-                                            <li><b>--untracked-files=normal | -unormal</b> : Affichage normal</li>
-                                            <li><b>--untracked-files=all | -uall</b> : Affichage verbeux</li>
+                                            <li><b>--untracked-files=no | -uno</b> : n'affiche rien</li>
+                                            <li><b>--untracked-files=normal | -unormal</b> : affichage normal</li>
+                                            <li><b>--untracked-files=all | -uall</b> : affichage verbeux</li>
                                         </ul>
                                     </li>
                                     <li><b>--ignored</b> : voir les fichiers ignorés</li>
@@ -712,8 +712,7 @@ git config --global status.showUntrackedFiles all
                     <section>
                         <h3>Mettre à jour l'index</h3>
 
-                        <!-- TODO : insérer schéma de l'utilisation du staging (avec ajout du add). -->
-                        <img src="img/section2/local_stage_0.svg" class="imgNoDecorate"/>
+                        <img src="img/section3/cycle_add.svg" class="imgNoDecorate"/>
                     </section>
 
                     <section>
@@ -824,8 +823,7 @@ git config --global status.showUntrackedFiles all
                     <section>
                         <h3>Stocker mon travail</h3>
 
-                        <!-- TODO : insérer schéma de l'utilisation du staging (avec ajout du add). -->
-                        <img src="img/section2/local_stage_0.svg" class="imgNoDecorate"/>
+                        <img src="img/section3/cycle_commit.svg" class="imgNoDecorate"/>
                     </section>
 
                     <section>
@@ -950,7 +948,7 @@ git config --global commit.status true
                     <section>
                         <h3>Quelques exemples</h3>
                         <ul>
-                            <li>Récupérer le maximum d'information<br />
+                            <li>Récupérer le maximum d'informations<br />
                                 <pre><code class="Bash" data-trim>
 		        					git log --decorate=full --format=fuller
         						</code></pre>
@@ -1007,7 +1005,7 @@ git log --graph --abbrev-commit --decorate --date=relative --all
                     </section>
 
                     <section>
-                        <h3>J'arriverais jamais à retenir cette longue commande !</h3>
+                        <h3>J'arriverai jamais à retenir cette longue commande !</h3>
                         <img src="img/section3/memory.gif" class="imgNoDecorate"/>
                     </section>
 
@@ -1151,6 +1149,12 @@ pom.xml.versionsBackup
                 <!-- *************************************************************** -->
 
                 <section>
+                    <section>
+                        <h3>Voir les différences entre deux états</h3>
+
+                        <img src="img/section4/cycle_diff.svg" class="imgNoDecorate"/>
+                    </section>
+
                     <section>
                         <h3>Voir les différences entre deux états</h3>
 
@@ -1325,8 +1329,7 @@ git config --global diff.algorithm patience
                     <section>
                         <h3>Annuler mes modification en cours</h3>
 
-                        <!-- TODO : insérer schéma de l'utilisation du staging (avec ajout du checkout). -->
-                        <img src="img/section2/local_stage_0.svg" class="imgNoDecorate"/>
+                        <img src="img/section4/cycle_checkout.svg" class="imgNoDecorate"/>
                     </section>
 
                     <section>
@@ -1413,8 +1416,7 @@ git config --global diff.algorithm patience
                     <section>
                         <h3>Annuler le dernier commit ou l'index</h3>
 
-                        <!-- TODO : insérer schéma de l'utilisation du staging (avec ajout du reset). -->
-                        <img src="img/section2/local_stage_0.svg" class="imgNoDecorate"/>
+                        <img src="img/section4/cycle_reset.svg" class="imgNoDecorate"/>
                     </section>
 
                     <section>
@@ -1517,8 +1519,7 @@ git reset HEAD
                     <section>
                         <h3>Annuler un commit plus ancien</h3>
 
-                        <!-- TODO : insérer schéma de l'utilisation du staging (avec ajout du revert). -->
-                        <img src="img/section2/local_stage_0.svg" class="imgNoDecorate"/>
+                        <img src="img/section4/cycle_revert.svg" class="imgNoDecorate"/>
                     </section>
 
                     <section>
@@ -1648,7 +1649,7 @@ git reset HEAD
                         <h3>Robin met en pratique</h3>
 
                         <ul>
-                            <li>Modifier index.html l'add à l'index (sans le commit)</li>
+                            <li>Modifier index.html, l'add à l'index (sans le commit)</li>
                             <li>Modifier index.html puis revenir à l'état de l'index</li>
                             <li>Créer un fichier test.txt à la racine et faire que git l'ignore</li>
                             <li>Réaliser le commit du gitignore sans commit index.html</li>
@@ -1665,7 +1666,7 @@ git reset HEAD
                         <img src="img/section4/master.gif" class="imgNoDecorate"/>
 
                         <ul>
-                            <li>Mais il a besoins de faire des évolutions en parallèles ...</li>
+                            <li>Mais il a besoin de faire des évolutions en parallèle ...</li>
                             <li>Mais aussi de faire des poc de librairies / fonctions ...</li>
                             <li>... tout ça sans casser son code principal</li>
                         </ul>
@@ -1690,7 +1691,7 @@ git reset HEAD
                         <h3>Travailler avec des branches</h3>
 
                         <ul>
-                            <li>C'est l'un des grands intérêt de GIT</li>
+                            <li>C'est l'un des grands intérêts de GIT</li>
                             <li>Travailler en parallèle, switcher rapidement d'évolutions</li>
                             <li>Une branche n'est qu'un pointeur sur un commit</li>
                             <li>On travaille depuis le début sur une branche : master</li>
@@ -2140,7 +2141,7 @@ git reset HEAD
                 </section>
 
                 <!-- *************************************************************** -->
-                <!-- 5.5 RESOUDRE UN CONFLIT -->
+                <!-- 5.5 RÉSOUDRE UN CONFLIT -->
                 <!-- *************************************************************** -->
 
                 <section>
@@ -2152,7 +2153,7 @@ git reset HEAD
                             <li>Plusieurs opérations peuvent produire un conflit</li>
                             <li>La résolution se fait en plusieurs étapes
                                 <ol>
-                                    <li>Identifier les fichiers en confit avec git status</li>
+                                    <li>Identifier les fichiers en conflit avec git status</li>
                                     <li>Editer les fichiers et résoudre les conflits</li>
                                     <li>Réaliser un git add ou git rm sur les fichiers en conflits</li>
                                     <li>Réaliser un git commit pour valider le merge</li>
@@ -2179,7 +2180,7 @@ git reset HEAD
                             <li>Dans un fichier, il faut se repérer aux marqueurs de conflits
                             <ul>
                                 <li><b><<<<<<< HEAD</b> : ce qui suit est la branche locale</li>
-                                <li><b>=======</b> : ce qui suit est a branche en cours de merge</li>
+                                <li><b>=======</b> : ce qui suit est la branche en cours de merge</li>
                                 <li><b>>>>>>> branchName</b> : marque la fin du conflit</li>
                             </ul></li>
                         </ul>
@@ -2367,7 +2368,7 @@ git reset HEAD
                     <ul>
                         <li>git diff branch1 branch2</li>
                         <li>git log branch1</li>
-                        <li>Sur un commit de mege :
+                        <li>Sur un commit de merge :
                             <ul>
                                 <li>git reset HEAD</li>
                                 <li>git revert HEAD -m numParent</li>
@@ -2404,7 +2405,7 @@ git reset HEAD
                         <img src="img/section5/tree_chuck.gif" class="imgNoDecorate"/>
 
                         <ul>
-                            <li>Mais il a  maintenant trop de sujet pour travailler seul ...</li>
+                            <li>Mais il a  maintenant trop de sujets pour travailler seul ...</li>
                             <li>Et il souhaite ouvrir son magnifique code au monde entier</li>
                         </ul>
                     </section>
@@ -2455,8 +2456,7 @@ git reset HEAD
                     <section>
                         <h3>Cloner un repository distant</h3>
 
-                        <!-- TODO : insérer schéma de l'utilisation du staging (avec ajout du reset). -->
-                        <img src="img/section2/local_stage_0.svg" class="imgNoDecorate"/>
+                        <img src="img/section6/cycle_clone.svg" class="imgNoDecorate"/>
 
                         <aside class="notes">
                             <ul>
@@ -2476,8 +2476,8 @@ git reset HEAD
                         <ul>
                             <li>Duplique un repository distant en local</li>
                             <li>Place automatiquement le working tree sur la branche par défaut (généralement master)</li>
-                            <li>Récupère tous l'états du repo (git fetch et pull sont automatiquement réalisés)</li>
-                            <li>Les branches locales sont automatiquement liés aux remotes</li>
+                            <li>Récupère tout l'état du repo (git fetch et pull sont automatiquement réalisés)</li>
+                            <li>Les branches locales sont automatiquement liées aux remotes</li>
                         </ul>
 
                         <aside class="notes">
@@ -2576,8 +2576,7 @@ git remote set-url origin https://github.com/user/repo2.git
                     <section>
                         <h3>Récupérer l'état du repo distant</h3>
 
-                        <!-- TODO : insérer schéma de l'utilisation du staging (avec ajout du reset). -->
-                        <img src="img/section2/local_stage_0.svg" class="imgNoDecorate"/>
+                        <img src="img/section6/cycle_fetch.svg" class="imgNoDecorate"/>
 
                         <aside class="notes">
                             <ul>
@@ -2653,8 +2652,7 @@ git remote set-url origin https://github.com/user/repo2.git
                     <section>
                         <h3>Mettre à jour son local</h3>
 
-                        <!-- TODO : insérer schéma de l'utilisation du staging (avec ajout du reset). -->
-                        <img src="img/section2/local_stage_0.svg" class="imgNoDecorate"/>
+                        <img src="img/section6/cycle_pull.svg" class="imgNoDecorate"/>
 
                         <aside class="notes">
                             <ul>
@@ -2672,10 +2670,10 @@ git remote set-url origin https://github.com/user/repo2.git
 						</code></pre>
 
                         <ul>
-                            <li>Met à jour sa branche locale selon la branche distantes</li>
+                            <li>Met à jour sa branche locale selon la branche distante</li>
                             <li>C'est une combinaison d'un git fetch et d'un git merge</li>
                             <li>Par défaut, le merge est fast forward</li>
-                            <li>Si l'utpstream est configuré, pas besoin de préciser remote et branch</li>
+                            <li>Si l'upstream est configuré, pas besoin de préciser remote et branch</li>
                             <li>Ne fonctionnera pas si on a du travail en cours</li>
                         </ul>
 
@@ -2741,8 +2739,7 @@ git remote set-url origin https://github.com/user/repo2.git
                     <section>
                         <h3>Mettre à jour le repo distant</h3>
 
-                        <!-- TODO : insérer schéma de l'utilisation du staging (avec ajout du reset). -->
-                        <img src="img/section2/local_stage_0.svg" class="imgNoDecorate"/>
+                        <img src="img/section6/cycle_push.svg" class="imgNoDecorate"/>
 
                         <aside class="notes">
                         </aside>
@@ -2757,7 +2754,7 @@ git remote set-url origin https://github.com/user/repo2.git
 
                         <ul>
                             <li>Met à jour le repo distant avec son local</li>
-                            <li>Si l'utpstream est configuré, pas besoin de préciser remote et branch</li>
+                            <li>Si l'upstream est configuré, pas besoin de préciser remote et branch</li>
                             <li>Ne fonctionnera pas si le remote a été mis à jour entre temps</li>
                         </ul>
 
@@ -2871,11 +2868,10 @@ git push origin master
 
                     <ul>
                         <li>N'appartient pas à git (surcouche)</li>
-                        <li>Commit bloqué dans pour approbation avant merge</li>
+                        <li>Commit bloqué pour approbation avant merge</li>
                     </ul>
 
                     <img src="img/section6/pull_request.png" class="imgNoDecorate"/>
-
                 </section>
 
                 <!-- *************************************************************** -->
@@ -2888,14 +2884,14 @@ git push origin master
                         <h2>Robin met en pratique</h2>
 
                         <ul>
-                            <li>Cloner le projet suivant (on l'appelera repo1)</li>
-                            <li>Cloner le repo que vous venez de cloner (on l'appelera repo2)</li>
-                            <li>Dans repo1, branch master, modifier et commit index.html ligne 2</li>
+                            <li>Cloner le projet suivant (on l'appelera repo1) : <a href="https://github.com/reivon/formationGitRemote.git">https://github.com/reivon/formationGitRemote.git</a> </li>
+                            <li>Cloner le repo que vous venez de cloner (repo2)</li>
+                            <li>Dans repo1, branch master, modifier et commit index.html ligne 3</li>
                             <li>Dans repo2
                                 <ul>
                                     <li>Merge feat2 dans feat1 sans avoir de commit de merge et push feat1</li>
                                     <li>Supprimer la branche feat2 (local et remote)</li>
-                                    <li>Modifier et commit le fichier index.html ligne 2</li>
+                                    <li>Sur master, modifier et commit le fichier index.html ligne 3</li>
                                     <li>Pusher master sans perdre aucun commit</li>
                                 </ul>
                             </li>
@@ -2949,7 +2945,7 @@ git push origin master
                         <ul>
                             <li>Une entreprise = un git flow ...</li>
                             <li>... mais il y a des règles communes à toute</li>
-                            <li>Défini des normes / process :
+                            <li>Définit des normes / process :
                                 <ul>
                                     <li>Message de commit</li>
                                     <li>Merge ou rebase ? (ff ou no ff)</li>
@@ -2985,7 +2981,7 @@ git push origin master
                         <ul>
                             <li>Commencer par une courte description d'au plus 50 caractères</li>
                             <li>Laisser la deuxième ligne vide</li>
-                            <li>Réaliser une description détaillé dans les lignes suivantes</li>
+                            <li>Réaliser une description détaillée dans les lignes suivantes</li>
                             <li>Le # défini un commentaire et est ignoré</li>
                         </ul>
 
@@ -3006,7 +3002,7 @@ git push origin master
                             </li>
                             <li><b>Type</b> : build / ci / docs / feat / fix / perf / refactor / style / test</li>
                             <li><b>Scope</b> : A définir par l'entreprise : customer / payment / ...</li>
-                            <li><b>Subject</b> : Courte mais évocatrice</li>
+                            <li><b>Subject</b> : Court mais évocateur</li>
                             <li>Utiliser l'impératif au possible</li>
                             <li>Si tout est respecté, permet de générer des <b>changelogs !</b></li>
                         </ul>
@@ -3017,7 +3013,6 @@ git push origin master
                             </ul>
                         </aside>
                     </section>
-
 
                     <section>
                         <h3>Le principe git flow</h3>
@@ -3324,7 +3319,7 @@ $ git stash pop
                         <ul>
                             <li>Peut appliquer plusieurs commit à la fois</li>
                             <li>Le head doit être propre (aucune modification en cours)</li>
-                            <li>Des merges peuvent avoir lieu, ils sont résolu de manière classique</li>
+                            <li>Des merges peuvent avoir lieu, ils sont résolus de manière classique</li>
                             <li>Utile pour des branches "patch" ou pour débloquer un développement</li>
                             <li>Attention cependant à ne pas le généraliser</li>
                         </ul>
@@ -3481,7 +3476,7 @@ $ git add LISEZMOI
                         <h3>La perte d'historique</h3>
                         <ul>
                             <li>Git permet de ne pas perdre l'historique lors d'un move simple</li>
-                            <li>Si dans le même commit, on réalise un move et beaucoup de modification sur le fichier, git considère que ce sont deux fichiers différents</li>
+                            <li>Si dans le même commit, on réalise un move et beaucoup de modifications sur le fichier, git considère que ce sont deux fichiers différents</li>
                             <li>Pour avoir le full history d'un fichier qui a été déplacé, il est parfois nécessaire de préciser l'option --follow</li>
                         </ul>
 
