@@ -202,7 +202,8 @@
                                     <li>Libre</li>
                                 </ul>
                             </li>
-                            <li class="fragment">Dernière version : <b>2.15.1</b> (28/11/2017)</li>
+                            <li class="fragment">Dernière version : <b>2.17.1</b> (02/04/2018)</li>
+                            <li class="fragment">Version de la formation : <b>2.15.1</b> (28/11/2017)</li>
                         </ul>
                     </section>
 
@@ -387,28 +388,94 @@
                                 <pre><code class="Bash" data-trim>http://gitforwindows.org/</code></pre>
                             </li>
                         </ul>
+                    </section>
+
+                    <section>
+                        <h3>Installation</h3>
+                        <ul>
+                            <li>Systèmes Linux
+                                <ul>
+                                    <li>Conseillé d'installer depuis les sources (paquet distrib trop vieux)</li>
+                                    <li>Il faut installer gitk soit même :
+                                        <pre><code class="Bash" data-trim>sudo apt-get install gitk</code></pre>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>Systèmes Windows
+                                <ul>
+                                    <li>Emulation avec git bash / intégrer au système</li>
+                                    <li>Gitk fournit de base</li>
+                                </ul>
+                            </li>
+                        </ul>
 
                         <aside class="notes">
                             <ul>
-                                <li>Linux
-                                    <ul>
-                                        <li>Conseillé d'installer depuis les sources (paquet distrib trop vieux)</li>
-                                        <li>Il faut installer gitk soit même : apt-get install gitk</li>
-                                    </ul>
-                                </li>
-                                <li>Windows
-                                    <ul>
-                                        <li>Emulation avec git bash / intégrer au système (très bien fait)</li>
-                                        <li>Bien coché l'intégration de bash.</li>
-                                    </ul>
-                                </li>
                                 <li>Référence : https://git-scm.com/book/fr/v1/D%C3%A9marrage-rapide-Installation-de-Git</li>
                             </ul>
                         </aside>
                     </section>
 
                     <section>
-                        <h3>Installation</h3>
+                        <h3>Installation sous windows</h3>
+                        <img src="img/section2/step_1.png" class="imgNoDecorate"/>
+                    </section>
+
+                    <section>
+                        <h3>Installation sous windows</h3>
+                        <img src="img/section2/step_2.png" class="imgNoDecorate"/>
+                    </section>
+
+                    <section>
+                        <h3>Installation sous windows</h3>
+                        <img src="img/section2/step_3.png" class="imgNoDecorate"/>
+                    </section>
+
+                    <section>
+                        <h3>Installation sous windows</h3>
+                        <img src="img/section2/step_4.png" class="imgNoDecorate"/>
+                    </section>
+
+                    <section>
+                        <h3>Installation sous windows</h3>
+                        <img src="img/section2/step_5.png" class="imgNoDecorate"/>
+                    </section>
+
+                    <section>
+                        <h3>Installation sous windows</h3>
+                        <img src="img/section2/step_6.png" class="imgNoDecorate"/>
+                    </section>
+
+                    <section>
+                        <h3>Installation sous windows</h3>
+                        <img src="img/section2/step_7.png" class="imgNoDecorate"/>
+                    </section>
+
+                    <section>
+                        <h3>Installation sous windows</h3>
+                        <img src="img/section2/step_8.png" class="imgNoDecorate"/>
+                    </section>
+
+                    <section>
+                        <h3>Ce que n'installe pas (et n'est pas) GIT</h3>
+
+                        <ul>
+                            <li>Pas d'exposition http des repository</li>
+                            <li>Pas de système de contrôles (commit / etc)</li>
+                            <li>Pas de gestion d'authentification</li>
+                            <li>Pas de gestion d'autorisation</li>
+                            <li>Pas d'interface d'administration</li>
+                        </ul>
+
+                        <aside class="notes">
+                            <ul>
+                                <li>Il existe plein de modules pour gérer ça autour</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h3>Vérification de l'installation</h3>
                         <ul>
                             <li>Linux : dans un terminal</li>
                             <li>Windows : dans git bash</li>
@@ -503,6 +570,63 @@ git config --global user.email robin.hood@gmail.com
                     </section>
 
                     <section>
+                        <h3>Exemple de git config</h3>
+                        <pre><code class="Bash" data-trim>
+[user]
+name = Tony MEMBOT
+email = t.membot@tatayoyo.com
+
+[color]
+# Enable colors in color-supporting terminals
+ui = auto
+
+[url "https://github.com/"]
+insteadOf = git@github.com:
+insteadOf = git://github.com/
+insteadOf = git+https://github.com/
+insteadOf = git+ssh://git@github.com:
+insteadOf = ssh://git@github.com:
+insteadOf = ssh+https://git@github.com/
+
+[pull]
+# This is GREAT… when you know what you're doing and are careful
+# WARNING! This option, which does away with the one gotcha of
+# auto-rebasing on pulls, is only available from 1.8.5 onwards.
+rebase = preserve
+
+[difftool "sourcetree"]
+cmd = 'D:/dev/bekom/apps/Perforce/p4merge.exe' -C utf8 \"$LOCAL\" \"$REMOTE\"
+
+[mergetool "sourcetree"]
+cmd = 'D:/dev/bekom/apps/Perforce/p4merge.exe' -C utf8 \"$BASE\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\"
+trustExitCode = true
+
+[status]
+# Recursively traverse untracked directories to display all contents
+showUntrackedFiles = all
+
+[tag]
+# Sort tags as version numbers whenever applicable, so 1.10.2 is AFTER 1.2.0.
+sort = version:refname
+
+[alias]
+logall = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white) - %an%C(reset) %C(bold yellow)%d%C(reset)' --all
+c = checkout
+oups = commit --amend
+
+[http]
+proxy = http://proxy.ici.net:1234
+
+[https]
+proxy = http://proxy.ici.net:1234
+
+# permet de supprimer les branches remotes obsolètes lorsqu'un fetch est réalisé.
+[remote "origin"]
+prune = true
+                        </code></pre>
+                    </section>
+
+                    <section>
                         <h3>Get Started</h3>
                         <pre><code class="Bash" data-trim>
 git init
@@ -582,6 +706,12 @@ git log
                                 </ul>
                             </li>
                         </ul>
+
+                        <aside class="notes">
+                            <ul>
+                                <li>https://blog.safia.rocks/post/171558325240/whats-inside-the-git-directory</li>
+                            </ul>
+                        </aside>
                     </section>
 
 					<section>
@@ -853,7 +983,7 @@ git config --global status.showUntrackedFiles all
                             <ul>
                                 <li><b>--all | -a</b> : Réalise un add avant de faire le commit</li>
                                 <li><b>--patch | -p</b> : Pour réaliser un commit partiel</li>
-                                <li><b>--dry-run | -n</b> : Test, sans appliquer la commande</li>
+                                <li><b>--dry-run</b> : Test, sans appliquer la commande</li>
                                 <li><b>--message "message" | -m "message"</b> : Appliquer une description</li>
                                 <li><b>--amend</b> : met à jour le précédent commit plutôt que d'en recréer un</li>
                                 <li>Il est possible de spécifier un dossier/fichier pour ne commit que lui</li>
@@ -980,13 +1110,6 @@ git config --global log.date relative
                             <li>Format par défaut : médium</li>
                             <li>Date par défaut : Sat May 8 19:35:34 2010 -0500</li>
                         </ul>
-
-                        <aside class="notes">
-                            <ul>
-                                <li>template : défini un format hint, rappel des pratiques</li>
-                                <li>commit.status : par défaut true, affiche le status dans le commit en commentaire</li>
-                            </ul>
-                        </aside>
                     </section>
 
                     <section>
@@ -1045,7 +1168,7 @@ git config --global alias.addjs "add \*.js"
                             <li>Créer un fichier index.css & index.js. Modifier index.html sur 2 lignes différentes</li>
                             <li>Gérer et vérifier l'index pour ne commit que index.js</li>
                             <li>Gérer et vérifier l'index pour ne commit que la deuxième modification d'index.html</li>
-                            <li>Commit tous les fichiers</li>
+                            <li>Commit également index.css & le reste d'index.html</li>
                             <li>Supprimer physiquement index.css et réaliser le commit</li>
                             <li>Vérifier via la commande log les commits réalisés</li>
                         </ul>
@@ -2392,7 +2515,7 @@ git reset HEAD
                             <li>Commit sur feat1 en modifiant index.html</li>
                             <li>Commit sur master en modifiant index.html au même endroit</li>
                             <li>Merger feat1 sur master</li>
-                            <li>Checkout sur commit et y réaliser un nouveau commit</li>
+                            <li>Checkout sur un commit sans référence et y réaliser un nouveau commit</li>
                             <li>En regardant les logs, revenir sur master</li>
                             <li>Sur feat3, réaliser trois commit nommé "un" / "deux" / "trois" puis en changer l'ordre</li>
                             <li>Rebase feat3 sur master</li>
@@ -2475,9 +2598,9 @@ git reset HEAD
 
                         <ul>
                             <li>Duplique un repository distant en local</li>
-                            <li>Place automatiquement le working tree sur la branche par défaut (généralement master)</li>
                             <li>Récupère tout l'état du repo (git fetch et pull sont automatiquement réalisés)</li>
-                            <li>Les branches locales sont automatiquement liées aux remotes</li>
+                            <li>Place automatiquement le working tree sur la branche du remote (généralement master)</li>
+                            <li>La branche locale est automatiquement liée à sa remote</li>
                         </ul>
 
                         <aside class="notes">
@@ -2485,6 +2608,29 @@ git reset HEAD
                                 <li>https://git-scm.com/docs/git-clone</li>
                             </ul>
                         </aside>
+                    </section>
+
+                    <section>
+                        <h3>Cloner un repository distant</h3>
+
+                        <img src="img/section6/Git_clone.svg" class="imgNoDecorate"/>
+                    </section>
+
+                    <section>
+                        <h3>Et si je commit ?</h3>
+
+                        <img src="img/section6/Git_clone_after_commit.svg" class="imgNoDecorate"/>
+                    </section>
+
+                    <section>
+                        <h3>Cloner un repo cloné ?</h3>
+                        <ul>
+                            <li>Clone ne crée que la branche par défaut du repo (celle sur laquelle le repo distant est positionné)</li>
+                            <li>
+                                Si on clone un repo cloné, on ne récupère que ses infos à lui sans les infos remote<br />
+                                => On ne récupère que les branches existantes (pas les remote du remote).
+                            </li>
+                        </ul>
                     </section>
 
                     <section>
@@ -2884,7 +3030,7 @@ git push origin master
                         <h2>Robin met en pratique</h2>
 
                         <ul>
-                            <li>Cloner le projet suivant (on l'appelera repo1) : <a href="https://github.com/reivon/formationGitRemote.git">https://github.com/reivon/formationGitRemote.git</a> </li>
+                            <li>Cloner le projet suivant (repo1) et checkout feat1 puis feat2 : <a href="https://github.com/reivon/formationGitRemote.git">https://github.com/reivon/formationGitRemote.git</a></li>
                             <li>Cloner le repo que vous venez de cloner (repo2)</li>
                             <li>Dans repo1, branch master, modifier et commit index.html ligne 3</li>
                             <li>Dans repo2
@@ -3043,15 +3189,25 @@ git flow hotfix start/finish [nom]
                     </section>
 
                     <section>
-                        <h2>De nombreux autres flow !</h2>
+                        <h3>De nombreux autres flow !</h3>
 
                         <img src="img/section7/onlymaster.jpg" class="imgNoDecorate" />
                     </section>
 
                     <section>
-                        <h2>De nombreux autres flow !</h2>
+                        <h3>De nombreux autres flow !</h3>
 
                         <img src="img/section7/Flow_other.svg" class="imgNoDecorate" />
+                    </section>
+
+                    <section>
+                        <h3>De nombreux autres flow !</h3>
+
+                        <ul>
+                            <li><a href="https://guides.github.com/introduction/flow/index.html">Git Hub</a></li>
+                            <li><a href="https://docs.gitlab.com/ee/workflow/gitlab_flow.html">Git Lab</a></li>
+                            <li><a href="https://www.atlassian.com/blog/archives/simple-git-workflow-simple">Atlassian</a></li>
+                        </ul>
                     </section>
 
                     <section>
@@ -3487,6 +3643,98 @@ $ git add LISEZMOI
 
                 </section>
 
+
+                <!-- *************************************************************** -->
+                <!-- 9.5 GIT BISECT -->
+                <!-- *************************************************************** -->
+
+                <section>
+                    <section>
+                        <h3>Rechercher le commit coupable</h3>
+
+                        <pre><code class="Bash" data-trim>
+                            git bisect [cmd]
+                        </code></pre>
+
+                        <ul>
+                            <li>Permet de parcourir l'arbre GIT pour trouver un commit.</li>
+                            <li>Fonctionne sur le principe de dichotomie</li>
+                            <li>Indispensable sur un arbre git de type "lierre"</li>
+                            <li>La recherche démarre lorsqu'au moins 1 bon & 1 mauvais commit ont été notifiés</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3>Les options intéressantes</h3>
+
+                        <ul>
+                            <li>Options :</li>
+                            <ul>
+                                <li><b>start</b> : démarre le </li>
+                                <li><b>good [commit]</b> : Permet de setter le plus vieux commit ou de dire que le commit courant est correct</li>
+                                <li><b>bad [commit]</b> : Permet de setter le commit d'erreur ou de dire que le commit courant est incorrect</li>
+                                <li><b>reset</b> : Pour stopper le bisect courant et revenir à l'état initial</li>
+                                <li><b>run [script]</b> : Permet d'exécuter un script permettant de donner l'état du commit. Doit retourner 0 pour un bon commit. Doit retourner 1 pour un mauvais commit.</li>
+                            </ul>
+                        </ul>
+
+                        <aside class="notes">
+                            <ul>
+                                <li></li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h3>Un petit exemple</h3>
+
+                        <pre><code class="Bash" data-trim>
+mkdir git_bisect_tests
+cd git_bisect_tests
+git init
+
+echo Fais > test.txt
+git add -A && git commit -m "Adding the word 'Fais'"
+echo dodo >> test.txt
+git add -A && git commit -m "Adding the word 'dodo'"
+echo colas >> test.txt
+git add -A && git commit -m "Adding the word 'colas'"
+echo mon >> test.txt
+git add -A && git commit -m "Adding the word 'mon'"
+echo petit >> test.txt
+git add -A && git commit -m "Adding the word 'petit'"
+echo frère >> test.txt
+git add -A && git commit -m "Adding the word 'frère'"
+sed -i -e 's/frère/monstre/g' test.txt
+git add -A && git commit -m "Changing the word 'frère' to 'monstre'"
+echo fais >> test.txt
+git add -A && git commit -m "Adding the word 'fais'"
+echo dodo >> test.txt
+git add -A && git commit -m "Adding the word 'dodo'"
+echo "stp j'en peux plus" >> test.txt
+git add -A && git commit -m "Adding the true end of song"
+                        </code></pre>
+
+                        <aside class="notes">
+                            cat test.txt => il y a un bug, on devrait avoir frère et pas monstre !
+
+                            git log pour retrouver les numéros de commit
+                            git bisect start
+                            git bisect good [initial commit]
+                            git bisect bad [last commit]
+
+                            cat test.txt pour vérifier si c'est bon ou pas :
+                            git bisect bad
+                            git bisect good
+
+                            quand tout est trouvé : git bisect reset
+
+                            git bisect start [bad commit] [good one]
+                        </aside>
+                    </section>
+
+                </section>
+
                 <!-- *************************************************************** -->
                 <!-- 10.. ALLER BEAUCOUP PLUS LOIN-->
                 <!-- *************************************************************** -->
@@ -3496,7 +3744,6 @@ $ git add LISEZMOI
 
                     <ul>
                         <li>git reflog</li>
-						<li>git bisect</li>
 						<li>git archive</li>
                         <li>git remote</li>
                         <li>git rm</li>
@@ -3505,7 +3752,6 @@ $ git add LISEZMOI
                         <li>gitk</li>
                         <li>...</li>
                     </ul>
-
 				</section>
 
                 <section>
@@ -3517,9 +3763,11 @@ $ git add LISEZMOI
                         <li><a href="https://github.com/git-game/git-game">Git game : Challenge de résolution git</a></li>
                         <li><a href="https://learngitbranching.js.org/">Learn branching : S'entraîner avec les branches git</a></li>
                         <li><a href="http://ohshitgit.com/">Les situations courantes et leurs solutions</a></li>
+                        <li><a href="https://mghignet.github.io/git-dammit-talk/#1">Une autre présentation de problèmes / solutions</a></li>
                         <li><a href="http://www.experience-developpement.fr/git-a-la-recherche-du-commit-perdu/">A la recherche des commits perdus</a></li>
                         <li><a href="https://delicious-insights.com/fr/articles/30-options-git-qui-gagnent-a-etre-connues/">30 astuces GIT</a></li>
-                        <li><a href="https://www.git-tower.com/learn/git/faq">Et quelques autres astuces ...</a></li>
+                        <li><a href="https://www.git-tower.com/learn/git/faq">Quelques autres astuces ...</a></li>
+                        <li><a href="https://www.git-tower.com/blog/git-cheat-sheet/">Et une cheat sheet !</a></li>
                     </ul>
                 </section>
 
@@ -3531,8 +3779,9 @@ $ git add LISEZMOI
                     <h3>Maintenant vous maîtriser GIT<br /> comme Robin</h3>
 
                     <img src="img/fin_formation.gif" class="imgNoDecorate"/>
+                    <br />
+                    <a href="https://gitexercises.fracz.com/">https://gitexercises.fracz.com/</a>
                 </section>
-
 
 			</div> <!-- End div slide -->
 
