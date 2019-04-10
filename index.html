@@ -680,13 +680,13 @@ git log
                     <section>
                         <h3>Robin met en pratique</h3>
 
-                        <ul>
+                        <ol>
                             <li>Installer git sur le poste</li>
                             <li>Vérifier l'installation</li>
                             <li>Configurer git au niveau user</li>
                             <li>Initialiser un repo vide</li>
                             <li>Créer un fichier vide dans ce repo et le commit</li>
-                        </ul>
+                        </ol>
                     </section>
 
                     <section>
@@ -1507,7 +1507,7 @@ pom.xml.versionsBackup
 
                         <p>
                             <pre><code class="Bash" data-trim>
-                                git diff [target] [source]
+                                git diff [source] [target]
                             </code></pre>
                         </p>
                     </section>
@@ -1882,7 +1882,7 @@ git reset HEAD
                     <section>
                         <h3>Robin met en pratique</h3>
 
-                        <ul>
+                        <ol>
                             <li>Modifier index.html, l'add à l'index (sans le commit)</li>
                             <li>Modifier index.html puis revenir à l'état de l'index</li>
                             <li>Créer un fichier test.txt à la racine et faire que git l'ignore</li>
@@ -1891,7 +1891,7 @@ git reset HEAD
                             <li>Vérifier le diff entre le commit HEAD~1 et le HEAD</li>
                             <li>Revert le commit du git ignore</li>
                             <li>Reset le revert réalisé précédemment</li>
-                        </ul>
+                        </ol>
                     </section>
 
                     <section>
@@ -2017,6 +2017,7 @@ git reset HEAD
                                     <li><b>--delete | -d</b> : Supprime la branche si elle est merged</li>
                                     <li><b>--delete --force | -D</b> : Supprime la branche</li>
                                     <li><b>--move | -m</b> : renomme une branche</li>
+                                    <li><b>--contain [commit]</b> : liste les branches contenant le commit</li>
                                 </ul>
                             </li>
                         </ul>
@@ -2051,12 +2052,28 @@ git reset HEAD
                     <section>
                         <h3>Quelques exemples</h3>
                         <ul>
+                            <li>Savoir quelles branches contient mon commit<br />
+                                <pre><code class="Bash" data-trim>
+		        					git branch --contain 300a98f
+        						</code></pre>
+                            </li>
+                        </ul>
+
+                        <img src="img/section5/git_branch_contain.png" class="imgNoDecorate"/>
+                    </section>
+
+                    <section>
+                        <h3>Quelques exemples</h3>
+                        <ul>
                             <li>Renommer une branche<br />
                                 <pre><code class="Bash" data-trim>
-		        					git branch feat1 feature1
+		        					git branch -m feat1 feature1
         						</code></pre>
                             </li>
                             <li>Supprimer une branche<br />
+                                <pre><code class="Bash" data-trim>
+                                    git branch -d feature1
+        						</code></pre>
                                 <pre><code class="Bash" data-trim>
                                     git branch -D feature1
         						</code></pre>
@@ -2103,6 +2120,7 @@ git reset HEAD
                         <ul>
                             <li>Permet de placer une référence statique sur un <b>commit</b></li>
                             <li>Si on cible une branche, c'est le commit HEAD de la branche qui est tag</li>
+                            <li>Le nom du tag doit être unique</li>
                         </ul>
 
                         <aside class="notes">
@@ -2124,7 +2142,7 @@ git reset HEAD
                             </li>
                             <li>Créer un tag sur une branche<br />
                                 <pre><code class="Bash" data-trim>
-                                    git tag feat2
+                                    git tag v1.0 feat2
         						</code></pre>
                             </li>
                         </ul>
@@ -2133,7 +2151,7 @@ git reset HEAD
                     <section>
                         <h3>Voir les tags dans les logs</h3>
 
-                        <img src="img/section5/git_tag_log.png" class="imgNoDecorate"/>
+                        <img src="img/section5/git_tag_log.png" class="imgNoDecorate" alt="git_tag_log.png"/>
                     </section>
 
                     <section>
@@ -2341,7 +2359,7 @@ git reset HEAD
 
                         <ul>
                             <li>Récupère le contenu de targetBranch pour le fusionner dans la branche courante</li>
-                            <li>Tous les commits depuis le point d'origine commun au deux branches sont récupérés</li>
+                            <li>Tous les commits depuis le point d'origine commun aux deux branches sont récupérés</li>
                             <li>La commande peut entraîner des conflits</li>
                         </ul>
 
@@ -2426,7 +2444,7 @@ git reset HEAD
                                     <li>Identifier les fichiers en conflit avec git status</li>
                                     <li>Editer les fichiers et résoudre les conflits</li>
                                     <li>Réaliser un git add ou git rm sur les fichiers en conflits</li>
-                                    <li>Réaliser un git commit pour valider le merge</li>
+                                    <li>Réaliser un git merge --continue pour continuer le merge</li>
                                 </ol>
                             </li>
                             <li>A tout moment, on peut abandonner le merge<br />
@@ -2633,22 +2651,49 @@ git reset HEAD
 
                 </section>
 
+                <!-- *************************************************************** -->
+                <!-- 5.8  LES COMMANDES DÉJÀ VUES -->
+                <!-- *************************************************************** -->
+
                 <section>
-                    <h3>Les commandes déjà vues</h3>
-                    <ul>
-                        <li>git diff branch1 branch2</li>
-                        <li>git log branch1</li>
-                        <li>Sur un commit de merge :
+
+                    <section>
+                        <h3>Les commandes déjà vues</h3>
+                        <ul>
+                            <li>git diff branch1 branch2</li>
+                            <li>git log branch1</li>
+                            <li>Sur un commit de merge :
+                                <ul>
+                                    <li>git reset HEAD</li>
+                                    <li>git revert HEAD -m numParent</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3>Revert un merge</h3>
+
+                        <pre><code class="Bash" data-trim>
+git show HEAD
+git revert HEAD -m 2
+                        </code></pre>
+
+                        <img src="img/section5/git_revert_merge.png" class="imgNoDecorate"/>
+
+                        <aside class="notes">
                             <ul>
-                                <li>git reset HEAD</li>
-                                <li>git revert HEAD -m numParent</li>
+                                <li>On doit préciser dans quel état on veut revenir</li>
+                                <li>-m prend un entier à partir de 1</li>
+                                <li>Git show donne l'ordre</li>
                             </ul>
-                        </li>
-                    </ul>
+                        </aside>
+                    </section>
+
                 </section>
 
                 <!-- *************************************************************** -->
-                <!-- 5.8. EXERCICE branch / checkout / merge /  -->
+                <!-- 5.9. EXERCICE branch / checkout / merge /  -->
                 <!-- *************************************************************** -->
 
                 <section>
@@ -2659,13 +2704,13 @@ git reset HEAD
                         <ol>
                             <li>Consulter les logs entre chaque commande</li>
                             <li>Depuis master, créer les branches feat1, feat2, feat3</li>
-                            <li>Commit sur feat2 et merger avec master</li>
+                            <li>Commit sur feat2 et merger feat2 sur master</li>
                             <li>Commit sur feat1 en modifiant index.html</li>
                             <li>Commit sur master en modifiant index.html au même endroit</li>
                             <li>Merger feat1 sur master</li>
-                            <li>Sur feat3, réaliser trois commit nommé "un" / "deux" / "trois" puis en changer l'ordre</li>
+                            <li>Sur feat3, réaliser trois commit nommés "un" / "deux" / "trois" puis en changer l'ordre</li>
                             <li>Rebase feat3 sur master puis merger feat3 sur master</li>
-                            <li>Sur master, réaliser trois commit nommé "done" / "oups"</li>
+                            <li>Sur master, faire deux commit nommés "done" / "oups"</li>
                             <li>Avec rebase fusionner "oups" dans "done"</li>
                         </ol>
                     </section>
@@ -2803,7 +2848,7 @@ git reset HEAD
                         <ul>
                             <li>Cloner un repository local<br />
                                 <pre><code class="Bash" data-trim>
-                                    git clone /home/robin/projets/myProject
+                                    git clone --local /home/robin/projets/myProject
                                 </code></pre>
                             </li>
                             <li>Cloner un repository distant en https (recommandé)<br />
@@ -3177,7 +3222,7 @@ git push origin master
                     <section>
                         <h2>Robin met en pratique</h2>
 
-                        <ul>
+                        <ol>
                             <li>Cloner le projet suivant (repo1) et checkout feat1 puis feat2 : <a href="https://github.com/reivon/formationGitRemote.git">https://github.com/reivon/formationGitRemote.git</a></li>
                             <li>Cloner le repo que vous venez de cloner (repo2)</li>
                             <li>Dans repo1, branch master, modifier et commit index.html ligne 3</li>
@@ -3189,7 +3234,7 @@ git push origin master
                                     <li>Pusher master sans perdre aucun commit</li>
                                 </ul>
                             </li>
-                        </ul>
+                        </ol>
                     </section>
 
                     <section>
@@ -3312,6 +3357,35 @@ git push origin master
                                 <li>Le scope doit être un package ou un domaine fonctionnel</li>
                             </ul>
                         </aside>
+                    </section>
+
+                    <section>
+                        <h3>Commit souvent, push rarement</h3>
+
+                        <ul>
+                            <li>Sur sa branche isolée, on DOIT commit régulièrement
+                                <ul>
+                                    <li>Permet de revenir en arrière rapidement</li>
+                                    <li>Structure ses étapes de travail</li>
+                                    <li>Sauvegarde sur le serveur</li>
+                                </ul>
+                            </li>
+                            <li>Une fois la feature validée
+                                <ol>
+                                    <li>On rebase son travail pour nettoyer l'arbre</li>
+                                    <li>On merge sur la branche de destination</li>
+                                    <li>On push l'esprit tranquille !</li>
+                                </ol>
+                            </li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3>Travail rebase VS travail bâclé</h3>
+
+                        <img src="img/section7/rebase_vs_bad.png" class="imgNoDecorate" />
+
+                        <p>Un commit clair (atomique) peut être revert / cherry-pick / ...</p>
                     </section>
 
                     <section>
