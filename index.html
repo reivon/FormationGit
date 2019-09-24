@@ -209,7 +209,7 @@
                             </li>
                             <li class="fragment"><b>Versions</b> : Environs tous les trois mois
                                 <ul>
-                                    <li>Dernière version : <b>2.21.10</b> (24/02/2019)</li>
+                                    <li>Dernière version : <b>2.23.10</b> (16/08/2019)</li>
                                     <li>Version de la formation : <b>2.21.10</b> (24/02/2019)</li>
                                 </ul>
                             </li>
@@ -1167,6 +1167,38 @@ git commit -a
                             </li>
                         </ul>
                         <img src="img/section3/git_log_oneline.png" class="imgNoDecorate"/>
+                    </section>
+
+                    <section>
+                        <h3>Quelques exemples</h3>
+                        <ul>
+                            <li>Retrouver les trois avant derniers commits d'un auteur<br />
+                                <pre><code class="Bash" data-trim>
+		        					git log --oneline --author Tony -n 3 --skip 1
+        						</code></pre>
+                            </li>
+                        </ul>
+                        <img src="img/section3/git_log_author.png" class="imgNoDecorate"/>
+                        <p>Full</p>
+                        <img src="img/section3/git_log_author_full.png" class="imgNoDecorate"/>
+
+                        <aside class="notes">
+                            <ul>
+                                <li>Attention à la casse pour le nom de l'auteur</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h3>Quelques exemples</h3>
+                        <ul>
+                            <li>Retrouver des commits selon le message<br />
+                                <pre><code class="Bash" data-trim>
+		        					git log --grep session
+        						</code></pre>
+                            </li>
+                        </ul>
+                        <img src="img/section3/git_log_grep.png" class="imgNoDecorate"/>
                     </section>
 
                     <section>
@@ -2598,6 +2630,18 @@ git reset HEAD
                     </section>
 
                     <section>
+                        <h3>Quelques exemples</h3>
+
+                        <p>Edition du fichier de travail</p>
+                        <p></p>
+
+                        <img src="img/section5/rebase_before.png" class="imgNoDecorate"/>
+                        <img src="img/section5/rebase_after.png" class="imgNoDecorate"/>
+
+                        <p>Modifier les messages de commit sera ignoré ici</p>
+                    </section>
+
+                    <section>
                         <h3>Les options intéressantes</h3>
 
                         <ul>
@@ -2983,6 +3027,25 @@ git remote set-url origin https://github.com/user/repo2.git
 
                 </section>
 
+                <section>
+                    <section>
+                        <h3>Une petite note sur checkout</h3>
+
+                        <pre><code class="Bash" data-trim>
+                            git checkout feat1
+                        </code></pre>
+
+                        <img src="img/section6/Git_checkout_branch_remote.svg" class="imgNoDecorate"/>
+
+                        <aside class="notes">
+                            <ul>
+                                <li>Ca crée la branche locale</li>
+                                <li>Ca link la branche remote à la locale</li>
+                            </ul>
+                        </aside>
+                    </section>
+                </section>
+
                 <!-- *************************************************************** -->
                 <!-- 6.3. GIT PULL -->
                 <!-- *************************************************************** -->
@@ -3159,6 +3222,25 @@ git push -d origin myBranch
                         <img src="img/section6/git_push_failed.png" class="imgNoDecorate"/>
 
                         <aside class="notes">
+                            <ul>
+                                <li>On peut d'abord pull avant de push</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h3>Forcer un push</h3>
+
+                        <pre><code class="Bash" data-trim>
+                            git push origin master -f
+                        </code></pre>
+
+                        <img src="img/section6/Push_force.svg" class="imgNoDecorate"/>
+
+                        <aside class="notes">
+                            <ul>
+                                <li>Rebase change l'arbre</li>
+                            </ul>
                         </aside>
                     </section>
 
@@ -3854,6 +3936,8 @@ $ git add LISEZMOI
                                 <li><b>-k</b> : Skip l'action en cas d'erreur</li>
                             </ul>
                         </ul>
+
+                        <p style="margin-top:30px;"><b>Attention à windows ! Case sensitive</b></p>
                     </section>
 
                     <section>
